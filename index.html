@@ -14,7 +14,6 @@
                 extend: {
                     colors: {
                         canopy: { 50: '#F4F7F5', 100: '#E3EBE5', 200: '#C5D6C9', 300: '#A3BDAC', 400: '#7FA38B', 500: '#5D8A6D', 600: '#466B53', 700: '#334E3C', 800: '#233429', 900: '#151F19' },
-                        earth: { sand: '#E8E1D9', clay: '#B08E75' }
                     },
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] },
                     animation: { 'uncurl': 'uncurl 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards', 'fade-in-up': 'fadeInUp 0.8s ease-out forwards' },
@@ -29,7 +28,7 @@
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* CONTENT CARD STYLE: High Readability (85% Opacity) */
+        /* STANDARD GLASS CARD (High Readability) */
         .glass-panel { 
             backdrop-filter: blur(12px); 
             background-color: rgba(255, 255, 255, 0.85); 
@@ -38,12 +37,19 @@
             border-radius: 1rem; 
         }
 
-        /* HEADER STYLE: More Translucent (60% Opacity) to show background */
+        /* GHOST GLASS (For Quote Banners - High Transparency) */
+        .glass-ghost {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.30); /* 30% Opacity */
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.02);
+            border-radius: 1rem;
+        }
+
         .glass-header {
             backdrop-filter: blur(12px);
-            background-color: rgba(255, 255, 255, 0.60); /* More see-through */
+            background-color: rgba(255, 255, 255, 0.60);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border-radius: 1rem;
         }
 
@@ -62,14 +68,12 @@
         
         <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-8 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
-            
             <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-800">
                     <a href="index.html" class="text-canopy-900 font-bold border-b-2 border-canopy-500">Home</a>
                     <a href="approach.html" class="hover:text-canopy-600 transition-colors">My Approach</a>
                     <a href="#contact" class="hover:text-canopy-600 transition-colors">Contact</a>
                 </div>
-
                 <div class="flex items-center gap-2 text-xs font-medium text-canopy-600 border-l border-canopy-800/20 pl-6">
                     <span class="text-canopy-900 font-bold cursor-default">EN</span>
                     <span class="text-canopy-400">|</span>
@@ -77,23 +81,22 @@
                     <span class="text-canopy-400">|</span>
                     <a href="#" class="hover:text-canopy-900 transition-colors" title="Español">ES</a>
                 </div>
-
                 <div class="md:hidden text-canopy-800"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
         <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
-            <div class="glass-panel p-8 md:p-12 text-center">
-                <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
+            <div class="glass-ghost p-8 md:p-12 text-center">
+                <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-900 leading-relaxed max-w-3xl mx-auto drop-shadow-sm">
                     "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
                 </blockquote>
-                <span class="block text-sm font-sans text-canopy-500 mt-4 font-medium tracking-wide uppercase">— Leonard Cohen</span>
+                <span class="block text-sm font-sans text-canopy-900 mt-4 font-bold tracking-wide uppercase">— Leonard Cohen</span>
             </div>
         </section>
 
         <section class="mb-16 text-center space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-sm">Space for Self-Knowledge, Growth and Change</h1>
-            <p class="text-canopy-800 font-bold tracking-widest text-xs uppercase mb-8 shadow-sm">Psychotherapy For You Wherever You Are</p>
+            <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-md">Space for Self-Knowledge, Growth and Change</h1>
+            <p class="text-canopy-900 font-bold tracking-widest text-xs uppercase mb-8 shadow-sm">Psychotherapy For You Wherever You Are</p>
             
             <div class="glass-panel p-6 md:p-8 text-canopy-800 leading-relaxed max-w-3xl mx-auto space-y-4 text-left md:text-center">
                 <p>Welcome to my virtual office. My name is Camila Fonseca and I'm glad you've come this far.</p>
@@ -102,9 +105,9 @@
             </div>
         </section>
 
-        <section class="glass-panel p-8 mb-16 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <h2 class="font-serif text-3xl text-canopy-900 mb-6">About Me</h2>
-            <div class="space-y-4 text-canopy-800 leading-relaxed">
+        <section class="mb-16 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <h2 class="font-serif text-3xl text-canopy-900 mb-6 text-center md:text-left drop-shadow-sm">About Me</h2>
+            <div class="glass-panel p-8 space-y-4 text-canopy-800 leading-relaxed">
                 <p>I am a psychologist who graduated from the University of Brasília (UnB) in 2007. Since then, I have dedicated myself to various areas of Psychology, from clinical practice to community psychology in Indigenous and Quilombola (afro-descendants) communities.</p>
                 <p>A unique element of my professional qualification is my life experience. Upon becoming a psychologist, I realized the need to transcend the boundaries of my comfort zone and get to know myself not just through books or courses, but through my own lived experience.</p>
                 <p>On a journey of self-discovery, I traveled through Latin America for more than 3 and a half years, journeying by land and water across Brazil and 10 other countries (from Argentina to Guatemala). During this period, I learned different languages and cultures, lived in extreme situations, and came into contact with people from diverse realities.</p>
@@ -113,15 +116,15 @@
                 <p>Currently, I live in Southern India, where I see clients in person and online in English, Portuguese, and Spanish from various parts of the world, including Brazil, the USA, Australia, India, New Zealand, Switzerland, and Japan.</p>
                 <p>In my free time, I enjoy laughing with my daughter and husband, swimming outdoors, doing all kinds of crafts, playing the same old songs on my guitar, cycling my bicycle on the multi-colored streets of India, among sadhus and monkeys, and climbing the Arunachala mountain to meditate in the caves.</p>
             </div>
-             <div class="mt-8 pt-6 border-t border-canopy-200/50">
+             <div class="mt-8 glass-panel p-6">
                 <h3 class="font-serif text-lg text-canopy-800 mb-4">Qualifications</h3>
                 <ul class="flex flex-wrap gap-2">
                     <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Bachelor's degree in Psychology (UnB)</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">IFS Level 1 (Internal Family Systems Institute)</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">EFT Level B (ISEFT, Canada)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">IFS Level 1</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">EFT Level B</li>
                     <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Somatic Experiencing (Intermediate)</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Person-Centered Approach Psychotherapy</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">MBCT (Centro de Mindfulness, RJ)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Person-Centered Approach</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">MBCT</li>
                 </ul>
             </div>
         </section>
@@ -132,21 +135,21 @@
                 <div class="glass-panel p-6 flex flex-col justify-between">
                     <div>
                         <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-canopy-800 italic text-sm mb-4">"Camila has a very gentle way about her. I always feel safe in my sessions with her. She has a very insightful way of empowering me and helping me look beyond the surface of what I'm saying. She has such a loving and compassionate heart."</p>
+                        <p class="text-canopy-800 italic text-sm mb-4">"Camila has a very gentle way about her. I always feel safe in my sessions with her... She has such a loving and compassionate heart."</p>
                     </div>
                     <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Liam, Ireland</p>
                 </div>
                 <div class="glass-panel p-6 flex flex-col justify-between">
                     <div>
                         <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-canopy-800 italic text-sm mb-4">"My experience working with Camila has been incredibly rewarding... The light-hearted, joyful approach of Camila put me at ease immediately and her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
+                        <p class="text-canopy-800 italic text-sm mb-4">"My experience working with Camila has been incredibly rewarding... her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
                     </div>
                     <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Nandita, USA</p>
                 </div>
-                <div class="glass-panel p-6 flex flex-col justify-between">
+                 <div class="glass-panel p-6 flex flex-col justify-between">
                     <div>
                         <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-canopy-800 italic text-sm mb-4">"Camila is a very committed, dedicated, and attentive professional. The sessions with her have been an enriching exchange that has done so much good for my life. I’ve been doing weekly sessions with her for almost a year now, and I’m very happy to have met her."</p>
+                        <p class="text-canopy-800 italic text-sm mb-4">"Camila is a very committed, dedicated, and attentive professional... I’ve been doing weekly sessions with her for almost a year now, and I’m very happy to have met her."</p>
                     </div>
                     <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Livia, Japan</p>
                 </div>
@@ -171,8 +174,8 @@
         </div>
 
         <section id="contact" class="mb-12 animate-fade-in-up" style="animation-delay: 0.6s;">
+            <h2 class="font-serif text-3xl text-canopy-900 mb-6 text-center md:text-left drop-shadow-sm">Contact Me</h2>
             <div class="glass-panel p-6 md:p-8">
-                <h2 class="font-serif text-3xl text-canopy-900 mb-2">Contact Me</h2>
                 <p class="text-canopy-600 mb-6">Psychological support for you around the world.</p>
                 
                 <form class="space-y-4" onsubmit="alert('PROTOTYPE MODE: Email sent!'); return false;">

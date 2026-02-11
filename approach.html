@@ -14,7 +14,6 @@
                 extend: {
                     colors: {
                         canopy: { 50: '#F4F7F5', 100: '#E3EBE5', 200: '#C5D6C9', 300: '#A3BDAC', 400: '#7FA38B', 500: '#5D8A6D', 600: '#466B53', 700: '#334E3C', 800: '#233429', 900: '#151F19' },
-                        earth: { sand: '#E8E1D9', clay: '#B08E75' }
                     },
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] },
                     animation: { 'uncurl': 'uncurl 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards', 'fade-in-up': 'fadeInUp 0.8s ease-out forwards' },
@@ -29,7 +28,7 @@
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* CONTENT CARD STYLE: 85% Opacity */
+        /* STANDARD GLASS CARD */
         .glass-panel { 
             backdrop-filter: blur(12px); 
             background-color: rgba(255, 255, 255, 0.85); 
@@ -38,12 +37,19 @@
             border-radius: 1rem; 
         }
 
-        /* HEADER STYLE: 60% Opacity */
+        /* GHOST GLASS (For Quote Banner) */
+        .glass-ghost {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.30);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.02);
+            border-radius: 1rem;
+        }
+
         .glass-header {
             backdrop-filter: blur(12px);
             background-color: rgba(255, 255, 255, 0.60);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border-radius: 1rem;
         }
 
@@ -68,7 +74,6 @@
         
         <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
-            
             <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-800">
                     <a href="index.html" class="hover:text-canopy-600 transition-colors">Home</a>
@@ -92,22 +97,22 @@
         </div>
 
         <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
-            <div class="glass-panel p-8 md:p-12 text-center">
-                <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
+            <div class="glass-ghost p-8 md:p-12 text-center">
+                <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-900 leading-relaxed max-w-3xl mx-auto drop-shadow-sm">
                     “There is no way to happiness: happiness is the way”
                 </blockquote>
-                <span class="block text-sm font-sans text-canopy-500 mt-4 font-medium tracking-wide uppercase">— Thich Nhat Hanh</span>
+                <span class="block text-sm font-sans text-canopy-900 mt-4 font-bold tracking-wide uppercase">— Thich Nhat Hanh</span>
             </div>
         </section>
 
         <div class="text-center mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
             <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-sm">Therapy Online</h1>
-            <p class="text-canopy-700 font-bold tracking-widest text-xs uppercase">Individual service for self-knowledge and personal growth</p>
+            <p class="text-canopy-800 font-bold tracking-widest text-xs uppercase shadow-sm">Individual service for self-knowledge and personal growth</p>
         </div>
 
-        <section class="glass-panel p-8 mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <h2 class="font-serif text-2xl text-canopy-800 mb-4">Who is Therapy For?</h2>
-            <div class="space-y-4 text-canopy-800 leading-relaxed">
+        <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
+             <h2 class="font-serif text-2xl text-canopy-900 mb-4 text-center md:text-left drop-shadow-sm">Who is Therapy For?</h2>
+            <div class="glass-panel p-8 space-y-4 text-canopy-800 leading-relaxed">
                 <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships, to relieve tension, to promote change, and to improve mental health as a whole.</p>
                 <p>The increase in scientific research in the area and the development of evidence-based therapies have helped to spread the importance of therapy for mental health.</p>
                 <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and behavior, and also to process challenges in the present moment.</p>
@@ -119,44 +124,37 @@
             <div class="glass-panel p-6 md:p-8 text-canopy-800 leading-relaxed space-y-4 max-w-3xl mx-auto text-left md:text-center mb-8">
                 <p>I use internationally recognized therapy models such as Internal Family Systems (IFS) and Emotion-Focused Therapy (EFT), whose results for depression and anxiety have been proven by scientific studies. Both are non-pathologizing approaches that incorporate memory reconsolidation processes.</p>
                 <p>I also have training in Somatic Experiencing (SE), which focuses on the body's experience and the wisdom of the nervous system.</p>
-                <p>I have a strong interest in the area of Complex Trauma and somatic work. Therefore, I continuously update myself through readings, courses, and classes from key figures in the field such as Bessel van der Kolk, Peter Levine, Gabor Maté, and Deb Dana (Polyvagal Theory).</p>
             </div>
 
             <div class="space-y-8">
                 
                 <div class="glass-panel p-8">
-                    <h3 class="font-serif text-2xl text-canopy-800 mb-3">Internal Family Systems (IFS)</h3>
+                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Internal Family Systems (IFS)</h3>
                     <div class="space-y-4 text-canopy-700 leading-relaxed">
                         <p>We all have internal "parts" — aspects of our personality that carry different emotions, beliefs, and roles. Some parts may protect us, while others hold the pain of past experiences.</p>
-                        <p>Internal Family Systems (IFS) is a compassionate and empowering approach that helps you understand and heal these different parts of yourself. IFS helps you develop a relationship with these parts, bringing curiosity and self-compassion to your inner world.</p>
-                        <p>By connecting with your core "Self" — the calm, wise, and centered part of you — you can bring healing and harmony to your internal system. This approach is effective for processing trauma, reducing internal conflict, and promoting greater emotional well-being. Instead of trying to suppress or get rid of parts of yourself, IFS helps you listen to them, understand them, and integrate them in a healthy way.</p>
+                        <p>Internal Family Systems (IFS) is a compassionate and empowering approach that helps you understand and heal these different parts of yourself.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8">
-                    <h3 class="font-serif text-2xl text-canopy-800 mb-3">Somatic Experiencing (SE)</h3>
+                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Somatic Experiencing (SE)</h3>
                     <div class="space-y-4 text-canopy-700 leading-relaxed">
-                        <p>Somatic Experiencing (SE) is a therapeutic approach developed by Dr. Peter Levine to treat trauma, stress, and nervous system dysregulation. It is based on the understanding that trauma is not just stored in memory, but also in the body's physiological responses.</p>
-                        <p>SE focuses on observing and working with bodily sensations, rather than reliving traumatic events in detail, helping the nervous system gradually regain its balance. Through this process, a person can release accumulated survival energy, reduce symptoms like anxiety, hypervigilance, or "freeze" responses, and recover greater regulation, resilience, and well-being.</p>
-                        <p>It’s important to say that, although SE is a bottom-up modality, we include all the 5 dimensions of experience: Sensations, Images, Behavior, Affect and Meaning.</p>
+                        <p>Somatic Experiencing (SE) is a therapeutic approach developed by Dr. Peter Levine to treat trauma, stress, and nervous system dysregulation.</p>
+                         <p>SE focuses on observing and working with bodily sensations, helping the nervous system gradually regain its balance.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8">
-                    <h3 class="font-serif text-2xl text-canopy-800 mb-3">Emotion-Focused Therapy (EFT)</h3>
+                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Emotion-Focused Therapy (EFT)</h3>
                     <div class="space-y-4 text-canopy-700 leading-relaxed">
-                        <p>Emotion-Focused Therapy (EFT) is a humanistic approach with a strong foundation in scientific research and neuroscience. The therapy takes place in an "ocean" of empathetic and non-judgmental relationship with "islands" of exercises designed to accelerate the process of accessing, expressing, and transforming emotions.</p>
-                        <p>For EFT, emotions are the gateways to our subjective experience and carry information about what we truly need. For example, sadness, anxiety, or anger are not seen as symptoms, but as messengers that some emotional need is not being met.</p>
-                        <p>Research shows that EFT is highly effective for individuals, couples, and families, particularly in strengthening relationships, reducing anxiety and depression, and resolving trauma.</p>
+                        <p>Emotion-Focused Therapy (EFT) is a humanistic approach with a strong foundation in scientific research and neuroscience. The therapy takes place in an "ocean" of empathetic and non-judgmental relationship with "islands" of exercises.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8">
-                    <h3 class="font-serif text-2xl text-canopy-800 mb-3">Mindfulness-Based Cognitive Therapy (MBCT)</h3>
+                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Mindfulness-Based Cognitive Therapy (MBCT)</h3>
                     <div class="space-y-4 text-canopy-700 leading-relaxed">
-                        <p>Mindfulness-Based Cognitive Therapy (MBCT) is an approach that combines cognitive therapy with mindfulness practices. The goal is to help you recognize automatic thought patterns, especially those related to anxiety and depression, and to develop a more balanced relationship with your emotions.</p>
-                        <p>Through mindfulness, we learn to observe your thoughts and feelings without judgment, reducing emotional reactivity and strengthening your ability to cope with challenges. Based on scientific evidence, MBCT has shown great effectiveness in preventing depressive relapses and promoting mental well-being.</p>
-                        <p>I incorporate exercises from the 8-week MBCT protocol into therapy sessions as a way to support the access and expression of internal experience.</p>
+                        <p>Mindfulness-Based Cognitive Therapy (MBCT) is an approach that combines cognitive therapy with mindfulness practices. The goal is to help you recognize automatic thought patterns, especially those related to anxiety and depression.</p>
                     </div>
                 </div>
 
@@ -174,8 +172,8 @@
         </div>
 
         <section id="contact" class="mb-12 animate-fade-in-up" style="animation-delay: 0.6s;">
+            <h2 class="font-serif text-3xl text-canopy-900 mb-6 text-center md:text-left drop-shadow-sm">Contact Me</h2>
             <div class="glass-panel p-6 md:p-8">
-                <h2 class="font-serif text-3xl text-canopy-900 mb-2">Contact Me</h2>
                 <p class="text-canopy-600 mb-6">Psychological support for you around the world.</p>
                 
                 <form class="space-y-4" onsubmit="alert('PROTOTYPE MODE: Email sent!'); return false;">
