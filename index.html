@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila Fonseca | Psychotherapy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        canopy: { 50: '#F4F7F5', 100: '#E3EBE5', 200: '#C5D6C9', 300: '#A3BDAC', 400: '#7FA38B', 500: '#5D8A6D', 600: '#466B53', 700: '#334E3C', 800: '#233429', 900: '#151F19' },
+                        earth: { sand: '#E8E1D9', clay: '#B08E75' }
+                    },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] },
+                    animation: { 'uncurl': 'uncurl 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards', 'fade-in-up': 'fadeInUp 0.8s ease-out forwards' },
+                    keyframes: {
+                        uncurl: { '0%': { transform: 'scale(0.95) translateY(10px)', opacity: '0' }, '100%': { transform: 'scale(1) translateY(0)', opacity: '1' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F4F7F5; color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-panel { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.4); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border-radius: 1rem; }
+        .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-primary:hover { background-color: #466B53; transform: translateY(-1px); }
+        .btn-secondary { background-color: rgba(232, 225, 217, 0.5); color: #233429; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-secondary:hover { background-color: #E8E1D9; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
+        
+        <nav class="sticky top-0 z-50 glass-panel rounded-b-2xl rounded-t-none mb-12 px-6 py-4 flex justify-between items-center">
+            <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
+            <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-600">
+                <a href="index.html" class="text-canopy-800 font-bold">Home</a>
+                <a href="approach.html" class="hover:text-canopy-500 transition-colors">My Approach</a>
+                <a href="#contact" class="hover:text-canopy-500 transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden text-canopy-600"><i data-lucide="menu"></i></div>
+        </nav>
+
+        <section class="mb-10 text-center animate-uncurl">
+            <blockquote class="font-serif italic text-xl md:text-2xl text-canopy-700 max-w-2xl mx-auto leading-relaxed">
+                "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
+                <span class="block text-sm font-sans text-canopy-500 mt-3 not-italic">— Leonard Cohen</span>
+            </blockquote>
+        </section>
+
+        <div class="mb-12 glass-panel p-2 animate-fade-in-up" style="animation-delay: 0.1s;">
+            <div class="aspect-video bg-canopy-100 rounded-xl flex flex-col items-center justify-center text-canopy-400 relative overflow-hidden group cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-tr from-canopy-200/20 to-transparent"></div>
+                <div class="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
+                    <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
+                </div>
+                <span class="mt-4 font-serif text-canopy-600">Welcome to my virtual office</span>
+            </div>
+        </div>
+
+        <section class="mb-16 text-center space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <h1 class="font-serif text-4xl md:text-5xl text-canopy-900 mb-2">Space for Self-Knowledge, Growth and Change</h1>
+            <p class="text-canopy-500 font-bold tracking-widest text-xs uppercase mb-8">Psychotherapy For You Wherever You Are</p>
+            
+            <div class="text-canopy-800 leading-relaxed max-w-2xl mx-auto space-y-4 text-left md:text-center">
+                <p>Welcome to my virtual office. My name is Camila Fonseca and I'm glad you've come this far.</p>
+                <p>I know that in the rush of everyday life, self-care is not always a priority. This is already an important step in your journey of self-knowledge and transformation.</p>
+                <p>If you're feeling tired, confused, depressed or anxious, know that therapy is like taking a path back home. It's as if through therapy, we connect with our internal GPS while we travel the territory of who we are. We tune into our emotional needs and learn to take transformative actions. That's why therapy is an investment whose results are experienced firsthand and stay with you throughout your life.</p>
+            </div>
+            
+            <div class="mt-8">
+                <a href="#contact" class="btn-primary">Start Your Journey</a>
+            </div>
+        </section>
+
+        <section class="glass-panel p-8 mb-16 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <h2 class="font-serif text-3xl text-canopy-900 mb-6">About Me</h2>
+            <div class="space-y-4 text-canopy-800 leading-relaxed">
+                <p>I am a psychologist who graduated from the University of Brasília (UnB) in 2007. Since then, I have dedicated myself to various areas of Psychology, from clinical practice to community psychology in Indigenous and Quilombola (afro-descendants) communities.</p>
+                <p>A unique element of my professional qualification is my life experience. Upon becoming a psychologist, I realized the need to transcend the boundaries of my comfort zone and get to know myself not just through books or courses, but through my own lived experience.</p>
+                <p>On a journey of self-discovery, I traveled through Latin America for more than 3 and a half years, journeying by land and water across Brazil and 10 other countries (from Argentina to Guatemala). During this period, I learned different languages and cultures, lived in extreme situations, and came into contact with people from diverse realities.</p>
+                <p>Another personal aspect important to my work is my intense dedication to the practice of mindfulness. For 2 years, I lived exclusively in meditation centers in both Brazil and India. During this time, I deepened my knowledge of human nature through moment-to-moment inner observation.</p>
+                <p>Upon becoming a mother, I came into contact with the pains of my own complex trauma. For this reason, I have deeply studied and qualified in internationally recognized approaches in this area for my own benefit and for my clients.</p>
+                <p>Currently, I live in Southern India, where I see clients in person and online in English, Portuguese, and Spanish from various parts of the world, including Brazil, the USA, Australia, India, New Zealand, Switzerland, and Japan.</p>
+                <p>In my free time, I enjoy laughing with my daughter and husband, swimming outdoors, doing all kinds of crafts, playing the same old songs on my guitar, cycling my bicycle on the multi-colored streets of India, among sadhus and monkeys, and climbing the Arunachala mountain to meditate in the caves.</p>
+            </div>
+             <div class="mt-8 pt-6 border-t border-white/40">
+                <h3 class="font-serif text-lg text-canopy-800 mb-4">Qualifications</h3>
+                <ul class="flex flex-wrap gap-2">
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Bachelor's degree in Psychology (UnB)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">IFS Level 1 (Internal Family Systems Institute)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">EFT Level B (ISEFT, Canada)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Somatic Experiencing (Intermediate)</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">Person-Centered Approach Psychotherapy</li>
+                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-canopy-600 border border-canopy-100">MBCT (Centro de Mindfulness, RJ)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="font-serif text-3xl text-canopy-900 mb-8 text-center">Client Testimonials</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="glass-panel p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <p class="text-canopy-800 italic text-sm mb-4">"Camila has a very gentle way about her. I always feel safe in my sessions with her. She has a very insightful way of empowering me and helping me look beyond the surface of what I'm saying. She has such a loving and compassionate heart."</p>
+                    </div>
+                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Liam, Ireland</p>
+                </div>
+                <div class="glass-panel p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <p class="text-canopy-800 italic text-sm mb-4">"My experience working with Camila has been incredibly rewarding... The light-hearted, joyful approach of Camila put me at ease immediately and her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
+                    </div>
+                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Nandita, USA</p>
+                </div>
+                <div class="glass-panel p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <p class="text-canopy-800 italic text-sm mb-4">"Camila is a very committed, dedicated, and attentive professional. The sessions with her have been an enriching exchange that has done so much good for my life. I’ve been doing weekly sessions with her for almost a year now, and I’m very happy to have met her."</p>
+                    </div>
+                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Livia, Japan</p>
+                </div>
+                <div class="glass-panel p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
+                        <p class="text-canopy-800 italic text-sm mb-4">"An excellent professional. Very careful and attentive to every detail. She creates a safe and welcoming space, without judgment."</p>
+                    </div>
+                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Massumy, USA/Brasil</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="mb-12">
+            <div class="glass-panel p-6 md:p-8">
+                <h2 class="font-serif text-3xl text-canopy-900 mb-2">Contact Me</h2>
+                <p class="text-canopy-600 mb-6">Psychological support for you around the world.</p>
+                
+                <form class="space-y-4" onsubmit="alert('PROTOTYPE MODE: Email sent!'); return false;">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
+                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
+                    </div>
+                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
+                    <textarea rows="5" placeholder="Message" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300"></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <button type="submit" class="btn-primary flex-1">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Send Email
+                        </button>
+                        <a href="https://wa.me/556196126281" target="_blank" class="btn-secondary flex-1 decoration-0">
+                            <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </form>
+                
+                <div class="mt-8 text-center text-sm text-canopy-500">
+                    <p><strong>Email:</strong> contactme@camilafonseca.com</p>
+                    <p><strong>WhatsApp:</strong> +55-61-96126281</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-canopy-400 text-xs py-6">
+            © 2025 Camila Fonseca. All rights reserved.
+        </footer>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
