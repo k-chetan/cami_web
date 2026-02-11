@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Approach | Camila Fonseca (Warm)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        paper: '#F2EFE9',
+                        terra: { 100: '#FCD5CE', 500: '#E07A5F', 700: '#BC5D45' },
+                        sage:  { 100: '#E6F0EB', 500: '#81B29A', 700: '#5E8C76' },
+                        sand:  '#F2CC8F',
+                        navy:  '#3D405B',
+                    },
+                    fontFamily: { 
+                        serif: ['"Playfair Display"', 'serif'], 
+                        sans: ['"Quicksand"', 'sans-serif']
+                    },
+                    animation: { 
+                        'wobble': 'wobble 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        wobble: { '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }, '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            color: #3D405B; 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: #FDFBF7;
+            /* Recycled paper noise */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        .paper-card { 
+            background-color: #F2EFE9;
+            border: 2px solid #F2CC8F;
+            border-radius: 2rem 1rem 2.5rem 1rem; 
+            box-shadow: 8px 8px 0px rgba(224, 122, 95, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-pill {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 2px solid #E6F0EB;
+            box-shadow: 0 4px 20px rgba(224, 122, 95, 0.15);
+            border-radius: 9999px;
+        }
+
+        .marker-highlight {
+            background: linear-gradient(120deg, #FCD5CE 0%, #FCD5CE 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 30%;
+            background-position: 0 88%;
+        }
+
+        /* Organic blob for images */
+        .blob-mask {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen relative overflow-x-hidden">
+
+    <div class="fixed top-20 left-10 w-20 h-20 bg-sand/40 rounded-full blur-xl animate-wobble -z-10"></div>
+    <div class="fixed bottom-40 right-10 w-40 h-40 bg-terra-100/60 rounded-full blur-xl animate-wobble -z-10"></div>
+
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8">
+        
+        <nav class="sticky top-6 z-50 nav-pill px-8 py-4 mb-12 flex justify-between items-center">
+            <div class="font-serif text-2xl font-bold text-terra-500 tracking-tight flex items-center gap-2">
+                <i data-lucide="sun" class="w-6 h-6 text-sand fill-sand"></i>
+                Camila Fonseca
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="hidden md:flex gap-8 text-base font-semibold text-navy">
+                    <a href="index1.html" class="hover:text-terra-500 transition-colors">Home</a>
+                    <a href="approach1.html" class="text-terra-500 border-b-2 border-terra-500">My Approach</a>
+                    <a href="#contact" class="hover:text-terra-500 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden text-terra-500"><i data-lucide="menu"></i></div>
+            </div>
+        </nav>
+
+        <div class="flex justify-center mb-8">
+            <div class="bg-white px-6 py-2 rounded-full border border-sand border-dashed flex gap-4 text-xs font-bold text-navy shadow-sm">
+                <a href="#" class="hover:text-terra-500 flex items-center gap-2">Fala Português?</a>
+                <span class="text-sand">|</span>
+                <a href="#" class="hover:text-terra-500 flex items-center gap-2">¿Hablas Español?</a>
+            </div>
+        </div>
+
+        <section class="mb-12 text-center">
+            <div class="relative inline-block">
+                <h1 class="font-serif text-4xl md:text-5xl text-terra-500 mb-4 font-bold">Therapy Online</h1>
+                <svg class="absolute -bottom-2 w-full h-3 text-sand" viewBox="0 0 100 10" preserveAspectRatio="none">
+                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" stroke-width="3" fill="none" />
+                </svg>
+            </div>
+            <p class="text-navy font-bold tracking-widest text-xs uppercase mt-6">Individual service for self-knowledge and personal growth</p>
+        </section>
+
+        <section class="mb-16">
+            <div class="bg-white p-8 md:p-10 rounded-[3rem_1rem] shadow-lg border-2 border-sage-100 relative">
+                <i data-lucide="sprout" class="absolute -top-5 -left-5 w-10 h-10 bg-sage-500 text-white p-2 rounded-full shadow-md"></i>
+                <h2 class="font-serif text-2xl text-sage-700 mb-6">Who is Therapy For?</h2>
+                <div class="space-y-4 text-navy leading-relaxed text-lg">
+                    <p>Therapy helps to increase self-knowledge, manage <span class="marker-highlight">interpersonal difficulties</span>, and relieve tension.</p>
+                    <p>It is a safe space to dive into the origin of patterns and process challenges in the present moment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="font-serif text-4xl text-center text-terra-700 mb-10">My Methods</h2>
+            <div class="grid gap-8">
+                
+                <div class="paper-card p-8 group">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="bg-terra-100 p-4 rounded-full group-hover:scale-110 transition-transform">
+                            <i data-lucide="users" class="w-8 h-8 text-terra-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl text-navy mb-3">Internal Family Systems (IFS)</h3>
+                            <p class="text-navy/80 leading-relaxed mb-4">We all have internal "parts". Some protect us, others hold pain. IFS is a compassionate approach that helps you heal these parts by bringing curiosity and self-compassion to your inner world.</p>
+                            <span class="text-xs font-bold text-terra-500 uppercase tracking-wider">Compassion • Healing • Harmony</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paper-card p-8 group border-sage-500 shadow-[8px_8px_0px_rgba(129,178,154,0.3)] hover:shadow-[12px_12px_0px_rgba(129,178,154,0.4)]">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="bg-sage-100 p-4 rounded-full group-hover:scale-110 transition-transform">
+                            <i data-lucide="activity" class="w-8 h-8 text-sage-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl text-navy mb-3">Somatic Experiencing (SE)</h3>
+                            <p class="text-navy/80 leading-relaxed mb-4">Focuses on the body's wisdom. By observing bodily sensations, we help the nervous system gradually regain its natural balance after trauma or stress.</p>
+                            <span class="text-xs font-bold text-sage-500 uppercase tracking-wider">Body • Nervous System • Balance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="paper-card p-8 group border-sand shadow-[8px_8px_0px_rgba(242,204,143,0.5)] hover:shadow-[12px_12px_0px_rgba(242,204,143,0.6)]">
+                    <div class="flex flex-col md:flex-row gap-6 items-start">
+                        <div class="bg-sand/30 p-4 rounded-full group-hover:scale-110 transition-transform">
+                            <i data-lucide="heart-handshake" class="w-8 h-8 text-navy"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-2xl text-navy mb-3">Emotion-Focused Therapy (EFT)</h3>
+                            <p class="text-navy/80 leading-relaxed mb-4">A humanistic approach where therapy takes place in an "ocean" of empathy. We use the power of emotion to transform pain into resilience.</p>
+                            <span class="text-xs font-bold text-navy/60 uppercase tracking-wider">Emotion • Empathy • Change</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="mb-12 relative group cursor-pointer">
+            <div class="absolute inset-0 bg-terra-500 rounded-[2rem] transform rotate-1 group-hover:rotate-2 transition-transform"></div>
+            <div class="relative bg-sage-100 rounded-[2rem] p-2 aspect-video flex flex-col items-center justify-center border-4 border-white">
+                 <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i data-lucide="play" class="w-8 h-8 fill-terra-500 text-terra-500 ml-1"></i>
+                </div>
+                <span class="mt-4 font-serif text-lg text-sage-700 font-bold">Watch: Introduction to My Methods</span>
+            </div>
+        </div>
+
+        <footer class="text-center text-navy/60 text-sm py-6 font-medium">
+            © 2025 Camila Fonseca. Made with sun & earth.
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons({ attrs: { strokeWidth: 2 } });
+    </script>
+</body>
+</html>

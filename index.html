@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camila Fonseca | Psychotherapy</title>
+    <title>My Approach | Camila Fonseca</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -14,14 +14,13 @@
                 extend: {
                     colors: {
                         canopy: { 50: '#F4F7F5', 100: '#E3EBE5', 200: '#C5D6C9', 300: '#A3BDAC', 400: '#7FA38B', 500: '#5D8A6D', 600: '#466B53', 700: '#334E3C', 800: '#233429', 900: '#151F19' },
-                        // "Petrichor" - The smell of earth after rain (Warm Charcoal)
-                        petrichor: '#2A332E', 
+                        petrichor: '#2A332E',
                     },
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] },
                     animation: { 
                         'uncurl': 'uncurl 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards', 
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'breathe': 'breathe 6s ease-in-out infinite' 
+                        'breathe': 'breathe 6s ease-in-out infinite'
                     },
                     keyframes: {
                         uncurl: { '0%': { transform: 'scale(0.95) translateY(10px)', opacity: '0' }, '100%': { transform: 'scale(1) translateY(0)', opacity: '1' } },
@@ -34,7 +33,7 @@
     </script>
     <style>
         body { 
-            color: #2A332E; /* Petrichor Text */
+            color: #2A332E; 
             font-family: 'Inter', sans-serif; 
         }
         
@@ -43,21 +42,18 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* GLASS & SPOTLIGHT SYSTEM */
         .glass-panel { 
             position: relative;
             backdrop-filter: blur(12px); 
             background-color: rgba(255, 255, 255, 0.85); 
-            /* Tumbled Stone Radius: Asymmetric corners */
             border-radius: 1.5rem 1.2rem 1.4rem 1.3rem; 
             border: 1px solid rgba(255, 255, 255, 0.5); 
-            box-shadow: 0 4px 20px -2px rgba(26, 46, 34, 0.1); /* Deep Green Shadow */
-            width: 100%;
-            overflow: hidden; /* Contains the spotlight */
+            box-shadow: 0 4px 20px -2px rgba(26, 46, 34, 0.1);
+            width: 100%; /* LOCKED WIDTH for alignment */
+            overflow: hidden;
             transition: transform 0.4s ease;
         }
 
-        /* The Spotlight Glow */
         .glass-panel::before {
             content: "";
             position: absolute;
@@ -73,8 +69,6 @@
             z-index: 0;
         }
         .glass-panel:hover::before { opacity: 1; }
-        
-        /* Ensure content stays above spotlight */
         .glass-panel > * { position: relative; z-index: 1; }
 
         .glass-ghost {
@@ -92,6 +86,12 @@
             border-radius: 1rem;
         }
 
+        .lang-pill {
+            background-color: rgba(255, 255, 255, 0.70);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
         .hanging-quote { text-indent: -0.4em; }
 
         .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(93, 138, 109, 0.3); }
@@ -103,107 +103,99 @@
 <body class="flex flex-col min-h-screen relative">
 
     <div class="noise-overlay"></div>
-    <div class="fixed inset-0 -z-20 bg-[url('images/forest.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-in-out hover:scale-105"></div>
+    <div class="fixed inset-0 -z-20 bg-[url('images/beach.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-in-out hover:scale-105"></div>
     <div class="fixed inset-0 -z-10 bg-canopy-50/50 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
         
-        <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-8 px-6 py-4 flex flex-wrap justify-between items-center gap-4 snap-start">
+        <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4 snap-start">
             <div class="font-serif text-xl md:text-2xl font-bold text-petrichor tracking-tight">Camila Fonseca</div>
-            
             <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-6 text-sm font-medium text-petrichor">
-                    <a href="index.html" class="font-bold border-b-2 border-canopy-500">Home</a>
-                    <a href="approach.html" class="hover:text-canopy-600 transition-colors">My Approach</a>
+                    <a href="index.html" class="hover:text-canopy-600 transition-colors">Home</a>
+                    <a href="approach.html" class="text-canopy-900 font-bold border-b-2 border-canopy-500">My Approach</a>
                     <a href="#contact" class="hover:text-canopy-600 transition-colors">Contact</a>
-                </div>
-
-                <div class="flex items-center gap-2 text-xs font-medium text-petrichor border-l border-petrichor/20 pl-6">
-                    <span class="font-bold cursor-default">EN</span>
-                    <span class="text-canopy-400">|</span>
-                    <a href="#" class="hover:text-canopy-600 transition-colors" title="Português">PT</a>
-                    <span class="text-canopy-400">|</span>
-                    <a href="#" class="hover:text-canopy-600 transition-colors" title="Español">ES</a>
+                    
+                    <a href="index1.html" class="text-canopy-700 font-bold bg-white/50 px-3 py-1 rounded-md hover:bg-white/80 transition-all">✨ Try New Look</a>
                 </div>
                 <div class="md:hidden text-petrichor"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
+        <div class="flex justify-center mb-8 animate-uncurl">
+            <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-petrichor shadow-sm transition-transform hover:scale-105">
+                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
+                    <span class="group-hover:underline">Fala Português?</span>
+                </a>
+                <span class="text-canopy-300">|</span>
+                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
+                    <span class="group-hover:underline">¿Hablas Español?</span>
+                </a>
+            </div>
+        </div>
+
         <section class="mb-12 animate-uncurl snap-center" style="animation-delay: 0.1s;">
             <div class="glass-ghost p-8 md:p-12 text-center">
                 <blockquote class="font-serif italic text-2xl md:text-3xl text-petrichor leading-relaxed max-w-3xl mx-auto drop-shadow-sm hanging-quote">
-                    "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
+                    “There is no way to happiness: happiness is the way”
                 </blockquote>
-                <span class="block text-xs md:text-sm font-sans text-petrichor mt-4 font-bold tracking-[0.2em] uppercase">— Leonard Cohen</span>
+                <span class="block text-xs md:text-sm font-sans text-petrichor mt-4 font-bold tracking-[0.2em] uppercase">— Thich Nhat Hanh</span>
             </div>
         </section>
 
-        <section class="mb-16 text-center space-y-6 animate-fade-in-up snap-center" style="animation-delay: 0.2s;">
-            <h1 class="font-serif text-3xl md:text-4xl text-petrichor mb-2 font-medium drop-shadow-md">Space for Self-Knowledge, Growth and Change</h1>
-            <p class="text-petrichor font-bold tracking-[0.15em] text-xs uppercase mb-8 shadow-sm">Psychotherapy For You Wherever You Are</p>
-            
-            <div class="glass-panel p-6 md:p-8 text-petrichor leading-relaxed text-left md:text-center">
-                <p>Welcome to my virtual office. My name is Camila Fonseca and I'm glad you've come this far.</p>
-                <p>I know that in the rush of everyday life, self-care is not always a priority. This is already an important step in your journey of self-knowledge and transformation.</p>
-                <p>If you're feeling tired, confused, depressed or anxious, know that therapy is like taking a path back home. It's as if through therapy, we connect with our internal GPS while we travel the territory of who we are. We tune into our emotional needs and learn to take transformative actions. That's why therapy is an investment whose results are experienced firsthand and stay with you throughout your life.</p>
-            </div>
-        </section>
+        <div class="text-center mb-10 animate-fade-in-up snap-center" style="animation-delay: 0.2s;">
+            <h1 class="font-serif text-3xl md:text-4xl text-petrichor mb-2 font-medium drop-shadow-sm">Therapy Online</h1>
+            <p class="text-petrichor font-bold tracking-[0.15em] text-xs uppercase shadow-sm">Individual service for self-knowledge and personal growth</p>
+        </div>
 
-        <section class="mb-16 animate-fade-in-up snap-center" style="animation-delay: 0.3s;">
-            <h2 class="font-serif text-3xl text-petrichor mb-6 text-center md:text-left drop-shadow-sm">About Me</h2>
+        <section class="mb-12 animate-fade-in-up snap-center" style="animation-delay: 0.3s;">
+             <h2 class="font-serif text-2xl text-petrichor mb-4 text-center md:text-left drop-shadow-sm">Who is Therapy For?</h2>
             <div class="glass-panel p-8 space-y-4 text-petrichor leading-relaxed">
-                <p>I am a psychologist who graduated from the University of Brasília (UnB) in 2007. Since then, I have dedicated myself to various areas of Psychology, from clinical practice to community psychology in Indigenous and Quilombola (afro-descendants) communities.</p>
-                <p>A unique element of my professional qualification is my life experience. Upon becoming a psychologist, I realized the need to transcend the boundaries of my comfort zone and get to know myself not just through books or courses, but through my own lived experience.</p>
-                <p>On a journey of self-discovery, I traveled through Latin America for more than 3 and a half years, journeying by land and water across Brazil and 10 other countries (from Argentina to Guatemala). During this period, I learned different languages and cultures, lived in extreme situations, and came into contact with people from diverse realities.</p>
-                <p>Another personal aspect important to my work is my intense dedication to the practice of mindfulness. For 2 years, I lived exclusively in meditation centers in both Brazil and India. During this time, I deepened my knowledge of human nature through moment-to-moment inner observation.</p>
-                <p>Upon becoming a mother, I came into contact with the pains of my own complex trauma. For this reason, I have deeply studied and qualified in internationally recognized approaches in this area for my own benefit and for my clients.</p>
-                <p>Currently, I live in Southern India, where I see clients in person and online in English, Portuguese, and Spanish from various parts of the world, including Brazil, the USA, Australia, India, New Zealand, Switzerland, and Japan.</p>
-                <p>In my free time, I enjoy laughing with my daughter and husband, swimming outdoors, doing all kinds of crafts, playing the same old songs on my guitar, cycling my bicycle on the multi-colored streets of India, among sadhus and monkeys, and climbing the Arunachala mountain to meditate in the caves.</p>
-            </div>
-             <div class="mt-8 glass-panel p-6">
-                <h3 class="font-serif text-lg text-petrichor mb-4">Qualifications</h3>
-                <ul class="flex flex-wrap gap-2">
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">Bachelor's degree in Psychology (UnB)</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">IFS Level 1</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">EFT Level B</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">Somatic Experiencing (Intermediate)</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">Person-Centered Approach</li>
-                    <li class="px-3 py-1 bg-white/50 rounded-full text-xs font-medium text-petrichor border border-canopy-100">MBCT</li>
-                </ul>
+                <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships, to relieve tension, to promote change, and to improve mental health as a whole.</p>
+                <p>The increase in scientific research in the area and the development of evidence-based therapies have helped to spread the importance of therapy for mental health.</p>
+                <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and behavior, and also to process challenges in the present moment.</p>
             </div>
         </section>
 
-        <section class="mb-16 animate-fade-in-up snap-center" style="animation-delay: 0.4s;">
-            <h2 class="font-serif text-3xl text-petrichor mb-8 text-center drop-shadow-sm">Client Testimonials</h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="glass-panel p-6 flex flex-col justify-between hover:scale-[1.01]">
-                    <div>
-                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-petrichor italic text-sm mb-4 hanging-quote">"Camila has a very gentle way about her. I always feel safe in my sessions with her... She has such a loving and compassionate heart."</p>
+        <section class="mb-12 animate-fade-in-up snap-center" style="animation-delay: 0.4s;">
+            <h2 class="font-serif text-3xl text-center text-petrichor mb-6 drop-shadow-sm">My Methods</h2>
+            <div class="glass-panel p-6 md:p-8 text-petrichor leading-relaxed space-y-4 text-left md:text-center mb-8">
+                <p>I use internationally recognized therapy models such as Internal Family Systems (IFS) and Emotion-Focused Therapy (EFT), whose results for depression and anxiety have been proven by scientific studies. Both are non-pathologizing approaches that incorporate memory reconsolidation processes.</p>
+                <p>I also have training in Somatic Experiencing (SE), which focuses on the body's experience and the wisdom of the nervous system.</p>
+            </div>
+
+            <div class="space-y-8">
+                
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Internal Family Systems (IFS)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
+                        <p>We all have internal "parts" — aspects of our personality that carry different emotions, beliefs, and roles. Some parts may protect us, while others hold the pain of past experiences.</p>
+                        <p>Internal Family Systems (IFS) is a compassionate and empowering approach that helps you understand and heal these different parts of yourself. IFS helps you develop a relationship with these parts, bringing curiosity and self-compassion to your inner world.</p>
                     </div>
-                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Liam, Ireland</p>
                 </div>
-                <div class="glass-panel p-6 flex flex-col justify-between hover:scale-[1.01]">
-                    <div>
-                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-petrichor italic text-sm mb-4 hanging-quote">"My experience working with Camila has been incredibly rewarding... her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
+
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Somatic Experiencing (SE)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
+                        <p>Somatic Experiencing (SE) is a therapeutic approach developed by Dr. Peter Levine to treat trauma, stress, and nervous system dysregulation.</p>
+                         <p>SE focuses on observing and working with bodily sensations, helping the nervous system gradually regain its balance.</p>
                     </div>
-                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Nandita, USA</p>
                 </div>
-                 <div class="glass-panel p-6 flex flex-col justify-between hover:scale-[1.01]">
-                    <div>
-                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-petrichor italic text-sm mb-4 hanging-quote">"Camila is a very committed, dedicated, and attentive professional... I’ve been doing weekly sessions with her for almost a year now, and I’m very happy to have met her."</p>
+
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Emotion-Focused Therapy (EFT)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
+                        <p>Emotion-Focused Therapy (EFT) is a humanistic approach with a strong foundation in scientific research and neuroscience. The therapy takes place in an "ocean" of empathetic and non-judgmental relationship with "islands" of exercises.</p>
                     </div>
-                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Livia, Japan</p>
                 </div>
-                <div class="glass-panel p-6 flex flex-col justify-between hover:scale-[1.01]">
-                    <div>
-                        <div class="flex text-earth-clay mb-2 gap-1"><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i><i data-lucide="star" class="w-3 h-3 fill-current"></i></div>
-                        <p class="text-petrichor italic text-sm mb-4 hanging-quote">"An excellent professional. Very careful and attentive to every detail. She creates a safe and welcoming space, without judgment."</p>
+
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Mindfulness-Based Cognitive Therapy (MBCT)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
+                        <p>Mindfulness-Based Cognitive Therapy (MBCT) is an approach that combines cognitive therapy with mindfulness practices. The goal is to help you recognize automatic thought patterns, especially those related to anxiety and depression.</p>
                     </div>
-                    <p class="text-canopy-500 text-xs font-bold uppercase tracking-wider">— Massumy, USA/Brasil</p>
                 </div>
+
             </div>
         </section>
 
@@ -213,7 +205,7 @@
                 <div class="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
                 </div>
-                <span class="mt-4 font-serif text-petrichor">Welcome to my virtual office</span>
+                <span class="mt-4 font-serif text-petrichor">Introduction to My Methods</span>
             </div>
         </div>
 
