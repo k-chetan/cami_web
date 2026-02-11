@@ -29,20 +29,22 @@
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* UPDATED GLASS PANEL: 75% Opacity + Heavy Blur */
+        /* CONTENT CARD STYLE: 85% Opacity */
         .glass-panel { 
-            backdrop-filter: blur(20px); 
-            background-color: rgba(255, 255, 255, 0.75); 
-            border: 1px solid rgba(255, 255, 255, 0.5); 
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); 
+            backdrop-filter: blur(12px); 
+            background-color: rgba(255, 255, 255, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 4px 15px -1px rgba(0, 0, 0, 0.05); 
             border-radius: 1rem; 
         }
 
-        /* Quote Banner specific transparency */
-        .quote-banner {
-            backdrop-filter: blur(15px);
-            background-color: rgba(227, 235, 229, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+        /* HEADER STYLE: 60% Opacity */
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.60);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
         }
 
         .lang-pill {
@@ -60,18 +62,18 @@
 <body class="flex flex-col min-h-screen relative">
 
     <div class="fixed inset-0 -z-20 bg-[url('images/beach.png')] bg-cover bg-center bg-no-repeat"></div>
-    <div class="fixed inset-0 -z-10 bg-canopy-50/60 backdrop-blur-[1px]"></div>
+    <div class="fixed inset-0 -z-10 bg-canopy-50/50 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
         
-        <nav class="sticky top-0 z-50 glass-panel rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+        <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
             
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-600">
-                    <a href="index.html" class="hover:text-canopy-500 transition-colors">Home</a>
-                    <a href="approach.html" class="text-canopy-800 font-bold">My Approach</a>
-                    <a href="#contact" class="hover:text-canopy-500 transition-colors">Contact</a>
+                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-800">
+                    <a href="index.html" class="hover:text-canopy-600 transition-colors">Home</a>
+                    <a href="approach.html" class="text-canopy-900 font-bold border-b-2 border-canopy-500">My Approach</a>
+                    <a href="#contact" class="hover:text-canopy-600 transition-colors">Contact</a>
                 </div>
                 <div class="md:hidden text-canopy-600"><i data-lucide="menu"></i></div>
             </div>
@@ -80,17 +82,17 @@
         <div class="flex justify-center mb-8 animate-uncurl">
             <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-canopy-600 shadow-sm transition-transform hover:scale-105">
                 <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
-                    <span>🇧🇷</span> <span class="group-hover:underline">Fala Português?</span>
+                    <span class="group-hover:underline">Fala Português?</span>
                 </a>
                 <span class="text-canopy-300">|</span>
                 <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
-                    <span>🇪🇸</span> <span class="group-hover:underline">¿Hablas Español?</span>
+                    <span class="group-hover:underline">¿Hablas Español?</span>
                 </a>
             </div>
         </div>
 
         <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
-            <div class="quote-banner rounded-2xl p-8 md:p-12 text-center shadow-sm">
+            <div class="glass-panel p-8 md:p-12 text-center">
                 <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
                     “There is no way to happiness: happiness is the way”
                 </blockquote>
@@ -167,7 +169,7 @@
                 <div class="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
                 </div>
-                <span class="mt-4 font-serif text-canopy-600">Introduction to My Methods</span>
+                <span class="mt-4 font-serif text-canopy-600">Welcome to my virtual office</span>
             </div>
         </div>
 
@@ -185,8 +187,8 @@
                     <textarea rows="5" placeholder="Message" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300"></textarea>
                     
                     <div class="flex flex-col sm:flex-row gap-4 pt-2">
-                        <button type="submit" class="btn-primary flex-1">
-                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Send Email
+                         <button type="submit" class="btn-primary flex-1">
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Send
                         </button>
                         <a href="https://wa.me/556196126281" target="_blank" class="btn-secondary flex-1 decoration-0">
                             <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Chat on WhatsApp

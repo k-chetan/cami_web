@@ -29,26 +29,22 @@
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* UPDATED GLASS PANEL: 75% Opacity + Heavy Blur */
+        /* CONTENT CARD STYLE: High Readability (85% Opacity) */
         .glass-panel { 
-            backdrop-filter: blur(20px); /* Heavy frosted effect */
-            background-color: rgba(255, 255, 255, 0.75); /* Lets more image through */
-            border: 1px solid rgba(255, 255, 255, 0.5); 
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Soft depth shadow */
+            backdrop-filter: blur(12px); 
+            background-color: rgba(255, 255, 255, 0.85); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 4px 15px -1px rgba(0, 0, 0, 0.05); 
             border-radius: 1rem; 
         }
-        
-        /* Quote Banner specific transparency */
-        .quote-banner {
-            backdrop-filter: blur(15px);
-            background-color: rgba(227, 235, 229, 0.85); /* Slightly more solid for contrast */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
 
-        .lang-pill {
-            background-color: rgba(255, 255, 255, 0.70);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
+        /* HEADER STYLE: More Translucent (60% Opacity) to show background */
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.60); /* More see-through */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 1rem;
         }
 
         .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
@@ -60,37 +56,34 @@
 <body class="flex flex-col min-h-screen relative">
 
     <div class="fixed inset-0 -z-20 bg-[url('images/forest.png')] bg-cover bg-center bg-no-repeat"></div>
-    <div class="fixed inset-0 -z-10 bg-canopy-50/60 backdrop-blur-[1px]"></div>
+    <div class="fixed inset-0 -z-10 bg-canopy-50/50 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
         
-        <nav class="sticky top-0 z-50 glass-panel rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+        <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-8 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
             
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-600">
-                    <a href="index.html" class="text-canopy-800 font-bold">Home</a>
-                    <a href="approach.html" class="hover:text-canopy-500 transition-colors">My Approach</a>
-                    <a href="#contact" class="hover:text-canopy-500 transition-colors">Contact</a>
+                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-800">
+                    <a href="index.html" class="text-canopy-900 font-bold border-b-2 border-canopy-500">Home</a>
+                    <a href="approach.html" class="hover:text-canopy-600 transition-colors">My Approach</a>
+                    <a href="#contact" class="hover:text-canopy-600 transition-colors">Contact</a>
                 </div>
-                <div class="md:hidden text-canopy-600"><i data-lucide="menu"></i></div>
+
+                <div class="flex items-center gap-2 text-xs font-medium text-canopy-600 border-l border-canopy-800/20 pl-6">
+                    <span class="text-canopy-900 font-bold cursor-default">EN</span>
+                    <span class="text-canopy-400">|</span>
+                    <a href="#" class="hover:text-canopy-900 transition-colors" title="Português">PT</a>
+                    <span class="text-canopy-400">|</span>
+                    <a href="#" class="hover:text-canopy-900 transition-colors" title="Español">ES</a>
+                </div>
+
+                <div class="md:hidden text-canopy-800"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
-        <div class="flex justify-center mb-8 animate-uncurl">
-            <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-canopy-600 shadow-sm transition-transform hover:scale-105">
-                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
-                    <span>🇧🇷</span> <span class="group-hover:underline">Fala Português?</span>
-                </a>
-                <span class="text-canopy-300">|</span>
-                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
-                    <span>🇪🇸</span> <span class="group-hover:underline">¿Hablas Español?</span>
-                </a>
-            </div>
-        </div>
-
         <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
-            <div class="quote-banner rounded-2xl p-8 md:p-12 text-center shadow-sm">
+            <div class="glass-panel p-8 md:p-12 text-center">
                 <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
                     "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
                 </blockquote>
@@ -100,16 +93,12 @@
 
         <section class="mb-16 text-center space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
             <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-sm">Space for Self-Knowledge, Growth and Change</h1>
-            <p class="text-canopy-700 font-bold tracking-widest text-xs uppercase mb-8">Psychotherapy For You Wherever You Are</p>
+            <p class="text-canopy-800 font-bold tracking-widest text-xs uppercase mb-8 shadow-sm">Psychotherapy For You Wherever You Are</p>
             
             <div class="glass-panel p-6 md:p-8 text-canopy-800 leading-relaxed max-w-3xl mx-auto space-y-4 text-left md:text-center">
                 <p>Welcome to my virtual office. My name is Camila Fonseca and I'm glad you've come this far.</p>
                 <p>I know that in the rush of everyday life, self-care is not always a priority. This is already an important step in your journey of self-knowledge and transformation.</p>
                 <p>If you're feeling tired, confused, depressed or anxious, know that therapy is like taking a path back home. It's as if through therapy, we connect with our internal GPS while we travel the territory of who we are. We tune into our emotional needs and learn to take transformative actions. That's why therapy is an investment whose results are experienced firsthand and stay with you throughout your life.</p>
-            </div>
-            
-            <div class="mt-8">
-                <a href="#contact" class="btn-primary shadow-lg hover:shadow-xl">Start Your Journey</a>
             </div>
         </section>
 
@@ -196,7 +185,7 @@
                     
                     <div class="flex flex-col sm:flex-row gap-4 pt-2">
                         <button type="submit" class="btn-primary flex-1">
-                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Send Email
+                            <i data-lucide="mail" class="w-4 h-4 mr-2"></i> Send
                         </button>
                         <a href="https://wa.me/556196126281" target="_blank" class="btn-secondary flex-1 decoration-0">
                             <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Chat on WhatsApp
