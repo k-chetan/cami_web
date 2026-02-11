@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>My Approach | Camila Fonseca (Nature)</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&family=Gochi+Hand&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
@@ -13,14 +14,8 @@
             theme: {
                 extend: {
                     colors: {
-                        mint: '#D1FAE5',
-                        forest: '#064E3B',
-                        leaf: '#10B981',
-                        coral: '#FF7F50',
-                        sand:  '#FDE68A',
-                        white: '#FFFFFF',
-                        ink:   '#1a1a1a',
-                        gold:  '#D97706',
+                        mint: '#D1FAE5', forest: '#064E3B', leaf: '#10B981',
+                        coral: '#FF7F50', sand: '#FDE68A', ink: '#1a1a1a', gold: '#D97706',
                     },
                     fontFamily: {
                         serif: ['"Playfair Display"', 'serif'],
@@ -30,14 +25,13 @@
                     },
                     animation: {
                         'blob': 'blob 4s infinite',
-                        'breathe': 'breathe 6s ease-in-out infinite', /* New gentle animation */
+                        'breathe': 'breathe 6s ease-in-out infinite',
                     },
                     keyframes: {
                         blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
                             '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
                         },
                         breathe: {
                             '0%, 100%': { transform: 'scale(1) rotate(-10deg)' },
@@ -49,311 +43,215 @@
         }
     </script>
 
-    <style>
-        /* Page base and custom cursor (Shape from Index, Colors from Approach) */
-        body {
-            color: #064E3B;
-            font-family: 'Quicksand', sans-serif;
-            background-color: #D1FAE5;
-            background-image: radial-gradient(#10B981 1.5px, transparent 1.5px), radial-gradient(#34D399 1.5px, #D1FAE5 1.5px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            /* Index-style cursor (Arrow) but with Forest/Coral colors */
-            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%23FF7F50" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto;
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply text-forest font-sans bg-mint;
+                background-image: radial-gradient(#10B981 1.5px, transparent 1.5px), radial-gradient(#34D399 1.5px, #D1FAE5 1.5px);
+                background-size: 30px 30px;
+                background-position: 0 0, 15px 15px;
+                cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%23FF7F50" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto;
+            }
+            a, button, .interactive-item, .fruit-sticker, .hover-lift, input, textarea {
+                cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%2310B981" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto !important;
+            }
+            input, textarea, select { cursor: text !important; }
         }
 
-        /* Interactive elements cursor */
-        a, button, .interactive-item, .fruit-sticker, .hover-lift, input, textarea {
-            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%2310B981" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto !important;
-        }
+        @layer components {
+            .interactive-pop {
+                @apply transition-transform duration-200 ease-out inline-block;
+            }
+            .interactive-pop:hover { @apply scale-105 -translate-y-1; }
+            .interactive-pop:active { @apply scale-95 translate-y-0.5; }
 
-        /* ensure text inputs keep standard I-beam logic overrides if needed, 
-           but user requested matching index style which forces the custom cursor on links. 
-           We'll keep text-selectable as text cursor though. */
-        input, textarea, select, [contenteditable] {
-            cursor: text !important;
-        }
+            .nav-link { @apply interactive-pop hover:text-leaf; }
+            
+            .paper-card {
+                @apply bg-white border-[3px] border-forest relative origin-center transition-all duration-300;
+                border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+                box-shadow: 8px 8px 0px #064E3B;
+            }
+            .paper-card:hover, .paper-card.hover-active { 
+                @apply shadow-[12px_12px_0px_#10B981] border-leaf z-10 scale-[1.02]; 
+            }
+            
+            .contact-card { @apply shadow-[8px_8px_0px_#10B981]; }
+            .contact-card:hover { @apply scale-[1.01] -translate-y-2 shadow-[12px_12px_0px_#FF7F50] border-coral z-50; }
 
-        /* 1. Hover pop and press down */
-        a:hover, button:hover, .fruit-sticker:hover, .interactive-item:hover {
-            transform: translateY(-4px);
-            filter: brightness(1.1);
-        }
-        a:active, button:active, .fruit-sticker:active, .interactive-item:active {
-            transform: translateY(2px) scale(0.98);
-        }
-        nav a { display: inline; }
-        nav a:hover { color: #10B981; transform: translateY(-2px); display: inline-block; }
+            .sticker-icon {
+                @apply w-16 h-16 border-2 border-forest rounded-full flex items-center justify-center z-50 text-white animate-breathe origin-center bg-sand text-forest;
+            }
 
-        /* Paper card look */
-        .paper-card {
-            background-color: #fff;
-            border: 3px solid #064E3B;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-            box-shadow: 8px 8px 0px #064E3B;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            transform-origin: center;
-        }
-        /* subtler hover generic */
-        .paper-card:hover { box-shadow: 12px 12px 0px #10B981; border-color: #10B981; z-index: 10; }
+            .marker-highlight {
+                @apply bg-gradient-to-r from-sand to-sand bg-no-repeat transition-[background-size] duration-500 px-0.5 rounded-sm;
+                background-size: 0% 80%;
+                background-position: 0 80%;
+            }
+            .paper-card:hover .marker-highlight { background-size: 100% 80%; }
 
-        /* Contact Card Specific Animation (Matching Index Style) */
-        #contact .paper-card {
-            box-shadow: 8px 8px 0px #10B981; /* Default shadow */
-            transform: rotate(0deg);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #contact .paper-card:hover {
-            transform: scale(1.01) rotate(0.5deg) translateY(-2px); /* Subtle wobble */
-            box-shadow: 12px 12px 0px #FF7F50; /* Coral on hover */
-            border-color: #FF7F50;
-            z-index: 50;
-        }
+            .fruit-sticker {
+                @apply absolute top-[100px] right-5 w-auto px-6 py-4 bg-mint border-2 border-forest rounded-[30px] flex flex-col items-center justify-center rotate-[5deg] shadow-[0_4px_0_rgba(6,78,59,0.2)] z-40;
+            }
 
-        /* Navigation pill */
-        .nav-pill {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            border: 2px solid #064E3B;
-            box-shadow: 4px 4px 0px #064E3B;
-            border-radius: 9999px;
-        }
+            .input-field {
+                @apply w-full p-4 bg-mint/30 rounded-xl border-b-2 border-forest/10 focus:border-leaf focus:outline-none text-forest font-bold placeholder-forest/40 transition-colors;
+            }
 
-        /* Marker highlight */
-        .marker-highlight {
-            background: linear-gradient(120deg, #FDE68A 0%, #FDE68A 100%);
-            background-repeat: no-repeat;
-            background-size: 0% 80%;
-            background-position: 0 80%;
-            transition: background-size 0.6s ease-in-out;
-            padding: 0 2px;
-            border-radius: 2px;
+            .scroll-twist-item { @apply opacity-0 translate-y-12 -rotate-3 transition-all duration-700 ease-out; }
+            .scroll-twist-visible { @apply opacity-100 translate-y-0 rotate-0; }
+            .scroll-twist-visible:nth-child(even) { @apply rotate-2; }
         }
-        .paper-card:hover .marker-highlight { background-size: 100% 80%; }
-
-        /* Sticker Icon - GENTLE BREATH ANIMATION */
-        .sticker-icon {
-            position: absolute;
-            top: -25px;
-            left: -15px;
-            width: 55px;
-            height: 55px;
-            background: #FF7F50;
-            border: 2px solid #064E3B;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: rotate(-10deg);
-            z-index: 20;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
-            color: #fff;
-            /* Gentle breath instead of vibrate */
-            animation: breathe 6s ease-in-out infinite; 
-            transform-origin: center;
-        }
-
-        /* Fruit sticker style */
-        .fruit-sticker {
-            position: absolute;
-            top: 100px;
-            right: 20px;
-            width: 100px;
-            height: 60px;
-            background: #D1FAE5;
-            border: 2px solid #064E3B;
-            border-radius: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transform: rotate(5deg);
-            box-shadow: 0 4px 0px rgba(6, 78, 59, 0.2);
-            cursor: pointer;
-            z-index: 40;
-        }
-        .fruit-sticker:hover { background: #10B981; }
-        .fruit-sticker:hover a, .fruit-sticker:hover span { color: white; }
-
-        /* Scroll twist */
-        .scroll-twist-item {
-            opacity: 0;
-            transform: translateY(50px) rotate(-3deg);
-            transition: all 0.8s ease-out;
-        }
-        .scroll-twist-visible {
-            opacity: 1;
-            transform: translateY(0) rotate(0deg);
-        }
-        .scroll-twist-visible:nth-child(even) { transform: translateY(0) rotate(2deg); }
-
-        .animate-blob {
-            animation-duration: 4s !important;
-            animation-iteration-count: infinite !important;
-        }
-
     </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden relative">
 
-    <div class="fixed top-20 right-[-5%] w-[500px] h-[500px] bg-white/40 rounded-full mix-blend-overlay filter blur-3xl opacity-60 animate-blob pointer-events-none"></div>
-    <div class="fixed bottom-20 left-[-5%] w-[600px] h-[600px] bg-leaf/20 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000 pointer-events-none"></div>
+    <div class="fixed top-20 -right-[5%] w-[500px] h-[500px] bg-white/40 rounded-full mix-blend-overlay blur-3xl opacity-60 animate-blob pointer-events-none"></div>
+    <div class="fixed bottom-20 -left-[5%] w-[600px] h-[600px] bg-leaf/20 rounded-full mix-blend-multiply blur-3xl opacity-60 animate-blob animation-delay-2000 pointer-events-none"></div>
 
     <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-6 relative z-10">
 
-        <nav class="sticky top-4 z-50 nav-pill px-6 py-3 mb-6 flex justify-between items-center transition-all duration-300">
-            <div class="font-serif text-2xl font-bold text-forest tracking-tight flex items-center gap-2">
+        <nav class="sticky top-4 z-50 bg-white/85 backdrop-blur-md border-2 border-forest shadow-[4px_4px_0px_#064E3B] rounded-full px-6 py-3 mb-6 flex justify-between items-center">
+            <div class="font-serif text-2xl font-bold tracking-tight flex items-center gap-2">
                 <i data-lucide="sprout" class="w-6 h-6 text-leaf fill-leaf animate-bounce"></i>
                 Camila Fonseca
             </div>
-
-            <div class="hidden md:flex gap-8 text-base font-bold text-forest">
-                <a href="index.html" class="hover:text-leaf">Home</a>
-                <a href="approach.html" class="text-leaf border-b-2 border-leaf">My Approach</a>
-                <a href="#contact" class="hover:text-leaf">Contact</a>
+            <div class="hidden md:flex gap-8 text-base font-bold">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="approach.html" class="interactive-pop text-leaf border-b-2 border-leaf">My Approach</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <div class="md:hidden text-forest cursor-pointer interactive-item"><i data-lucide="menu"></i></div>
+            <div class="md:hidden interactive-item"><i data-lucide="menu"></i></div>
         </nav>
 
-        <div class="fruit-sticker group">
-            <span class="text-[0.6rem] font-bold text-forest uppercase tracking-widest drop-shadow-sm transition-colors">Translate</span>
-            <div class="flex flex-col font-serif leading-none text-center">
-                <a href="index-pt.html" class="text-xs font-bold text-forest transition-colors">Português</a>
-                <a href="index-es.html" class="text-xs font-bold text-forest border-t border-forest/30 pt-[1px] transition-colors">Español</a>
+        <div class="fruit-sticker">
+            <span class="text-xs font-bold uppercase tracking-widest opacity-80 mb-2">Translate...</span>
+            <div class="flex flex-col font-hand text-lg leading-tight text-center gap-2 font-bold">
+                <a href="index-pt.html" class="interactive-pop hover:text-leaf decoration-wavy">Também falo Português</a>
+                <a href="index-es.html" class="interactive-pop border-t border-forest/20 pt-2 hover:text-leaf decoration-wavy">También hablo Español</a>
             </div>
         </div>
 
         <div class="flex justify-center mb-16 relative">
-            <div class="inline-block bg-white px-4 py-1 rounded-full border-2 border-dashed border-forest shadow-[4px_4px_0px_#10B981] hover:shadow-none hover:translate-y-[2px] transition-all cursor-default">
-                <span class="text-xs font-bold uppercase text-forest tracking-widest">Therapy Online</span>
+            <div class="bg-white px-4 py-1 rounded-full border-2 border-dashed border-forest shadow-[4px_4px_0px_#10B981] hover:shadow-none hover:translate-y-[2px] transition-all cursor-default">
+                <span class="text-xs font-bold uppercase tracking-widest">Therapy Online</span>
             </div>
         </div>
 
-        <section class="mb-24 scroll-twist-item">
-            <div class="paper-card p-8 md:p-12 bg-white">
-                <div class="sticker-icon bg-sand text-forest border-forest">
-                    <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+        <section class="mb-24 scroll-twist-item relative">
+            
+            <a href="#contact" id="heart-bridge" class="absolute left-1/2 transform -translate-x-1/2 z-30 hidden md:flex cursor-pointer interactive-pop" style="bottom: 25px;">
+                <div class="sticker-icon bg-sand text-forest border-forest"><i data-lucide="heart-handshake" class="w-8 h-8"></i></div>
+            </a>
+
+            <div class="grid md:grid-cols-2 gap-10 md:gap-24 items-center justify-items-center">
+                
+                <div id="left-heart" class="paper-card p-10 py-16 pl-16 md:pl-24 order-2 md:order-1 flex flex-col justify-center min-h-[480px] w-full transition-all duration-300" 
+                     style="
+                        transform: rotate(-6deg);
+                        border-radius: 50% 50% 10% 50%;
+                        box-shadow: -10px 10px 0px #1a1a1a;
+                     ">
+                    
+                    <h2 class="font-serif text-3xl mb-6">Who is Therapy For?</h2>
+                    <div class="space-y-4 text-lg leading-relaxed">
+                        <p>Therapy generally helps to increase self-knowledge, to manage <span class="marker-highlight font-bold">interpersonal difficulties</span> such as romantic, family or professional relationships.</p>
+                        <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and also to <span class="marker-highlight font-bold">process challenges</span> in the present moment.</p>
+                    </div>
                 </div>
 
-                <h2 class="font-serif text-3xl text-forest mb-6">Who is Therapy For?</h2>
-                <div class="space-y-4 text-forest leading-relaxed text-lg">
-                    <p>Therapy generally helps to increase self-knowledge, to manage <span class="marker-highlight font-bold">interpersonal difficulties</span> such as romantic, family or professional relationships, to relieve tension, and to promote change.</p>
-                    <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and behavior, and also to <span class="marker-highlight font-bold">process challenges</span> in the present moment.</p>
+                <div id="right-heart" class="relative group order-1 md:order-2 h-[480px] w-full transition-transform hover:scale-[1.02] duration-300"
+                     style="transform: rotate(6deg);">
+                    
+                    <img src="images/beach.png" alt="Peaceful Beach" 
+                         class="relative border-[3px] border-black object-cover w-full h-full transition-all duration-300"
+                         style="
+                            border-radius: 50% 50% 50% 10%;
+                            box-shadow: 10px 10px 0px #1a1a1a;
+                         "
+                         id="right-heart-img">
                 </div>
+
             </div>
         </section>
 
-        <section class="mb-20 text-center scroll-twist-item">
-            <blockquote class="font-brush text-6xl text-ink 
-            max-w-3xl mx-auto leading-snug 
-            tracking-wide">
+        <section class="mb-24 text-center scroll-twist-item">
+            <blockquote class="font-brush text-6xl text-ink max-w-3xl mx-auto leading-snug tracking-wide">
                 There is no way to happiness: happiness is the way.
             </blockquote>
-
             <div class="mt-8">
-                <span class="bg-white px-6 py-2 border-2 border-dashed border-forest rounded-full text-sm font-bold text-forest uppercase tracking-widest shadow-[4px_4px_0px_#10B981] inline-block">
+                <span class="bg-white px-6 py-2 border-2 border-dashed border-forest rounded-full text-sm font-bold uppercase tracking-widest shadow-[4px_4px_0px_#10B981] hover:shadow-none hover:translate-y-[2px] transition-all cursor-default inline-block">
                     — Thich Nhat Hanh
                 </span>
             </div>
         </section>
 
-        <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div class="scroll-twist-item order-2 md:order-1">
-                    <h2 class="font-serif text-5xl text-forest mb-6 font-bold leading-tight flex flex-wrap gap-x-3">
-                        My <span class="text-coral font-hand">Methods</span>
-                    </h2>
-                    <div class="bg-white/60 p-6 rounded-[2rem] border-2 border-dashed border-forest text-forest text-lg leading-relaxed space-y-4">
-                        <p>I use internationally recognized therapy models such as <strong>DBR</strong> and <strong>IFS</strong>. Both are non-pathologizing approaches incorporating memory reconsolidation.</p>
-                        <p>I continuously update myself through readings from key figures like <span class="font-bold underline decoration-wavy decoration-coral">Bessel van der Kolk & Gabor Maté</span>.</p>
-                    </div>
+        <section class="mb-20 scroll-twist-item">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 flex flex-col justify-between pl-6 py-2">
+                    <h2 class="font-serif text-7xl font-bold leading-none text-forest">My</h2>
+                    <h2 class="font-hand text-7xl text-coral leading-none self-end md:self-start">Methods</h2>
                 </div>
-
-                <div class="scroll-twist-item order-1 md:order-2 relative group">
-                    <div class="absolute inset-0 bg-coral rounded-[30%_70%_70%_30%/30%_30%_70%_70%] transform rotate-6 translate-x-2 translate-y-2 pointer-events-none transition-transform group-hover:rotate-12"></div>
-                    
-                    <img src="images/beach.png"
-                         alt="Beach"
-                         class="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-white shadow-[8px_8px_0px_#064E3B] w-full h-[400px] object-cover transition-all duration-300 group-hover:scale-[1.01] group-hover:shadow-[12px_12px_0px_#FF7F50]">
+                <div class="md:w-2/3 text-lg font-bold text-forest/90 leading-relaxed space-y-6 flex flex-col justify-center">
+                    <p>I use internationally recognized therapy models such as <strong>DBR</strong> and <strong>IFS</strong>. Both are non-pathologizing approaches incorporating memory reconsolidation.</p>
+                    <p>I continuously update myself through readings from key figures like <span class="underline decoration-wavy decoration-coral">Bessel van der Kolk & Gabor Maté</span>.</p>
                 </div>
             </div>
+        </section>
 
+        <section class="mb-20">
             <div class="grid gap-12">
-
                 <div class="paper-card p-10 scroll-twist-item">
-                    <div class="sticker-icon bg-sky-300 border-forest">
-                        <i data-lucide="zap" class="w-8 h-8 text-white"></i>
-                    </div>
-                    <h3 class="font-serif text-3xl text-forest mb-4">Deep Brain Reorienting (DBR)</h3>
-                    <div class="text-forest/90 leading-relaxed space-y-4 text-lg">
-                        <p>Focuses on the <span class="marker-highlight font-bold">brainstem's orienting response</span> to trauma. It processes the initial physiological shock before emotion or meaning attaches.</p>
-                        <p>This modality is highly effective for deep-seated <span class="marker-highlight font-bold">attachment trauma</span> and persistent triggers.</p>
+                    <div class="sticker-icon bg-sky-300 border-forest absolute -top-6 -left-4"><i data-lucide="zap" class="w-8 h-8"></i></div>
+                    <h3 class="font-serif text-3xl mb-4">Deep Brain Reorienting (DBR)</h3>
+                    <div class="text-forest/90 leading-relaxed text-lg">
+                        <p>Focuses on the <span class="marker-highlight font-bold">brainstem's orienting response</span> to trauma.</p>
                     </div>
                 </div>
-
                 <div class="paper-card p-10 scroll-twist-item">
-                    <div class="sticker-icon bg-coral">
-                        <i data-lucide="users" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-serif text-3xl text-forest mb-4">Internal Family Systems (IFS)</h3>
-                    <div class="text-forest/90 leading-relaxed space-y-4 text-lg">
-                        <p>We all have internal "parts". Some protect us, others hold pain. IFS is a <span class="marker-highlight font-bold">compassionate and empowering approach</span> that helps you understand and heal these different parts.</p>
-                        <p>By connecting with your core "Self" — the calm, wise, and centered part of you — you can bring <span class="marker-highlight font-bold">healing and harmony</span> to your internal system.</p>
+                    <div class="sticker-icon bg-coral absolute -top-6 -left-4"><i data-lucide="users" class="w-8 h-8"></i></div>
+                    <h3 class="font-serif text-3xl mb-4">Internal Family Systems (IFS)</h3>
+                    <div class="text-forest/90 leading-relaxed text-lg">
+                        <p>IFS is a <span class="marker-highlight font-bold">compassionate and empowering approach</span> that helps you understand and heal different parts.</p>
                     </div>
                 </div>
-
                 <div class="paper-card p-10 scroll-twist-item">
-                    <div class="sticker-icon bg-leaf border-forest">
-                        <i data-lucide="activity" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-serif text-3xl text-forest mb-4">Somatic Experiencing (SE)</h3>
-                    <div class="text-forest/90 leading-relaxed space-y-4 text-lg">
-                        <p>Based on the understanding that trauma is not just stored in memory, but also in the <span class="marker-highlight font-bold">body's physiological responses</span>.</p>
-                        <p>SE focuses on observing and working with bodily sensations, helping the nervous system gradually <span class="marker-highlight font-bold">regain its balance</span>. We include all 5 dimensions: Sensations, Images, Behavior, Affect and Meaning.</p>
+                    <div class="sticker-icon bg-leaf border-forest absolute -top-6 -left-4"><i data-lucide="activity" class="w-8 h-8"></i></div>
+                    <h3 class="font-serif text-3xl mb-4">Somatic Experiencing (SE)</h3>
+                    <div class="text-forest/90 leading-relaxed text-lg">
+                        <p>Trauma is stored in the <span class="marker-highlight font-bold">body's physiological responses</span>. SE helps the nervous system regain balance.</p>
                     </div>
                 </div>
-
                 <div class="paper-card p-10 scroll-twist-item">
-                    <div class="sticker-icon bg-sand text-forest">
-                        <i data-lucide="waves" class="w-4 h-4"></i>
-                    </div>
-                    <h3 class="font-serif text-3xl text-forest mb-4">Emotion-Focused Therapy (EFT)</h3>
-                    <div class="text-forest/90 leading-relaxed space-y-4 text-lg">
-                        <p>Therapy takes place in an "ocean" of empathy. Designed to accelerate the process of <span class="marker-highlight font-bold">accessing, expressing, and transforming emotions</span>.</p>
+                    <div class="sticker-icon bg-sand text-forest absolute -top-6 -left-4"><i data-lucide="waves" class="w-4 h-4"></i></div>
+                    <h3 class="font-serif text-3xl mb-4">Emotion-Focused Therapy (EFT)</h3>
+                    <div class="text-forest/90 leading-relaxed text-lg">
                         <p>Emotions are not symptoms, but <span class="marker-highlight font-bold">messengers</span> that some emotional need is not being met.</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
         <section id="contact" class="mb-12 scroll-twist-item">
-            <div class="paper-card p-10 md:p-12 bg-white">
-
-                <div class="sticker-icon bg-coral">
-                    <i data-lucide="sparkles" class="text-white w-6 h-6"></i>
-                </div>
-
+            <div class="paper-card contact-card p-10 md:p-12">
+                <div class="sticker-icon bg-coral absolute -top-6 -left-4"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
                 <div class="text-center mb-8">
-                    <h2 class="font-serif text-4xl text-forest mb-2 font-bold">Let's Connect</h2>
+                    <h2 class="font-serif text-4xl mb-2 font-bold">Let's Connect</h2>
                     <p class="font-hand text-xl text-leaf">Psychological support for you around the world.</p>
                 </div>
-
                 <form class="space-y-6 max-w-2xl mx-auto" onsubmit="alert('Message Sent!'); return false;">
                     <div class="grid grid-cols-2 gap-6">
-                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-mint/30 rounded-xl border-b-2 border-forest/10 focus:border-leaf focus:outline-none text-forest font-bold placeholder-forest/40 transition-colors">
-                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-mint/30 rounded-xl border-b-2 border-forest/10 focus:border-leaf focus:outline-none text-forest font-bold placeholder-forest/40 transition-colors">
+                        <input type="text" placeholder="First Name" required class="input-field">
+                        <input type="text" placeholder="Last Name" class="input-field">
                     </div>
-                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-mint/30 rounded-xl border-b-2 border-forest/10 focus:border-leaf focus:outline-none text-forest font-bold placeholder-forest/40 transition-colors">
-                    <textarea rows="4" placeholder="How can I help you?" required class="w-full p-4 bg-mint/30 rounded-xl border-b-2 border-forest/10 focus:border-leaf focus:outline-none text-forest font-bold placeholder-forest/40 transition-colors"></textarea>
-
-                    <button type="submit" class="w-full bg-forest text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_#10B981] hover:translate-y-1 hover:shadow-none transition-all flex justify-center items-center gap-2">
+                    <input type="email" placeholder="Your Email" required class="input-field">
+                    <textarea rows="4" placeholder="How can I help you?" required class="input-field"></textarea>
+                    
+                    <button type="submit" class="w-full interactive-pop bg-forest text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_#10B981] flex justify-center items-center gap-2">
                         Send Message <i data-lucide="send" class="w-5 h-5"></i>
                     </button>
-
                     <div class="text-center pt-6">
-                        <a href="https://wa.me/556196126281" target="_blank" class="inline-flex items-center gap-2 text-forest font-bold hover:text-leaf hover:underline">
+                        <a href="https://wa.me/556196126281" target="_blank" class="interactive-pop inline-flex items-center gap-2 font-bold hover:text-leaf hover:underline">
                             <i data-lucide="message-circle" class="w-5 h-5"></i> Or chat on WhatsApp
                         </a>
                     </div>
@@ -361,28 +259,79 @@
             </div>
         </section>
 
-        <footer class="text-center text-forest/60 text-sm py-8 font-bold font-sans">
+        <footer class="text-center text-forest/60 text-sm py-8 font-bold">
             © 2025 Camila Fonseca. Made with sun & earth.
         </footer>
     </main>
 
     <script>
-        // Initialize Icons
         lucide.createIcons({ attrs: { strokeWidth: 2.5 } });
-
-        // Scroll Twist Effect
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('scroll-twist-visible');
-                }
-            });
-        }, observerOptions);
+            entries.forEach(entry => entry.isIntersecting && entry.target.classList.add('scroll-twist-visible'));
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
         document.querySelectorAll('.scroll-twist-item').forEach(el => observer.observe(el));
+
+        const bridge = document.getElementById('heart-bridge');
+        const leftHeart = document.getElementById('left-heart');
+        const rightHeartImg = document.getElementById('right-heart-img');
+
+        const leftBase = '-10px 10px 0px #1a1a1a';
+        const rightBase = '10px 10px 0px #1a1a1a';
+        const leftActive = '-12px 12px 0px #10B981';
+        const rightActive = '12px 12px 0px #10B981';
+
+        // 1. Hover Handshake -> BOTH Green (Shadow + Border)
+        bridge.addEventListener('mouseenter', () => {
+            // Left
+            leftHeart.style.boxShadow = leftActive;
+            leftHeart.style.transform = 'rotate(-6deg) scale(1.02)';
+            leftHeart.style.borderColor = '#10B981';
+
+            // Right
+            rightHeartImg.style.boxShadow = rightActive;
+            rightHeartImg.style.transform = 'scale(1.02)';
+            rightHeartImg.style.borderColor = '#10B981'; // Turn Image Border Green
+        });
+
+        bridge.addEventListener('mouseleave', () => {
+            // Reset Left
+            leftHeart.style.boxShadow = leftBase;
+            leftHeart.style.transform = 'rotate(-6deg) scale(1)';
+            leftHeart.style.borderColor = '#064E3B';
+
+            // Reset Right
+            rightHeartImg.style.boxShadow = rightBase;
+            rightHeartImg.style.transform = 'scale(1)';
+            rightHeartImg.style.borderColor = '#000000'; // Reset Image Border to Black
+        });
+
+        // 2. Individual Hover Left
+        leftHeart.addEventListener('mouseenter', () => {
+            leftHeart.style.boxShadow = leftActive;
+            leftHeart.style.transform = 'rotate(-6deg) scale(1.02)';
+            leftHeart.style.borderColor = '#10B981';
+        });
+        leftHeart.addEventListener('mouseleave', () => {
+            if(!bridge.matches(':hover')){
+                leftHeart.style.boxShadow = leftBase;
+                leftHeart.style.transform = 'rotate(-6deg) scale(1)';
+                leftHeart.style.borderColor = '#064E3B';
+            }
+        });
+
+        // 3. Individual Hover Right
+        rightHeartImg.parentElement.addEventListener('mouseenter', () => {
+            rightHeartImg.style.boxShadow = rightActive;
+            rightHeartImg.style.transform = 'scale(1.02)';
+            rightHeartImg.style.borderColor = '#10B981'; // Turn Image Border Green
+        });
+        rightHeartImg.parentElement.addEventListener('mouseleave', () => {
+             if(!bridge.matches(':hover')){
+                rightHeartImg.style.boxShadow = rightBase;
+                rightHeartImg.style.transform = 'scale(1)';
+                rightHeartImg.style.borderColor = '#000000'; // Reset Image Border to Black
+             }
+        });
     </script>
 </body>
 </html>
