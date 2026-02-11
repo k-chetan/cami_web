@@ -29,32 +29,37 @@
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* UPDATED GLASS PANEL: 90% Opaque White for readability against louder background */
+        /* UPDATED GLASS PANEL: 75% Opacity + Heavy Blur */
         .glass-panel { 
-            backdrop-filter: blur(12px); 
-            background-color: rgba(255, 255, 255, 0.90); /* 90% Solid */
-            border: 1px solid rgba(255, 255, 255, 0.8); 
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+            backdrop-filter: blur(20px); /* Heavy frosted effect */
+            background-color: rgba(255, 255, 255, 0.75); /* Lets more image through */
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Soft depth shadow */
             border-radius: 1rem; 
         }
         
-        /* NEW: Language Pill specific style */
+        /* Quote Banner specific transparency */
+        .quote-banner {
+            backdrop-filter: blur(15px);
+            background-color: rgba(227, 235, 229, 0.85); /* Slightly more solid for contrast */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
         .lang-pill {
-            background-color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(4px);
+            background-color: rgba(255, 255, 255, 0.70);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
         }
 
         .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .btn-primary:hover { background-color: #466B53; transform: translateY(-1px); }
-        .btn-secondary { background-color: rgba(232, 225, 217, 0.5); color: #233429; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-secondary { background-color: rgba(232, 225, 217, 0.6); color: #233429; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .btn-secondary:hover { background-color: #E8E1D9; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen relative">
 
     <div class="fixed inset-0 -z-20 bg-[url('images/forest.png')] bg-cover bg-center bg-no-repeat"></div>
-    
     <div class="fixed inset-0 -z-10 bg-canopy-50/60 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
@@ -85,7 +90,7 @@
         </div>
 
         <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
-            <div class="bg-canopy-100/90 rounded-2xl p-8 md:p-12 text-center shadow-sm border border-canopy-200/50 backdrop-blur-md">
+            <div class="quote-banner rounded-2xl p-8 md:p-12 text-center shadow-sm">
                 <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
                     "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
                 </blockquote>
