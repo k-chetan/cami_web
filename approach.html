@@ -14,6 +14,7 @@
                 extend: {
                     colors: {
                         canopy: { 50: '#F4F7F5', 100: '#E3EBE5', 200: '#C5D6C9', 300: '#A3BDAC', 400: '#7FA38B', 500: '#5D8A6D', 600: '#466B53', 700: '#334E3C', 800: '#233429', 900: '#151F19' },
+                        petrichor: '#2A332E',
                     },
                     fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] },
                     animation: { 
@@ -31,35 +32,50 @@
         }
     </script>
     <style>
-        body { color: #233429; font-family: 'Inter', sans-serif; }
+        body { 
+            color: #2A332E; 
+            font-family: 'Inter', sans-serif; 
+        }
         
         .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.03;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.03;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         .glass-panel { 
+            position: relative;
             backdrop-filter: blur(12px); 
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
-            box-shadow: 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.7),
-                0 4px 20px -2px rgba(26, 46, 34, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 1rem; 
-            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85); 
+            border-radius: 1.5rem 1.2rem 1.4rem 1.3rem; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            box-shadow: 0 4px 20px -2px rgba(26, 46, 34, 0.1);
+            width: 100%; /* LOCKED WIDTH for alignment */
+            overflow: hidden;
+            transition: transform 0.4s ease;
         }
+
+        .glass-panel::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(
+                600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                rgba(255, 255, 255, 0.7), 
+                transparent 40%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .glass-panel:hover::before { opacity: 1; }
+        .glass-panel > * { position: relative; z-index: 1; }
 
         .glass-ghost {
             backdrop-filter: blur(8px);
             background-color: rgba(255, 255, 255, 0.30);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 20px -2px rgba(26, 46, 34, 0.05);
-            border-radius: 1rem;
+            border-radius: 1.5rem 1.2rem 1.4rem 1.3rem;
             width: 100%;
         }
 
@@ -80,33 +96,32 @@
 
         .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(93, 138, 109, 0.3); }
         .btn-primary:hover { background-color: #466B53; transform: translateY(-1px); }
-        .btn-secondary { background-color: rgba(232, 225, 217, 0.6); color: #233429; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .btn-secondary { background-color: rgba(232, 225, 217, 0.6); color: #2A332E; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .btn-secondary:hover { background-color: #E8E1D9; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen relative">
 
     <div class="noise-overlay"></div>
-
     <div class="fixed inset-0 -z-20 bg-[url('images/beach.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-in-out hover:scale-105"></div>
     <div class="fixed inset-0 -z-10 bg-canopy-50/50 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
         
         <nav class="sticky top-0 z-50 glass-header rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4 snap-start">
-            <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
+            <div class="font-serif text-xl md:text-2xl font-bold text-petrichor tracking-tight">Camila Fonseca</div>
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-800">
+                <div class="hidden md:flex gap-6 text-sm font-medium text-petrichor">
                     <a href="index.html" class="hover:text-canopy-600 transition-colors">Home</a>
                     <a href="approach.html" class="text-canopy-900 font-bold border-b-2 border-canopy-500">My Approach</a>
                     <a href="#contact" class="hover:text-canopy-600 transition-colors">Contact</a>
                 </div>
-                <div class="md:hidden text-canopy-600"><i data-lucide="menu"></i></div>
+                <div class="md:hidden text-petrichor"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
         <div class="flex justify-center mb-8 animate-uncurl">
-            <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-canopy-600 shadow-sm transition-transform hover:scale-105">
+            <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-petrichor shadow-sm transition-transform hover:scale-105">
                 <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
                     <span class="group-hover:underline">Fala Português?</span>
                 </a>
@@ -119,21 +134,21 @@
 
         <section class="mb-12 animate-uncurl snap-center" style="animation-delay: 0.1s;">
             <div class="glass-ghost p-8 md:p-12 text-center">
-                <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-900 leading-relaxed max-w-3xl mx-auto drop-shadow-sm hanging-quote">
+                <blockquote class="font-serif italic text-2xl md:text-3xl text-petrichor leading-relaxed max-w-3xl mx-auto drop-shadow-sm hanging-quote">
                     “There is no way to happiness: happiness is the way”
                 </blockquote>
-                <span class="block text-xs md:text-sm font-sans text-canopy-900 mt-4 font-bold tracking-[0.2em] uppercase">— Thich Nhat Hanh</span>
+                <span class="block text-xs md:text-sm font-sans text-petrichor mt-4 font-bold tracking-[0.2em] uppercase">— Thich Nhat Hanh</span>
             </div>
         </section>
 
         <div class="text-center mb-10 animate-fade-in-up snap-center" style="animation-delay: 0.2s;">
-            <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-sm">Therapy Online</h1>
-            <p class="text-canopy-800 font-bold tracking-[0.15em] text-xs uppercase shadow-sm">Individual service for self-knowledge and personal growth</p>
+            <h1 class="font-serif text-3xl md:text-4xl text-petrichor mb-2 font-medium drop-shadow-sm">Therapy Online</h1>
+            <p class="text-petrichor font-bold tracking-[0.15em] text-xs uppercase shadow-sm">Individual service for self-knowledge and personal growth</p>
         </div>
 
         <section class="mb-12 animate-fade-in-up snap-center" style="animation-delay: 0.3s;">
-             <h2 class="font-serif text-2xl text-canopy-900 mb-4 text-center md:text-left drop-shadow-sm">Who is Therapy For?</h2>
-            <div class="glass-panel p-8 space-y-4 text-canopy-800 leading-relaxed">
+             <h2 class="font-serif text-2xl text-petrichor mb-4 text-center md:text-left drop-shadow-sm">Who is Therapy For?</h2>
+            <div class="glass-panel p-8 space-y-4 text-petrichor leading-relaxed">
                 <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships, to relieve tension, to promote change, and to improve mental health as a whole.</p>
                 <p>The increase in scientific research in the area and the development of evidence-based therapies have helped to spread the importance of therapy for mental health.</p>
                 <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and behavior, and also to process challenges in the present moment.</p>
@@ -141,40 +156,40 @@
         </section>
 
         <section class="mb-12 animate-fade-in-up snap-center" style="animation-delay: 0.4s;">
-            <h2 class="font-serif text-3xl text-center text-canopy-900 mb-6 drop-shadow-sm">My Methods</h2>
-            <div class="glass-panel p-6 md:p-8 text-canopy-800 leading-relaxed space-y-4 max-w-3xl mx-auto text-left md:text-center mb-8">
+            <h2 class="font-serif text-3xl text-center text-petrichor mb-6 drop-shadow-sm">My Methods</h2>
+            <div class="glass-panel p-6 md:p-8 text-petrichor leading-relaxed space-y-4 text-left md:text-center mb-8">
                 <p>I use internationally recognized therapy models such as Internal Family Systems (IFS) and Emotion-Focused Therapy (EFT), whose results for depression and anxiety have been proven by scientific studies. Both are non-pathologizing approaches that incorporate memory reconsolidation processes.</p>
                 <p>I also have training in Somatic Experiencing (SE), which focuses on the body's experience and the wisdom of the nervous system.</p>
             </div>
 
             <div class="space-y-8">
                 
-                <div class="glass-panel p-8 hover:scale-[1.01] transition-transform duration-500">
-                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Internal Family Systems (IFS)</h3>
-                    <div class="space-y-4 text-canopy-700 leading-relaxed">
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Internal Family Systems (IFS)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
                         <p>We all have internal "parts" — aspects of our personality that carry different emotions, beliefs, and roles. Some parts may protect us, while others hold the pain of past experiences.</p>
                         <p>Internal Family Systems (IFS) is a compassionate and empowering approach that helps you understand and heal these different parts of yourself. IFS helps you develop a relationship with these parts, bringing curiosity and self-compassion to your inner world.</p>
                     </div>
                 </div>
 
-                <div class="glass-panel p-8 hover:scale-[1.01] transition-transform duration-500">
-                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Somatic Experiencing (SE)</h3>
-                    <div class="space-y-4 text-canopy-700 leading-relaxed">
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Somatic Experiencing (SE)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
                         <p>Somatic Experiencing (SE) is a therapeutic approach developed by Dr. Peter Levine to treat trauma, stress, and nervous system dysregulation.</p>
                          <p>SE focuses on observing and working with bodily sensations, helping the nervous system gradually regain its balance.</p>
                     </div>
                 </div>
 
-                <div class="glass-panel p-8 hover:scale-[1.01] transition-transform duration-500">
-                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Emotion-Focused Therapy (EFT)</h3>
-                    <div class="space-y-4 text-canopy-700 leading-relaxed">
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Emotion-Focused Therapy (EFT)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
                         <p>Emotion-Focused Therapy (EFT) is a humanistic approach with a strong foundation in scientific research and neuroscience. The therapy takes place in an "ocean" of empathetic and non-judgmental relationship with "islands" of exercises.</p>
                     </div>
                 </div>
 
-                <div class="glass-panel p-8 hover:scale-[1.01] transition-transform duration-500">
-                    <h3 class="font-serif text-2xl text-canopy-900 mb-3">Mindfulness-Based Cognitive Therapy (MBCT)</h3>
-                    <div class="space-y-4 text-canopy-700 leading-relaxed">
+                <div class="glass-panel p-8 hover:scale-[1.01]">
+                    <h3 class="font-serif text-2xl text-petrichor mb-3">Mindfulness-Based Cognitive Therapy (MBCT)</h3>
+                    <div class="space-y-4 text-petrichor leading-relaxed">
                         <p>Mindfulness-Based Cognitive Therapy (MBCT) is an approach that combines cognitive therapy with mindfulness practices. The goal is to help you recognize automatic thought patterns, especially those related to anxiety and depression.</p>
                     </div>
                 </div>
@@ -183,27 +198,27 @@
         </section>
 
         <div class="mb-8 glass-panel p-2 animate-fade-in-up snap-center" style="animation-delay: 0.5s;">
-            <div class="aspect-video bg-canopy-100 rounded-xl flex flex-col items-center justify-center text-canopy-400 relative overflow-hidden group cursor-pointer">
+            <div class="aspect-video bg-canopy-100 rounded-xl flex flex-col items-center justify-center text-petrichor relative overflow-hidden group cursor-pointer">
                 <div class="absolute inset-0 bg-gradient-to-tr from-canopy-200/20 to-transparent"></div>
                 <div class="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-6 h-6 fill-current ml-1"></i>
                 </div>
-                <span class="mt-4 font-serif text-canopy-600">Introduction to My Methods</span>
+                <span class="mt-4 font-serif text-petrichor">Introduction to My Methods</span>
             </div>
         </div>
 
         <section id="contact" class="mb-12 animate-fade-in-up snap-center" style="animation-delay: 0.6s;">
-            <h2 class="font-serif text-3xl text-canopy-900 mb-6 text-center md:text-left drop-shadow-sm">Contact Me</h2>
+            <h2 class="font-serif text-3xl text-petrichor mb-6 text-center md:text-left drop-shadow-sm">Contact Me</h2>
             <div class="glass-panel p-6 md:p-8">
-                <p class="text-canopy-600 mb-6">Psychological support for you around the world.</p>
+                <p class="text-petrichor mb-6">Psychological support for you around the world.</p>
                 
                 <form class="space-y-4" onsubmit="alert('PROTOTYPE MODE: Email sent!'); return false;">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
-                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
+                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-petrichor text-petrichor">
+                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-petrichor text-petrichor">
                     </div>
-                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300">
-                    <textarea rows="5" placeholder="Message" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-canopy-300"></textarea>
+                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-petrichor text-petrichor">
+                    <textarea rows="5" placeholder="Message" required class="w-full p-4 bg-white/60 rounded-xl border border-transparent focus:border-canopy-300 focus:outline-none placeholder-petrichor text-petrichor"></textarea>
                     
                     <div class="flex flex-col sm:flex-row gap-4 pt-2">
                         <button type="submit" class="btn-primary flex-1 animate-breathe hover:animate-none">
@@ -215,23 +230,29 @@
                     </div>
                 </form>
                 
-                <div class="mt-8 text-center text-sm text-canopy-500">
+                <div class="mt-8 text-center text-sm text-petrichor">
                     <p><strong>Email:</strong> contactme@camilafonseca.com</p>
                     <p><strong>WhatsApp:</strong> +55-61-96126281</p>
                 </div>
             </div>
         </section>
 
-        <footer class="text-center text-canopy-700 text-xs py-6 font-medium snap-end">
+        <footer class="text-center text-petrichor text-xs py-6 font-medium snap-end">
             © 2025 Camila Fonseca. All rights reserved.
         </footer>
     </main>
 
     <script>
-        lucide.createIcons({
-            attrs: {
-                strokeWidth: 1.5 // Thinner organic stroke
-            }
+        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
+
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
         });
     </script>
 </body>
