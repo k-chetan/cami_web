@@ -26,11 +26,13 @@
                     },
                     animation: { 
                         'float': 'float 6s ease-in-out infinite',
-                        'breathe': 'breathe 4s ease-in-out infinite'
+                        'breathe': 'breathe 4s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                     },
                     keyframes: {
                         float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
-                        breathe: { '0%, 100%': { transform: 'scale(1)' }, '50%': { transform: 'scale(1.03)' } }
+                        breathe: { '0%, 100%': { transform: 'scale(1)' }, '50%': { transform: 'scale(1.03)' } },
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
                     }
                 }
             }
@@ -40,30 +42,29 @@
         body { 
             color: #3D405B; 
             font-family: 'Quicksand', sans-serif; 
-            background-color: #FDFBF7;
-            background-image: radial-gradient(#E07A5F 0.5px, transparent 0.5px), radial-gradient(#81B29A 0.5px, #FDFBF7 0.5px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            /* Subtle dot pattern for texture */
         }
         
+        /* The Cardboard/Paper Card Style */
         .paper-card { 
-            background-color: #F2EFE9;
+            background-color: rgba(242, 239, 233, 0.95); /* High opacity paper */
+            backdrop-filter: blur(4px);
             border: 2px solid #F2CC8F; /* Sand border */
             /* Asymmetric "organic" corners */
             border-radius: 2rem 1rem 2.5rem 1rem; 
             box-shadow: 8px 8px 0px rgba(224, 122, 95, 0.2); /* Hard shadow, no blur */
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .paper-card:hover {
-            transform: translateY(-5px) rotate(1deg);
-            box-shadow: 12px 12px 0px rgba(224, 122, 95, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 10px 10px 0px rgba(224, 122, 95, 0.3);
             border-color: #E07A5F;
         }
 
         .nav-pill {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(253, 251, 247, 0.95);
             border: 2px solid #E6F0EB;
             box-shadow: 0 4px 20px rgba(224, 122, 95, 0.15);
             border-radius: 9999px;
@@ -77,35 +78,51 @@
             font-weight: 700;
             box-shadow: 0 4px 15px rgba(224, 122, 95, 0.4);
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         .btn-hippie:hover {
             filter: brightness(110%);
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
-        /* Warm filter for background images */
-        .warm-filter {
-            filter: sepia(0.3) saturate(1.4) contrast(0.9) brightness(1.1);
+        .btn-secondary-hippie {
+            background-color: #FDFBF7;
+            color: #3D405B;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem 2rem 0.5rem 2rem;
+            border: 2px solid #81B29A;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-secondary-hippie:hover {
+            background-color: #E6F0EB;
         }
 
-        .handwritten {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+        /* Warm filter overlay to make the forest png feel 'hippie' */
+        .warm-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -10;
+            background: linear-gradient(to bottom, rgba(253, 251, 247, 0.2), rgba(224, 122, 95, 0.15));
+            backdrop-filter: sepia(30%) saturate(120%);
         }
+
+        .hanging-quote { text-indent: -0.4em; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen relative overflow-x-hidden">
 
-    <div class="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-sand/10 to-terra-500/10 mix-blend-multiply"></div>
-    
-    <div class="fixed top-0 right-0 w-[500px] h-[500px] bg-terra-100/40 rounded-full blur-[80px] -z-10 animate-float"></div>
-    <div class="fixed bottom-0 left-0 w-[600px] h-[600px] bg-sage-100/50 rounded-full blur-[80px] -z-10 animate-float" style="animation-delay: 2s;"></div>
+    <div class="warm-overlay"></div>
+    <div class="fixed inset-0 -z-20 bg-[url('images/forest.png')] bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-in-out hover:scale-105"></div>
+    <div class="fixed inset-0 -z-10 bg-cream/70 backdrop-blur-[1px]"></div>
 
-    <main class="flex-grow w-full max-w-5xl mx-auto px-4 py-8 relative z-10">
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 relative z-10">
         
         <nav class="sticky top-6 z-50 nav-pill px-8 py-4 mb-12 flex justify-between items-center transition-all duration-300">
             <div class="font-serif text-2xl font-bold text-terra-500 tracking-tight flex items-center gap-2">
-                <i data-lucide="sun" class="w-6 h-6 text-sand fill-sand"></i>
                 Camila Fonseca
             </div>
             
@@ -118,111 +135,141 @@
 
                 <div class="flex items-center gap-3 text-xs font-bold text-navy pl-6 border-l-2 border-sand">
                     <span class="cursor-default bg-terra-100 px-2 py-1 rounded-full text-terra-700">EN</span>
+                    <span class="text-sand">|</span>
                     <a href="#" class="hover:text-terra-500 transition-colors px-2" title="Português">PT</a>
+                    <span class="text-sand">|</span>
                     <a href="#" class="hover:text-terra-500 transition-colors px-2" title="Español">ES</a>
                 </div>
                 <div class="md:hidden text-terra-500"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
-        <section class="mb-16 mt-12 text-center relative">
-            <i data-lucide="quote" class="absolute top-0 left-10 w-12 h-12 text-sand/30 fill-sand -z-10 transform -rotate-12"></i>
-            <blockquote class="font-serif italic text-3xl md:text-5xl text-navy leading-tight max-w-3xl mx-auto">
-                "Ring the bells that still can ring, forget your perfect offering..."
-            </blockquote>
-            <div class="mt-6 inline-block bg-white px-6 py-2 rounded-full border border-dashed border-terra-500 rotate-2">
-                <span class="text-sm font-bold text-terra-700 tracking-widest uppercase">— Leonard Cohen</span>
+        <section class="mb-16 mt-12 text-center relative animate-fade-in-up">
+            <div class="paper-card bg-opacity-80 p-10 inline-block transform -rotate-1">
+                <blockquote class="font-serif italic text-2xl md:text-3xl text-navy leading-relaxed max-w-3xl mx-auto hanging-quote">
+                    "Ring the bells that still can ring, forget your perfect offering, there is a crack in everything, that's how the light gets in"
+                </blockquote>
+                <span class="block text-sm font-bold text-terra-700 mt-4 tracking-widest uppercase">— Leonard Cohen</span>
             </div>
         </section>
 
-        <section class="mb-20 grid md:grid-cols-2 gap-10 items-center">
-            <div class="space-y-6 order-2 md:order-1">
-                <h1 class="font-serif text-4xl md:text-6xl text-terra-500 font-bold leading-none">
-                    Space for <span class="text-sage-500 italic">Growth</span> & Change
-                </h1>
-                <p class="text-navy text-lg font-medium leading-relaxed">
-                    Welcome to my virtual living room. Psychotherapy that feels like coming home—wherever you are in the world.
-                </p>
-                <div class="flex gap-4 pt-4">
-                     <a href="#contact" class="btn-hippie flex items-center gap-2">
-                        <i data-lucide="heart" class="w-5 h-5 fill-white/20"></i> Start Journey
-                    </a>
-                </div>
-            </div>
-            <div class="order-1 md:order-2 relative group">
-                <div class="absolute inset-0 bg-sand rounded-[3rem_1rem] transform rotate-3 translate-x-2 translate-y-2"></div>
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop" alt="Nature" class="relative rounded-[3rem_1rem] shadow-xl w-full h-80 object-cover warm-filter border-4 border-white">
+        <section class="mb-16 text-center space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <h1 class="font-serif text-3xl md:text-5xl text-terra-500 mb-2 font-bold drop-shadow-sm">Space for Self-Knowledge, Growth and Change</h1>
+            <p class="text-navy font-bold tracking-[0.15em] text-xs uppercase mb-8">Psychotherapy For You Wherever You Are</p>
+            
+            <div class="paper-card p-8 md:p-12 text-navy leading-relaxed text-left md:text-center text-lg space-y-4">
+                <p>Welcome to my virtual office. My name is Camila Fonseca and I'm glad you've come this far.</p>
+                <p>I know that in the rush of everyday life, self-care is not always a priority. This is already an important step in your journey of self-knowledge and transformation.</p>
+                <p>If you're feeling tired, confused, depressed or anxious, know that therapy is like taking a path back home. It's as if through therapy, we connect with our internal GPS while we travel the territory of who we are. We tune into our emotional needs and learn to take transformative actions. That's why therapy is an investment whose results are experienced firsthand and stay with you throughout your life.</p>
             </div>
         </section>
 
-        <section class="mb-20">
-            <div class="paper-card p-8 md:p-12 relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-sage-100 rounded-full blur-2xl"></div>
+        <section class="mb-16 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <h2 class="font-serif text-3xl text-terra-700 mb-6 text-center md:text-left">About Me</h2>
+            <div class="paper-card p-8 md:p-12 space-y-6 text-navy leading-relaxed text-lg relative">
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-sage-100 rounded-full blur-xl -z-10"></div>
 
-                <h2 class="font-serif text-3xl text-terra-700 mb-8 flex items-center gap-3">
-                    <span class="w-8 h-8 rounded-full bg-terra-100 flex items-center justify-center text-sm">01</span>
-                    About My Journey
-                </h2>
-                
-                <div class="space-y-6 text-navy text-lg leading-relaxed">
-                    <p>My name is <strong class="text-terra-500">Camila Fonseca</strong>. I am a psychologist who believes in the wisdom of lived experience.</p>
-                    <p>Before settling in Southern India, I traveled through Latin America for 3.5 years, journeying by land and water. I lived in meditation centers, learned from indigenous communities, and climbed mountains to find silence.</p>
-                    <p>Now, I combine my clinical training (IFS, Somatic Experiencing) with the deep empathy learned on the road to help you navigate your own internal terrain.</p>
-                </div>
-
-                <div class="mt-10 flex flex-wrap gap-3">
-                     <span class="px-4 py-2 bg-white rounded-full border border-sage-500 text-sage-700 text-sm font-bold shadow-sm">Psychology (UnB)</span>
-                     <span class="px-4 py-2 bg-white rounded-full border border-sage-500 text-sage-700 text-sm font-bold shadow-sm">IFS Level 1</span>
-                     <span class="px-4 py-2 bg-white rounded-full border border-sage-500 text-sage-700 text-sm font-bold shadow-sm">Somatic Experiencing</span>
-                     <span class="px-4 py-2 bg-white rounded-full border border-sage-500 text-sage-700 text-sm font-bold shadow-sm">MBCT</span>
-                </div>
+                <p>I am a psychologist who graduated from the University of Brasília (UnB) in 2007. Since then, I have dedicated myself to various areas of Psychology, from clinical practice to community psychology in Indigenous and Quilombola (afro-descendants) communities.</p>
+                <p>A unique element of my professional qualification is my life experience. Upon becoming a psychologist, I realized the need to transcend the boundaries of my comfort zone and get to know myself not just through books or courses, but through my own lived experience.</p>
+                <p>On a journey of self-discovery, I traveled through Latin America for more than 3 and a half years, journeying by land and water across Brazil and 10 other countries (from Argentina to Guatemala). During this period, I learned different languages and cultures, lived in extreme situations, and came into contact with people from diverse realities.</p>
+                <p>Another personal aspect important to my work is my intense dedication to the practice of mindfulness. For 2 years, I lived exclusively in meditation centers in both Brazil and India. During this time, I deepened my knowledge of human nature through moment-to-moment inner observation.</p>
+                <p>Upon becoming a mother, I came into contact with the pains of my own complex trauma. For this reason, I have deeply studied and qualified in internationally recognized approaches in this area for my own benefit and for my clients.</p>
+                <p>Currently, I live in Southern India, where I see clients in person and online in English, Portuguese, and Spanish from various parts of the world, including Brazil, the USA, Australia, India, New Zealand, Switzerland, and Japan.</p>
+                <p>In my free time, I enjoy laughing with my daughter and husband, swimming outdoors, doing all kinds of crafts, playing the same old songs on my guitar, cycling my bicycle on the multi-colored streets of India, among sadhus and monkeys, and climbing the Arunachala mountain to meditate in the caves.</p>
+            </div>
+            
+            <div class="mt-8 paper-card p-8 bg-white/50 border-sage-500">
+                <h3 class="font-serif text-xl text-sage-700 mb-4 font-bold">Qualifications</h3>
+                <ul class="flex flex-wrap gap-3">
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">Bachelor's degree in Psychology (UnB)</li>
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">IFS Level 1</li>
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">EFT Level B</li>
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">Somatic Experiencing (Intermediate)</li>
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">Person-Centered Approach</li>
+                    <li class="px-4 py-2 bg-cream rounded-full text-sm font-bold text-navy border border-sage-200 shadow-sm">MBCT</li>
+                </ul>
             </div>
         </section>
 
-        <section class="mb-20">
-            <h2 class="text-center font-serif text-3xl text-navy mb-10">Words from Kind Souls</h2>
+        <section class="mb-16 animate-fade-in-up" style="animation-delay: 0.4s;">
+            <h2 class="font-serif text-3xl text-terra-700 mb-8 text-center">Client Testimonials</h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-yellow-100 p-8 shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300" style="background-color: #FEF9C3; clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 95% 100%, 0% 100%);">
-                    <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"Camila has a very gentle way about her. I always feel safe in my sessions... a loving and compassionate heart."</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Liam, Ireland</p>
-                </div>
-                 <div class="bg-pink-100 p-8 shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-300" style="background-color: #FCE7F3; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 5% 100%, 0% 90%);">
-                    <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"Her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Nandita, USA</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="mb-12">
-            <div class="paper-card p-8 md:p-12 border-terra-100 bg-white">
-                <div class="text-center mb-8">
-                    <h2 class="font-serif text-3xl text-terra-500 mb-2">Let's Connect</h2>
-                    <p class="text-navy">Psychological support for you around the world.</p>
-                </div>
                 
-                <form class="space-y-6 max-w-2xl mx-auto" onsubmit="alert('Prototype: Message Sent!'); return false;">
-                    <div class="grid grid-cols-2 gap-6">
-                        <input type="text" placeholder="First Name" class="w-full p-4 bg-paper rounded-xl border-b-2 border-transparent focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors">
-                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-paper rounded-xl border-b-2 border-transparent focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors">
+                <div class="paper-card p-8 flex flex-col justify-between hover:rotate-1">
+                    <div>
+                        <div class="flex text-terra-500 mb-2 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-navy italic text-lg mb-4 hanging-quote">"Camila has a very gentle way about her. I always feel safe in my sessions with her... She has such a loving and compassionate heart."</p>
                     </div>
-                    <input type="email" placeholder="Your Email" class="w-full p-4 bg-paper rounded-xl border-b-2 border-transparent focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors">
-                    <textarea rows="4" placeholder="How are you feeling?" class="w-full p-4 bg-paper rounded-xl border-b-2 border-transparent focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors"></textarea>
-                    
-                    <button type="submit" class="w-full btn-hippie text-lg flex justify-center items-center gap-2">
-                        Send Message <i data-lucide="send" class="w-4 h-4"></i>
-                    </button>
-                </form>
+                    <p class="text-sage-700 text-xs font-bold uppercase tracking-wider">— Liam, Ireland</p>
+                </div>
 
-                <div class="mt-10 pt-8 border-t border-dashed border-gray-300 flex flex-col md:flex-row justify-center items-center gap-6 text-sm font-bold text-navy">
-                    <span class="flex items-center gap-2"><i data-lucide="mail" class="text-terra-500"></i> contactme@camilafonseca.com</span>
-                    <span class="flex items-center gap-2"><i data-lucide="phone" class="text-terra-500"></i> +55 61 9612-6281</span>
+                <div class="paper-card p-8 flex flex-col justify-between hover:rotate-1">
+                    <div>
+                        <div class="flex text-terra-500 mb-2 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-navy italic text-lg mb-4 hanging-quote">"My experience working with Camila has been incredibly rewarding... her loving presence, compassion and kindness was key in supporting me to find the healing I needed."</p>
+                    </div>
+                    <p class="text-sage-700 text-xs font-bold uppercase tracking-wider">— Nandita, USA</p>
+                </div>
+
+                 <div class="paper-card p-8 flex flex-col justify-between hover:rotate-1">
+                    <div>
+                        <div class="flex text-terra-500 mb-2 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-navy italic text-lg mb-4 hanging-quote">"Camila is a very committed, dedicated, and attentive professional... I’ve been doing weekly sessions with her for almost a year now, and I’m very happy to have met her."</p>
+                    </div>
+                    <p class="text-sage-700 text-xs font-bold uppercase tracking-wider">— Livia, Japan</p>
+                </div>
+
+                <div class="paper-card p-8 flex flex-col justify-between hover:rotate-1">
+                    <div>
+                        <div class="flex text-terra-500 mb-2 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-navy italic text-lg mb-4 hanging-quote">"An excellent professional. Very careful and attentive to every detail. She creates a safe and welcoming space, without judgment."</p>
+                    </div>
+                    <p class="text-sage-700 text-xs font-bold uppercase tracking-wider">— Massumy, USA/Brasil</p>
                 </div>
             </div>
         </section>
 
-        <footer class="text-center text-navy/60 text-sm py-6 font-medium">
+        <div class="mb-12 paper-card p-4 animate-fade-in-up" style="animation-delay: 0.5s;">
+            <div class="aspect-video bg-sage-100 rounded-2xl flex flex-col items-center justify-center text-navy relative overflow-hidden group cursor-pointer border-2 border-sage-200">
+                <div class="absolute inset-0 bg-gradient-to-tr from-sage-200/40 to-transparent"></div>
+                <div class="w-20 h-20 bg-cream/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i data-lucide="play" class="w-8 h-8 fill-terra-500 text-terra-500 ml-1"></i>
+                </div>
+                <span class="mt-4 font-serif text-xl font-bold text-navy">Welcome to my virtual office</span>
+            </div>
+        </div>
+
+        <section id="contact" class="mb-12 animate-fade-in-up" style="animation-delay: 0.6s;">
+            <div class="paper-card p-8 md:p-12 border-terra-200">
+                <h2 class="font-serif text-3xl text-terra-700 mb-6 text-center md:text-left">Contact Me</h2>
+                <p class="text-navy mb-8 text-lg">Psychological support for you around the world.</p>
+                
+                <form class="space-y-6" onsubmit="alert('PROTOTYPE MODE: Email sent!'); return false;">
+                    <div class="grid grid-cols-2 gap-6">
+                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-white rounded-xl border border-sand focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors shadow-sm">
+                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-white rounded-xl border border-sand focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors shadow-sm">
+                    </div>
+                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-white rounded-xl border border-sand focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors shadow-sm">
+                    <textarea rows="5" placeholder="Message" required class="w-full p-4 bg-white rounded-xl border border-sand focus:border-terra-500 focus:outline-none text-navy placeholder-navy/50 transition-colors shadow-sm"></textarea>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 pt-2">
+                        <button type="submit" class="btn-hippie flex-1 animate-breathe hover:animate-none">
+                            <i data-lucide="mail" class="w-5 h-5 mr-2"></i> Send
+                        </button>
+                        <a href="https://wa.me/556196126281" target="_blank" class="btn-secondary-hippie flex-1 decoration-0">
+                            <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </form>
+                
+                <div class="mt-10 pt-8 border-t border-dashed border-terra-200 text-center text-sm text-navy font-bold">
+                    <p class="mb-2"><strong>Email:</strong> contactme@camilafonseca.com</p>
+                    <p><strong>WhatsApp:</strong> +55-61-96126281</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-navy/60 text-sm py-6 font-medium snap-end">
             © 2025 Camila Fonseca. Made with sun & earth.
         </footer>
     </main>
