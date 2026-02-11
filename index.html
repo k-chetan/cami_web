@@ -111,21 +111,20 @@
             box-shadow: 12px 12px 0px #E07A5F; /* Turns Terra on Hover */
         }
 
-        /* --- SQUIGGLE ANIMATION --- */
-        /* We use a background image for the squiggle so we can animate the 'background-size' width */
-        .squiggle-anim {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='20' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 5 2 10 10 T 20 10' stroke='%23E07A5F' fill='none' stroke-width='3' stroke-linecap='round' /%3E%3C/svg%3E");
-            background-repeat: repeat-x;
-            background-position: bottom left;
-            background-size: 0% 12px; /* Start hidden (0 width) */
-            padding-bottom: 2px;
-            transition: background-size 0.8s ease-out; /* Smooth draw animation */
-            text-decoration: none;
+        /* --- MARKER HIGHLIGHT (Replaces Squiggle) --- */
+        .marker-highlight {
+            background: linear-gradient(120deg, #FDE68A 0%, #FDE68A 100%);
+            background-repeat: no-repeat;
+            background-size: 0% 80%; /* Starts hidden/narrow */
+            background-position: 0 80%;
+            transition: background-size 0.6s ease-in-out;
+            padding: 0 2px;
+            border-radius: 2px;
         }
 
         /* Trigger animation when hovering the parent card */
-        .paper-card-subtle:hover .squiggle-anim {
-            background-size: 100% 12px; /* Expand to full width */
+        .paper-card-subtle:hover .marker-highlight {
+            background-size: 100% 80%; /* Expand to full width */
         }
 
         .nav-pill {
@@ -293,11 +292,11 @@
                     <div class="md:w-3/5 space-y-6 text-navy text-lg leading-relaxed text-selectable">
                         <h2 class="font-hand text-sage-700 text-5xl mb-4">About My Journey</h2>
                         
-                        <p>I am a psychologist who believes in the wisdom of lived experience. Upon becoming a psychologist (UnB), <span class="squiggle-anim">I realized I needed to transcend the boundaries of my comfort zone.</span></p>
+                        <p>I am a psychologist who believes in the wisdom of lived experience. Upon becoming a psychologist (UnB), <span class="marker-highlight">I realized I needed to transcend the boundaries of my comfort zone.</span></p>
                         
                         <p>I traveled through Latin America for more than 3.5 years by land and water, from Argentina to Guatemala. I lived in extreme situations and learned from diverse realities.</p>
 
-                        <p>I also dedicated 2 years to living exclusively in meditation centers in Brazil and India. Now, being a mother, I have deeply studied trauma approaches (IFS, SE) to <span class="squiggle-anim">heal my own complex trauma and help others do the same.</span></p>
+                        <p>I also dedicated 2 years to living exclusively in meditation centers in Brazil and India. Now, being a mother, I have deeply studied trauma approaches (IFS, SE) to <span class="marker-highlight">heal my own complex trauma and help others do the same.</span></p>
                     </div>
 
                     <div class="md:w-2/5">
