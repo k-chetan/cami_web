@@ -29,7 +29,8 @@
                         brush: ['"Nanum Brush Script"', 'cursive'],
                     },
                     animation: {
-                        'blob': 'blob 4s infinite', /* faster */
+                        'blob': 'blob 4s infinite',
+                        'breathe': 'breathe 6s ease-in-out infinite', /* New gentle animation */
                     },
                     keyframes: {
                         blob: {
@@ -37,6 +38,10 @@
                             '33%': { transform: 'translate(30px, -50px) scale(1.05)' },
                             '66%': { transform: 'translate(-20px, 20px) scale(0.95)' },
                             '100%': { transform: 'translate(0px, 0px) scale(1)' }
+                        },
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1) rotate(-10deg)' },
+                            '50%': { transform: 'scale(1.08) rotate(-8deg)' }
                         }
                     }
                 }
@@ -45,7 +50,7 @@
     </script>
 
     <style>
-        /* Page base and custom cursor (keeps your aesthetic) */
+        /* Page base and custom cursor (Shape from Index, Colors from Approach) */
         body {
             color: #064E3B;
             font-family: 'Quicksand', sans-serif;
@@ -53,20 +58,20 @@
             background-image: radial-gradient(#10B981 1.5px, transparent 1.5px), radial-gradient(#34D399 1.5px, #D1FAE5 1.5px);
             background-size: 30px 30px;
             background-position: 0 0, 15px 15px;
-            /* custom decorative cursor for non-editing parts */
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="%23FF7F50" stroke="%23064E3B" stroke-width="1.6"><path d="M12 2l3 6 6 .5-4.5 4 1 6L12 16l-5.5 3.5 1-6L3 8.5 9 8 12 2z"/></svg>') 12 12, auto;
+            /* Index-style cursor (Arrow) but with Forest/Coral colors */
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%23FF7F50" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto;
         }
 
-        /* ensure inputs & textareas keep standard I-beam */
+        /* Interactive elements cursor */
+        a, button, .interactive-item, .fruit-sticker, .hover-lift, input, textarea {
+            cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%2310B981" stroke="%23064E3B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto !important;
+        }
+
+        /* ensure text inputs keep standard I-beam logic overrides if needed, 
+           but user requested matching index style which forces the custom cursor on links. 
+           We'll keep text-selectable as text cursor though. */
         input, textarea, select, [contenteditable] {
             cursor: text !important;
-        }
-
-        /* clickable items show pointer */
-        a, button, .interactive-item, .fruit-sticker {
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: inline-block;
         }
 
         /* 1. Hover pop and press down */
@@ -90,8 +95,21 @@
             position: relative;
             transform-origin: center;
         }
-        /* subtler hover, except contact specially handled below */
+        /* subtler hover generic */
         .paper-card:hover { box-shadow: 12px 12px 0px #10B981; border-color: #10B981; z-index: 10; }
+
+        /* Contact Card Specific Animation (Matching Index Style) */
+        #contact .paper-card {
+            box-shadow: 8px 8px 0px #10B981; /* Default shadow */
+            transform: rotate(0deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        #contact .paper-card:hover {
+            transform: scale(1.01) rotate(0.5deg) translateY(-2px); /* Subtle wobble */
+            box-shadow: 12px 12px 0px #FF7F50; /* Coral on hover */
+            border-color: #FF7F50;
+            z-index: 50;
+        }
 
         /* Navigation pill */
         .nav-pill {
@@ -114,7 +132,7 @@
         }
         .paper-card:hover .marker-highlight { background-size: 100% 80%; }
 
-        /* Sticker Icon improved vibration (faster, lightweight) */
+        /* Sticker Icon - GENTLE BREATH ANIMATION */
         .sticker-icon {
             position: absolute;
             top: -25px;
@@ -131,14 +149,9 @@
             z-index: 20;
             box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
             color: #fff;
-            /* faster vibrate, gentle but more energetic */
-            animation: vibrate 5s infinite linear;
+            /* Gentle breath instead of vibrate */
+            animation: breathe 6s ease-in-out infinite; 
             transform-origin: center;
-        }
-        @keyframes vibrate {
-            0%   { transform: rotate(-10deg) translate(0,0); }
-            50%  { transform: rotate(-10deg) translate(0px, -2px); }
-            100% { transform: rotate(-10deg) translate(0,0); }
         }
 
         /* Fruit sticker style */
@@ -175,39 +188,15 @@
         }
         .scroll-twist-visible:nth-child(even) { transform: translateY(0) rotate(2deg); }
 
-        /* Make the big decorative blobs animate faster (overrides tailwind defaults) */
         .animate-blob {
             animation-duration: 4s !important;
             animation-iteration-count: infinite !important;
-        }
-
-        /* Contact card: tilt slightly when focused/hovered for user interaction */
-        #contact .paper-card {
-            transition: transform 0.35s cubic-bezier(0.2,0.9,0.2,1), box-shadow 0.35s;
-        }
-        #contact .paper-card:hover, #contact .paper-card:focus-within {
-            transform: rotate(-2deg) scale(1.02);
-            z-index: 50;
-        }
-
-        /* Special: Leonard Cohen hover cursor + small pop (only applies if script wraps text in a span) */
-        .person-name.leonard {
-            transition: transform 0.18s ease, color 0.18s ease;
-            text-decoration: underline dotted;
-            text-underline-offset: 3px;
-        }
-        /* custom music-note cursor on hover; fallback to pointer */
-        .person-name.leonard:hover {
-            transform: translateY(-3px) scale(1.02);
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="%23FF7F50" stroke="%23064E3B" stroke-width="0.8"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>') 10 4, pointer;
-            color: #0b6b4b;
         }
 
     </style>
 </head>
 <body class="flex flex-col min-h-screen overflow-x-hidden relative">
 
-    <!-- decorative fast blobs (animation shortened) -->
     <div class="fixed top-20 right-[-5%] w-[500px] h-[500px] bg-white/40 rounded-full mix-blend-overlay filter blur-3xl opacity-60 animate-blob pointer-events-none"></div>
     <div class="fixed bottom-20 left-[-5%] w-[600px] h-[600px] bg-leaf/20 rounded-full mix-blend-multiply filter blur-3xl opacity-60 animate-blob animation-delay-2000 pointer-events-none"></div>
 
@@ -236,9 +225,8 @@
         </div>
 
         <div class="flex justify-center mb-16 relative">
-            <!-- Banner made straight (no rotate) -->
-            <div class="bg-coral text-white font-bold px-6 py-2 rounded-full border-2 border-forest shadow-[4px_4px_0px_#064E3B] transform transition-transform cursor-default">
-                Therapy Online
+            <div class="inline-block bg-white px-4 py-1 rounded-full border-2 border-dashed border-forest shadow-[4px_4px_0px_#10B981] hover:shadow-none hover:translate-y-[2px] transition-all cursor-default">
+                <span class="text-xs font-bold uppercase text-forest tracking-widest">Therapy Online</span>
             </div>
         </div>
 
@@ -263,15 +251,19 @@
                 There is no way to happiness: happiness is the way.
             </blockquote>
 
-            <div class="mt-6 font-serif italic text-forest/70 text-3xl">
-                — Thich Nhat Hanh
+            <div class="mt-8">
+                <span class="bg-white px-6 py-2 border-2 border-dashed border-forest rounded-full text-sm font-bold text-forest uppercase tracking-widest shadow-[4px_4px_0px_#10B981] inline-block">
+                    — Thich Nhat Hanh
+                </span>
             </div>
         </section>
 
         <section class="mb-20">
             <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
                 <div class="scroll-twist-item order-2 md:order-1">
-                    <h2 class="font-serif text-5xl text-forest mb-6 font-bold leading-tight">My <br><span class="text-coral font-hand">Methods</span></h2>
+                    <h2 class="font-serif text-5xl text-forest mb-6 font-bold leading-tight flex flex-wrap gap-x-3">
+                        My <span class="text-coral font-hand">Methods</span>
+                    </h2>
                     <div class="bg-white/60 p-6 rounded-[2rem] border-2 border-dashed border-forest text-forest text-lg leading-relaxed space-y-4">
                         <p>I use internationally recognized therapy models such as <strong>DBR</strong> and <strong>IFS</strong>. Both are non-pathologizing approaches incorporating memory reconsolidation.</p>
                         <p>I continuously update myself through readings from key figures like <span class="font-bold underline decoration-wavy decoration-coral">Bessel van der Kolk & Gabor Maté</span>.</p>
@@ -279,11 +271,11 @@
                 </div>
 
                 <div class="scroll-twist-item order-1 md:order-2 relative group">
-                    <div class="absolute inset-0 bg-coral rounded-[30%_70%_70%_30%/30%_30%_70%_70%] transform rotate-6 translate-x-2 translate-y-2 pointer-events-none"></div>
-                    <!-- replaced remote image with local beach.png (placed in same folder as this html file) -->
+                    <div class="absolute inset-0 bg-coral rounded-[30%_70%_70%_30%/30%_30%_70%_70%] transform rotate-6 translate-x-2 translate-y-2 pointer-events-none transition-transform group-hover:rotate-12"></div>
+                    
                     <img src="images/beach.png"
                          alt="Beach"
-                         class="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-white shadow-xl w-full h-[400px] object-cover transition-transform group-hover:scale-[1.02] group-hover:-rotate-2">
+                         class="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-white shadow-[8px_8px_0px_#064E3B] w-full h-[400px] object-cover transition-all duration-300 group-hover:scale-[1.01] group-hover:shadow-[12px_12px_0px_#FF7F50]">
                 </div>
             </div>
 
@@ -391,37 +383,6 @@
             });
         }, observerOptions);
         document.querySelectorAll('.scroll-twist-item').forEach(el => observer.observe(el));
-
-        /* ---------- Wrap occurrences of "Leonard Cohen" with a span.person-name.leonard ----------
-           This will only modify the DOM if that exact text exists somewhere.
-           It is non-destructive and safe: if no matches are found nothing happens.
-        */
-        (function wrapLeonardCohen() {
-            const targetText = "Leonard Cohen";
-            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-                acceptNode: function(node) {
-                    if (!node.nodeValue) return NodeFilter.FILTER_REJECT;
-                    return node.nodeValue.includes(targetText) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-                }
-            });
-            const nodes = [];
-            while (walker.nextNode()) nodes.push(walker.currentNode);
-            nodes.forEach(textNode => {
-                const parent = textNode.parentNode;
-                const parts = textNode.nodeValue.split(targetText);
-                const frag = document.createDocumentFragment();
-                for (let i=0; i<parts.length; i++) {
-                    frag.appendChild(document.createTextNode(parts[i]));
-                    if (i < parts.length - 1) {
-                        const span = document.createElement('span');
-                        span.className = 'person-name leonard';
-                        span.textContent = targetText;
-                        frag.appendChild(span);
-                    }
-                }
-                parent.replaceChild(frag, textNode);
-            });
-        })();
     </script>
 </body>
 </html>
