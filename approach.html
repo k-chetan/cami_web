@@ -6,24 +6,35 @@
     <title>My Approach | Camila Fonseca</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        matcha: '#F2F7F4', // Light Green Background
+                        matcha: '#F0F5F1', // Very pale green bg
+                        paper: '#FDFBF7',
                         petrichor: '#2A332E',
-                        terra: '#D96C4E', 
-                        mustard: '#E0A458',
-                        forest: '#4A6C58',
-                        navy: '#3D405B',
+                        terra: '#D96C4E', // DBR (Roots)
+                        mustard: '#E0A458', // IFS (Sun/Parts)
+                        forest: '#4A6C58', // SE (Body/Nature)
+                        ocean: '#4A6FA5', // EFT (Flow)
                     },
                     fontFamily: { 
                         serif: ['"Fraunces"', 'serif'], 
                         sans: ['"Quicksand"', 'sans-serif']
                     },
+                    animation: { 
+                        'float': 'float 8s ease-in-out infinite',
+                        'sway': 'sway 4s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        sway: { '0%': { transform: 'rotate(-1deg)' }, '100%': { transform: 'rotate(1deg)' } }
+                    }
                 }
             }
         }
@@ -32,76 +43,99 @@
         body { 
             color: #2A332E; 
             font-family: 'Quicksand', sans-serif; 
-            background-color: #F2F7F4;
-            /* Subtle Organic Grid Pattern */
-            background-image: radial-gradient(#4A6C58 0.5px, transparent 0.5px);
-            background-size: 24px 24px;
+            background-color: #F0F5F1;
+            /* Mossy texture overlay */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
             cursor: none;
         }
 
+        /* Forest Lantern Cursor */
         .cursor-blob {
-            position: fixed; top: 0; left: 0; width: 40px; height: 40px;
-            background: rgba(74, 108, 88, 0.4); /* Forest tint */
+            position: fixed; top: 0; left: 0; width: 30px; height: 30px;
+            background: rgba(74, 108, 88, 0.5); 
             border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); z-index: 9999;
-            transition: width 0.3s, height 0.3s; mix-blend-mode: multiply; backdrop-filter: blur(2px);
+            transition: width 0.3s, height 0.3s; mix-blend-mode: multiply; backdrop-filter: blur(1px);
         }
 
-        /* The Fruit Sticker Language Switcher */
-        .fruit-sticker {
-            position: absolute;
-            top: -15px; right: -25px;
-            background: #FFD166; /* Banana Yellow */
-            color: #2A332E;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50% 40% 60% 40%; /* Imperfect oval */
-            font-family: 'Fraunces', serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transform: rotate(15deg);
-            box-shadow: 2px 4px 8px rgba(0,0,0,0.15);
-            border: 2px solid #2A332E;
-            z-index: 50;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            text-align: center;
-            line-height: 1.2;
-        }
-        .fruit-sticker:hover {
-            transform: rotate(0deg) scale(1.1);
-            background: #D96C4E; /* Ripens to red on hover */
-            color: #fff;
-            border-color: #fff;
-        }
-
+        /* Wonky Headers */
         .wonky-header {
             font-family: 'Fraunces', serif;
-            color: #2A332E;
             font-variation-settings: "SOFT" 100, "WONK" 1;
+            letter-spacing: -0.02em;
         }
 
-        .glass-panel { 
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 1.5rem; 
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 20px -5px rgba(74, 108, 88, 0.1);
+        /* Navigation Glass */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 20px -5px rgba(42, 51, 46, 0.05);
         }
 
-        /* Method Cards with Character */
-        .method-card {
-            background: #fff;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            border-left: 8px solid; /* Character Bar */
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        /* The Fruit Sticker */
+        .fruit-sticker {
+            position: absolute;
+            top: -12px; right: -15px;
+            background: #E0A458; /* Mustard */
+            color: #2A332E;
+            padding: 0.6rem 1rem;
+            border-radius: 40% 60% 50% 50% / 50% 60% 40% 50%; /* Organic shape */
+            font-family: 'Fraunces', serif;
+            font-weight: 800;
+            font-size: 0.75rem;
+            transform: rotate(12deg);
+            box-shadow: 2px 4px 6px rgba(0,0,0,0.1);
+            z-index: 50;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.3);
         }
-        .method-card:hover { transform: translateY(-5px); }
+        .fruit-sticker:hover {
+            transform: rotate(0deg) scale(1.15);
+            background: #D96C4E; /* Ripens to Terra */
+            color: #fff;
+        }
 
-        /* The Characters */
-        .char-dbr { border-color: #D96C4E; } /* Terra - Roots/Brainstem */
-        .char-ifs { border-color: #E0A458; } /* Mustard - Layers/Parts */
-        .char-se  { border-color: #4A6C58; } /* Forest - Body/Nature */
-        .char-eft { border-color: #3D405B; } /* Navy - Depth/Ocean */
+        /* "Seed Packet" Method Cards */
+        .seed-card {
+            background: #FDFBF7;
+            padding: 2.5rem;
+            border-radius: 1.5rem 1.2rem 1.4rem 1.3rem; /* Tumbled stone corners */
+            position: relative;
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.02),
+                0 10px 15px -3px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        .seed-card:hover {
+            transform: translateY(-8px) rotate(0.5deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Colored "Stamps" for each method */
+        .seed-card::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+        }
+        .card-roots::after { background: #D96C4E; } /* Terra */
+        .card-sun::after { background: #E0A458; } /* Mustard */
+        .card-leaf::after { background: #4A6C58; } /* Forest */
+        .card-water::after { background: #4A6FA5; } /* Ocean */
+
+        /* Pinned Note Style */
+        .pinned-note {
+            background-color: #fff;
+            background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+            background-size: 20px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #E5E7EB;
+            transform: rotate(-1deg);
+        }
 
         .btn-hippie {
             background: #4A6C58;
@@ -110,7 +144,7 @@
             border-radius: 50px;
             font-family: 'Fraunces', serif;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .btn-hippie:hover { transform: scale(1.05); background: #2A332E; }
 
@@ -122,17 +156,17 @@
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-8 relative z-10">
         
-        <nav class="sticky top-6 z-50 glass-panel px-8 py-4 mb-16 flex justify-between items-center transition-all duration-300 relative">
+        <nav class="sticky top-6 z-50 glass-nav px-8 py-4 mb-16 flex justify-between items-center transition-all duration-300 relative">
             
             <div class="fruit-sticker group">
-                <span class="block text-[0.6rem] uppercase tracking-widest opacity-80">Translate</span>
-                <div class="flex flex-col font-serif">
-                    <a href="#" class="hover:underline">Português</a>
-                    <a href="#" class="hover:underline">Español</a>
-                </div>
+                <span class="block text-[0.6rem] uppercase tracking-widest opacity-90 mb-1">Select</span>
+                <span class="block text-sm leading-none">PT / ES</span>
             </div>
 
-            <div class="font-serif text-xl md:text-2xl font-bold text-forest tracking-tight">Camila Fonseca</div>
+            <div class="font-serif text-xl md:text-2xl font-bold text-forest tracking-tight flex items-center gap-2">
+                <i data-lucide="sprout" class="w-6 h-6 stroke-[1.5]"></i>
+                Camila Fonseca
+            </div>
             
             <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-6 text-sm font-bold text-petrichor/80">
@@ -145,115 +179,120 @@
         </nav>
 
         <section class="mb-24 mt-12 relative text-center">
-            <span class="absolute left-[-20px] top-[-60px] font-serif text-[12rem] text-forest/10 leading-none pointer-events-none">“</span>
+            <span class="absolute left-[-20px] top-[-60px] font-serif text-[12rem] text-forest/10 leading-none pointer-events-none select-none">“</span>
             
             <blockquote class="relative z-10 font-serif text-3xl md:text-5xl text-petrichor leading-tight max-w-3xl mx-auto">
                 There is no way to happiness: happiness is the <em>way</em>
             </blockquote>
             
+            <span class="absolute right-[-20px] bottom-[-80px] font-serif text-[12rem] text-forest/10 leading-none pointer-events-none select-none rotate-180">“</span>
+
             <div class="mt-8">
                 <span class="text-xs font-sans font-bold tracking-[0.2em] text-forest uppercase">— Thich Nhat Hanh</span>
             </div>
         </section>
 
-        <div class="text-center mb-16">
-            <h1 class="wonky-header text-5xl md:text-6xl font-bold mb-4">Therapy Online</h1>
+        <div class="text-center mb-16 animate-sway origin-bottom">
+            <h1 class="wonky-header text-5xl md:text-7xl font-bold mb-4 text-petrichor">Therapy Online</h1>
             <p class="text-forest font-bold tracking-widest text-xs uppercase">Individual service for self-knowledge and personal growth</p>
         </div>
 
-        <section class="mb-20">
-            <div class="glass-panel p-8 md:p-12 border-none bg-white/80">
-                <h2 class="wonky-header text-3xl mb-6">Who is Therapy For?</h2>
-                <div class="space-y-4 text-petrichor text-lg leading-relaxed">
-                    <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships, to relieve tension, to promote change, and to improve mental health as a whole.</p>
-                    <p>Psychotherapy is a safe space to dive into the origin of certain patterns of emotions and behavior, and also to process challenges in the present moment.</p>
+        <section class="mb-24">
+            <div class="pinned-note p-8 md:p-12 rounded-xl max-w-3xl mx-auto relative">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-terra shadow-sm border border-white/50"></div>
+                
+                <h2 class="wonky-header text-3xl mb-6 text-center text-terra">Who is Therapy For?</h2>
+                <div class="space-y-4 text-petrichor text-lg leading-relaxed font-medium">
+                    <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships.</p>
+                    <p>Psychotherapy is a <span class="bg-matcha px-1 rounded">safe space</span> to dive into the origin of certain patterns of emotions and behavior, and also to process challenges in the present moment.</p>
                 </div>
             </div>
         </section>
 
         <section class="mb-24">
-            <div class="text-center mb-12 max-w-3xl mx-auto">
-                <h2 class="wonky-header text-5xl mb-6">My Methods</h2>
-                <p class="text-lg text-petrichor/80">I use internationally recognized therapy models. Each approach offers a different doorway into healing.</p>
+            <div class="text-center mb-16 max-w-2xl mx-auto">
+                <h2 class="wonky-header text-5xl mb-6 text-petrichor">My Methods</h2>
+                <p class="text-lg text-petrichor/80">I use internationally recognized models. Each offers a different doorway into healing.</p>
             </div>
 
-            <div class="grid md:grid-cols-1 gap-10">
+            <div class="grid md:grid-cols-2 gap-8">
                 
-                <div class="method-card char-dbr">
-                    <div class="flex items-baseline gap-4 mb-4">
-                        <span class="text-terra font-bold text-4xl">01.</span>
-                        <h3 class="wonky-header text-3xl">Deep Brain Reorienting</h3>
+                <div class="seed-card card-roots group">
+                    <div class="flex items-baseline justify-between mb-4">
+                        <h3 class="wonky-header text-2xl text-terra">Deep Brain Reorienting</h3>
+                        <i data-lucide="flower" class="text-terra/40 group-hover:text-terra transition-colors"></i>
                     </div>
-                    <p class="text-petrichor leading-relaxed mb-4">Developed by Frank Corrigan, DBR focuses on the brainstem's instinctive responses to trauma.</p>
-                    <p class="text-sm bg-terra/10 p-4 rounded-xl text-petrichor/80">It works by tracking the 'orienting tension'—the split-second physical reaction that happens before emotion or thought—allowing for the processing of deep-seated shock and attachment wounds.</p>
+                    <p class="text-petrichor leading-relaxed mb-4 text-sm font-medium opacity-80">Developed by Frank Corrigan</p>
+                    <p class="text-petrichor leading-relaxed">It works by tracking the 'orienting tension'—the split-second physical reaction that happens before emotion or thought—allowing for the processing of deep-seated shock and attachment wounds.</p>
                 </div>
 
-                <div class="method-card char-ifs">
-                    <div class="flex items-baseline gap-4 mb-4">
-                        <span class="text-mustard font-bold text-4xl">02.</span>
-                        <h3 class="wonky-header text-3xl">Internal Family Systems</h3>
+                <div class="seed-card card-sun group">
+                    <div class="flex items-baseline justify-between mb-4">
+                        <h3 class="wonky-header text-2xl text-mustard">Internal Family Systems</h3>
+                        <i data-lucide="sun" class="text-mustard/40 group-hover:text-mustard transition-colors"></i>
                     </div>
-                    <p class="text-petrichor leading-relaxed mb-4">We all have internal "parts" — aspects of our personality that carry different emotions, beliefs, and roles.</p>
-                    <p class="text-sm bg-mustard/10 p-4 rounded-xl text-petrichor/80">IFS is a compassionate approach that helps you understand and heal these different parts, bringing curiosity and self-compassion to your inner world.</p>
+                    <p class="text-petrichor leading-relaxed mb-4 text-sm font-medium opacity-80">Healing Internal Parts</p>
+                    <p class="text-petrichor leading-relaxed">IFS is a compassionate approach that helps you understand and heal these different parts, bringing curiosity and self-compassion to your inner world.</p>
                 </div>
 
-                <div class="method-card char-se">
-                    <div class="flex items-baseline gap-4 mb-4">
-                        <span class="text-forest font-bold text-4xl">03.</span>
-                        <h3 class="wonky-header text-3xl">Somatic Experiencing</h3>
+                <div class="seed-card card-leaf group">
+                    <div class="flex items-baseline justify-between mb-4">
+                        <h3 class="wonky-header text-2xl text-forest">Somatic Experiencing</h3>
+                        <i data-lucide="leaf" class="text-forest/40 group-hover:text-forest transition-colors"></i>
                     </div>
-                    <p class="text-petrichor leading-relaxed mb-4">Developed by Dr. Peter Levine, SE treats trauma by focusing on the body's physiological responses rather than just memory.</p>
-                    <p class="text-sm bg-forest/10 p-4 rounded-xl text-petrichor/80">It focuses on observing bodily sensations, helping the nervous system gradually regain balance and release accumulated survival energy.</p>
+                    <p class="text-petrichor leading-relaxed mb-4 text-sm font-medium opacity-80">Developed by Dr. Peter Levine</p>
+                    <p class="text-petrichor leading-relaxed">It focuses on observing bodily sensations, helping the nervous system gradually regain balance and release accumulated survival energy.</p>
                 </div>
 
-                <div class="method-card char-eft">
-                    <div class="flex items-baseline gap-4 mb-4">
-                        <span class="text-navy font-bold text-4xl">04.</span>
-                        <h3 class="wonky-header text-3xl">Emotion-Focused Therapy</h3>
+                <div class="seed-card card-water group">
+                    <div class="flex items-baseline justify-between mb-4">
+                        <h3 class="wonky-header text-2xl text-ocean">Emotion-Focused Therapy</h3>
+                        <i data-lucide="waves" class="text-ocean/40 group-hover:text-ocean transition-colors"></i>
                     </div>
-                    <p class="text-petrichor leading-relaxed mb-4">EFT views emotions as gateways to our subjective experience. Sadness, anxiety, or anger are messengers that some emotional need is not being met.</p>
-                    <p class="text-sm bg-navy/10 p-4 rounded-xl text-petrichor/80">Research shows EFT is highly effective for strengthening relationships and resolving trauma by accessing and transforming emotions.</p>
+                    <p class="text-petrichor leading-relaxed mb-4 text-sm font-medium opacity-80">The Ocean of Experience</p>
+                    <p class="text-petrichor leading-relaxed">Research shows EFT is highly effective for strengthening relationships and resolving trauma by accessing and transforming emotions.</p>
                 </div>
 
             </div>
         </section>
 
-        <section id="contact" class="mb-20 max-w-2xl mx-auto">
+        <div class="max-w-2xl mx-auto mb-20">
             
-            <div class="mb-12 bg-forest rounded-2xl overflow-hidden shadow-xl relative group cursor-pointer aspect-video border-4 border-white transform rotate-[-1deg]">
-                <div class="absolute inset-0 bg-forest/40 z-10"></div>
-                <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-cream">
-                    <div class="w-16 h-16 bg-mustard rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <i data-lucide="play" class="fill-cream stroke-none ml-1"></i>
+            <div class="mb-12 bg-white p-2 pb-8 shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                <div class="aspect-video bg-petrichor relative group cursor-pointer overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2560&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-paper">
+                        <div class="w-16 h-16 bg-forest/90 rounded-full flex items-center justify-center mb-3 shadow-lg group-hover:scale-110 transition-transform">
+                            <i data-lucide="play" class="fill-paper stroke-none ml-1"></i>
+                        </div>
                     </div>
-                    <span class="font-serif text-xl italic">Introduction to My Methods</span>
                 </div>
-                <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2560&auto=format&fit=crop" class="w-full h-full object-cover">
+                <div class="text-center mt-4 font-serif text-xl italic text-petrichor">Introduction to My Methods</div>
             </div>
 
-            <div class="text-center">
-                <h2 class="wonky-header text-4xl mb-4">Let's Connect</h2>
+            <div id="contact" class="text-center">
+                <h2 class="wonky-header text-4xl mb-4 text-forest">Let's Connect</h2>
                 <p class="text-petrichor/70 mb-8">Psychological support for you around the world.</p>
                 
                 <form class="space-y-4 text-left" onsubmit="alert('Prototype: Message Sent!'); return false;">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-transparent border-b-2 border-forest/20 focus:border-forest outline-none placeholder-forest/40 font-serif">
-                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-transparent border-b-2 border-forest/20 focus:border-forest outline-none placeholder-forest/40 font-serif">
+                        <input type="text" placeholder="First Name" required class="w-full p-4 bg-white rounded-lg border-2 border-transparent focus:border-forest outline-none placeholder-petrichor/30 font-bold shadow-sm">
+                        <input type="text" placeholder="Last Name" class="w-full p-4 bg-white rounded-lg border-2 border-transparent focus:border-forest outline-none placeholder-petrichor/30 font-bold shadow-sm">
                     </div>
-                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-transparent border-b-2 border-forest/20 focus:border-forest outline-none placeholder-forest/40 font-serif">
-                    <textarea rows="4" placeholder="How are you feeling?" required class="w-full p-4 bg-transparent border-b-2 border-forest/20 focus:border-forest outline-none placeholder-forest/40 font-serif"></textarea>
+                    <input type="email" placeholder="Your Email" required class="w-full p-4 bg-white rounded-lg border-2 border-transparent focus:border-forest outline-none placeholder-petrichor/30 font-bold shadow-sm">
+                    <textarea rows="4" placeholder="How are you feeling?" required class="w-full p-4 bg-white rounded-lg border-2 border-transparent focus:border-forest outline-none placeholder-petrichor/30 font-bold shadow-sm"></textarea>
                     
                     <div class="flex flex-col sm:flex-row gap-4 pt-6">
-                        <button type="submit" class="btn-hippie flex-1 flex justify-center items-center gap-2">
+                        <button type="submit" class="btn-hippie flex-1 flex justify-center items-center gap-2 shadow-lg">
                             Send Message <i data-lucide="send" class="w-4 h-4"></i>
                         </button>
-                        <a href="https://wa.me/556196126281" target="_blank" class="flex-1 p-4 rounded-full border-2 border-forest/10 flex justify-center items-center gap-2 font-bold hover:bg-green-50 hover:border-green-200 hover:text-green-700 transition-colors">
+                        <a href="https://wa.me/556196126281" target="_blank" class="flex-1 p-4 rounded-full border-2 border-forest/20 flex justify-center items-center gap-2 font-bold text-forest hover:bg-forest hover:text-white transition-colors">
                             <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp
                         </a>
                     </div>
                 </form>
             </div>
-        </section>
+        </div>
 
         <footer class="text-center text-forest/40 text-xs py-8 font-bold tracking-widest uppercase">
             © 2025 Camila Fonseca. Made with sun & earth.
@@ -261,7 +300,7 @@
     </main>
 
     <script>
-        lucide.createIcons({ attrs: { strokeWidth: 2 } });
+        lucide.createIcons({ attrs: { strokeWidth: 1.5 } });
 
         const cursor = document.getElementById('cursor');
         document.addEventListener('mousemove', (e) => {
@@ -269,7 +308,7 @@
             cursor.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .fruit-sticker').forEach(el => {
+        document.querySelectorAll('a, button, .fruit-sticker, .seed-card').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.5)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
         });
