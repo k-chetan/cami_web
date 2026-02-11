@@ -15,10 +15,11 @@
                     colors: {
                         cream: '#FDFBF7',
                         paper: '#F2EFE9',
-                        terra: { 100: '#FCD5CE', 500: '#E07A5F', 700: '#BC5D45' }, // Warm Earth
-                        sage:  { 100: '#E6F0EB', 500: '#81B29A', 700: '#5E8C76' }, // Soft Green
-                        sand:  '#F2CC8F', // Sun/Mustard
-                        navy:  '#3D405B', // Deep text
+                        terra: { 100: '#FCD5CE', 500: '#E07A5F', 700: '#BC5D45' },
+                        sage:  { 100: '#E6F0EB', 500: '#81B29A', 700: '#5E8C76' },
+                        sand:  '#F2CC8F',
+                        sun:   '#F4D35E', /* New Brighter Yellow for Quotes */
+                        navy:  '#3D405B',
                     },
                     fontFamily: { 
                         serif: ['"Playfair Display"', 'serif'], 
@@ -47,6 +48,7 @@
             background-position: 0 0, 10px 10px;
         }
         
+        /* The "Paper" feel */
         .paper-card { 
             background-color: #F2EFE9;
             border: 2px solid #F2CC8F;
@@ -54,18 +56,16 @@
             box-shadow: 8px 8px 0px rgba(224, 122, 95, 0.2);
             transition: all 0.3s ease;
         }
-
         .paper-card:hover {
             transform: translateY(-3px) rotate(0.5deg);
             box-shadow: 12px 12px 0px rgba(224, 122, 95, 0.3);
             border-color: #E07A5F;
         }
 
-        /* Video/Image Container Style */
         .media-card {
             background-color: #3D405B;
             border-radius: 1.5rem;
-            box-shadow: 10px 10px 0px rgba(129, 178, 154, 0.4); /* Sage shadow */
+            box-shadow: 10px 10px 0px rgba(129, 178, 154, 0.4);
             overflow: hidden;
             border: 4px solid #F2EFE9;
         }
@@ -86,10 +86,7 @@
             box-shadow: 0 4px 15px rgba(224, 122, 95, 0.4);
             transition: all 0.3s ease;
         }
-        .btn-hippie:hover {
-            filter: brightness(110%);
-            transform: scale(1.05);
-        }
+        .btn-hippie:hover { filter: brightness(110%); transform: scale(1.05); }
 
         .btn-secondary {
             background-color: #FDFBF7;
@@ -100,11 +97,27 @@
             font-weight: 700;
             transition: all 0.3s ease;
         }
-        .btn-secondary:hover {
-            background-color: #E6F0EB;
-            color: #3D405B;
+        .btn-secondary:hover { background-color: #E6F0EB; color: #3D405B; }
+
+        /* Testimonial Quote Styling */
+        .quote-icon {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            line-height: 0;
+            color: #F4D35E; /* Sunny Yellow */
+            opacity: 0.8;
+            position: absolute;
+        }
+        .quote-open { top: 1rem; left: 1rem; }
+        .quote-close { bottom: -2rem; right: 1rem; }
+
+        .testimonial-card {
+            position: relative;
+            padding: 3rem 2rem 2rem 2rem;
+            overflow: hidden;
         }
 
+        /* Fun shapes for testimonials */
         .testimonial-yellow { background-color: #FEF9C3; clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 95% 100%, 0% 100%); }
         .testimonial-pink { background-color: #FCE7F3; clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 5% 100%, 0% 90%); }
         .testimonial-green { background-color: #E6F0EB; clip-path: polygon(2% 0%, 100% 0%, 100% 95%, 90% 100%, 0% 100%); }
@@ -152,20 +165,6 @@
             </div>
         </section>
 
-        <div class="mb-16 max-w-3xl mx-auto">
-            <div class="media-card aspect-video flex flex-col items-center justify-center text-cream relative group cursor-pointer">
-                <div class="absolute inset-0 bg-gradient-to-tr from-navy/80 to-transparent z-10"></div>
-                <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2560&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
-                
-                <div class="relative z-20 flex flex-col items-center">
-                    <div class="w-20 h-20 bg-sand/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                        <i data-lucide="play" class="w-8 h-8 fill-navy text-navy ml-1"></i>
-                    </div>
-                    <span class="mt-4 font-serif text-xl tracking-wide text-sand">Welcome to my virtual office</span>
-                </div>
-            </div>
-        </div>
-
         <section class="mb-20 grid md:grid-cols-1 gap-10 text-center">
             <div class="space-y-6 max-w-3xl mx-auto">
                 <h1 class="font-serif text-4xl md:text-6xl text-terra-500 font-bold leading-tight">
@@ -212,30 +211,51 @@
         </section>
 
         <section class="mb-20">
-            <h2 class="text-center font-serif text-3xl text-navy mb-10">Client Stories</h2>
+            <h2 class="text-center font-serif text-3xl text-navy mb-10 decoration-wavy decoration-sand underline">Words from Kind Souls</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-yellow-100 p-8 shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300 testimonial-yellow">
+                <div class="testimonial-card shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300 testimonial-yellow">
+                    <span class="quote-icon quote-open">“</span>
                     <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"Camila has a very gentle way about her. I always feel safe in my sessions with her... She has such a loving and compassionate heart."</p>
+                    <p class="font-serif italic text-navy mb-4 text-lg">Camila has a very gentle way about her. I always feel safe in my sessions with her... She has such a loving and compassionate heart.</p>
                     <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Liam, Ireland</p>
+                    <span class="quote-icon quote-close">”</span>
                 </div>
-                <div class="bg-pink-100 p-8 shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-300 testimonial-pink">
+                <div class="testimonial-card shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-300 testimonial-pink">
+                    <span class="quote-icon quote-open">“</span>
                     <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"Her loving presence, compassion and kindness was key in supporting me to find the healing I needed... allowed for my emotional, spiritual, and psychological growth."</p>
+                    <p class="font-serif italic text-navy mb-4 text-lg">Her loving presence, compassion and kindness was key in supporting me to find the healing I needed... allowed for my emotional, spiritual, and psychological growth.</p>
                     <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Nandita, USA</p>
+                    <span class="quote-icon quote-close">”</span>
                 </div>
-                <div class="bg-sage-100 p-8 shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300 testimonial-green">
+                <div class="testimonial-card shadow-lg transform -rotate-2 hover:rotate-0 transition-transform duration-300 testimonial-green">
+                    <span class="quote-icon quote-open">“</span>
                     <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"Camila is a very committed, dedicated, and attentive professional... I’ve been doing weekly sessions with her for almost a year now."</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Livia, Japan</p>
+                    <p class="font-serif italic text-navy mb-4 text-lg">Camila is a very committed, dedicated, and attentive professional... I’ve been doing weekly sessions with her for almost a year now.</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Livia, Brazil</p>
+                    <span class="quote-icon quote-close">”</span>
                 </div>
-                <div class="bg-orange-100 p-8 shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300 testimonial-peach">
+                <div class="testimonial-card shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300 testimonial-peach">
+                    <span class="quote-icon quote-open">“</span>
                     <div class="flex text-terra-500 mb-4"><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i><i data-lucide="star" class="fill-current w-4"></i></div>
-                    <p class="font-serif italic text-navy mb-4 text-lg">"An excellent professional. Very careful and attentive to every detail. She creates a safe and welcoming space, without judgment."</p>
-                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Massumy, USA/Brasil</p>
+                    <p class="font-serif italic text-navy mb-4 text-lg">An excellent professional. Very careful and attentive to every detail. She creates a safe and welcoming space, without judgment.</p>
+                    <p class="text-xs font-bold uppercase tracking-widest text-terra-700">— Massumy, Japan</p>
+                    <span class="quote-icon quote-close">”</span>
                 </div>
             </div>
         </section>
+
+        <div class="mb-12 max-w-3xl mx-auto">
+            <div class="media-card aspect-video flex flex-col items-center justify-center text-cream relative group cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-tr from-navy/80 to-transparent z-10"></div>
+                <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2560&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+                <div class="relative z-20 flex flex-col items-center">
+                    <div class="w-20 h-20 bg-sand/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <i data-lucide="play" class="w-8 h-8 fill-navy text-navy ml-1"></i>
+                    </div>
+                    <span class="mt-4 font-serif text-xl tracking-wide text-sand">Welcome to my virtual office</span>
+                </div>
+            </div>
+        </div>
 
         <section id="contact" class="mb-12">
             <div class="paper-card p-8 md:p-12 border-terra-100 bg-white">
@@ -261,11 +281,6 @@
                         </a>
                     </div>
                 </form>
-
-                <div class="mt-10 pt-8 border-t border-dashed border-gray-300 flex flex-col justify-center items-center gap-2 text-sm font-bold text-navy">
-                    <span class="flex items-center gap-2 hover:text-terra-500 transition-colors"><i data-lucide="mail" class="text-terra-500 w-4 h-4"></i> contactme@camilafonseca.com</span>
-                    <span class="flex items-center gap-2 hover:text-terra-500 transition-colors"><i data-lucide="phone" class="text-terra-500 w-4 h-4"></i> +55 61 9612-6281</span>
-                </div>
             </div>
         </section>
 
