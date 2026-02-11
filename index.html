@@ -109,6 +109,12 @@
         .scroll-twist-visible { opacity: 1; transform: translateY(0) rotate(0deg); }
         .scroll-twist-visible:nth-child(even) { transform: rotate(-1deg); }
 
+        .pop-no-twist:hover {
+            /* Same scale/lift as 'About', but strictly 0 rotation */
+            transform: scale(1.01) translateY(-2px) rotate(0deg) !important; 
+            z-index: 10;
+        }
+
         /* Form Input */
         .input-base {
             width: 100%; padding: 1rem; background: #F2EFE9; border-radius: 0.75rem;
@@ -274,7 +280,7 @@
         </section>
 
         <section id="contact" class="mb-12 scroll-twist-item">
-            <div class="paper-card paper-card-subtle p-10 md:p-12 bg-white !shadow-[8px_8px_0px_#81B29A] hover:!shadow-[12px_12px_0px_#E07A5F] !rotate-0">
+            <div class="paper-card paper-card-subtle pop-no-twist p-10 md:p-12 bg-white !shadow-[8px_8px_0px_#81B29A] hover:!shadow-[12px_12px_0px_#E07A5F] !rotate-0">
                 <div class="sticker-icon bg-terra-100"><i data-lucide="sparkles" class="text-terra-700 w-6 h-6"></i></div>
                 <div class="text-center mb-8">
                     <h2 class="font-serif text-4xl text-navy mb-2 font-bold">Let's Connect</h2>
