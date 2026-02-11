@@ -28,7 +28,23 @@
     </script>
     <style>
         body { color: #233429; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass-panel { backdrop-filter: blur(12px); background-color: rgba(255, 255, 255, 0.6); border: 1px solid rgba(255, 255, 255, 0.6); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border-radius: 1rem; }
+        
+        /* UPDATED GLASS PANEL: 90% Opaque White */
+        .glass-panel { 
+            backdrop-filter: blur(12px); 
+            background-color: rgba(255, 255, 255, 0.90); 
+            border: 1px solid rgba(255, 255, 255, 0.8); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+            border-radius: 1rem; 
+        }
+
+        /* NEW: Language Pill specific style */
+        .lang-pill {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+        }
+
         .btn-primary { background-color: #5D8A6D; color: white; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
         .btn-primary:hover { background-color: #466B53; transform: translateY(-1px); }
         .btn-secondary { background-color: rgba(232, 225, 217, 0.5); color: #233429; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 500; border: 1px solid #C5D6C9; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
@@ -38,34 +54,38 @@
 <body class="flex flex-col min-h-screen relative">
 
     <div class="fixed inset-0 -z-20 bg-[url('images/beach.png')] bg-cover bg-center bg-no-repeat"></div>
-    <div class="fixed inset-0 -z-10 bg-canopy-50/85 backdrop-blur-[2px]"></div>
+    
+    <div class="fixed inset-0 -z-10 bg-canopy-50/60 backdrop-blur-[1px]"></div>
 
     <main class="flex-grow w-full max-w-4xl mx-auto px-4 py-6">
         
-        <nav class="sticky top-0 z-50 glass-panel rounded-b-2xl rounded-t-none mb-8 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+        <nav class="sticky top-0 z-50 glass-panel rounded-b-2xl rounded-t-none mb-6 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="font-serif text-xl md:text-2xl font-bold text-canopy-800 tracking-tight">Camila Fonseca</div>
             
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-600 border-r border-canopy-200 pr-6">
+                <div class="hidden md:flex gap-6 text-sm font-medium text-canopy-600">
                     <a href="index.html" class="hover:text-canopy-500 transition-colors">Home</a>
                     <a href="approach.html" class="text-canopy-800 font-bold">My Approach</a>
                     <a href="#contact" class="hover:text-canopy-500 transition-colors">Contact</a>
                 </div>
-
-                <div class="flex items-center gap-2 text-xs font-medium text-canopy-500">
-                    <span class="text-canopy-800 font-bold cursor-default">EN</span>
-                    <span class="text-canopy-300">|</span>
-                    <a href="#" class="hover:text-canopy-700 transition-colors" title="Português (Coming Soon)">PT</a>
-                    <span class="text-canopy-300">|</span>
-                    <a href="#" class="hover:text-canopy-700 transition-colors" title="Español (Coming Soon)">ES</a>
-                </div>
-
                 <div class="md:hidden text-canopy-600"><i data-lucide="menu"></i></div>
             </div>
         </nav>
 
-        <section class="mb-12 animate-uncurl">
-            <div class="bg-canopy-100/90 rounded-2xl p-8 md:p-12 text-center shadow-sm border border-canopy-200/50 backdrop-blur-sm">
+        <div class="flex justify-center mb-8 animate-uncurl">
+            <div class="lang-pill px-6 py-2 rounded-full flex gap-4 text-xs md:text-sm font-medium text-canopy-600 shadow-sm transition-transform hover:scale-105">
+                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
+                    <span>🇧🇷</span> <span class="group-hover:underline">Fala Português?</span>
+                </a>
+                <span class="text-canopy-300">|</span>
+                <a href="#" class="hover:text-canopy-800 flex items-center gap-2 group">
+                    <span>🇪🇸</span> <span class="group-hover:underline">¿Hablas Español?</span>
+                </a>
+            </div>
+        </div>
+
+        <section class="mb-12 animate-uncurl" style="animation-delay: 0.1s;">
+            <div class="bg-canopy-100/90 rounded-2xl p-8 md:p-12 text-center shadow-sm border border-canopy-200/50 backdrop-blur-md">
                 <blockquote class="font-serif italic text-2xl md:text-3xl text-canopy-800 leading-relaxed max-w-3xl mx-auto">
                     “There is no way to happiness: happiness is the way”
                 </blockquote>
@@ -73,12 +93,12 @@
             </div>
         </section>
 
-        <div class="text-center mb-10 animate-fade-in-up" style="animation-delay: 0.1s;">
-            <h1 class="font-serif text-3xl md:text-4xl text-canopy-800 mb-2 font-medium">Therapy Online</h1>
-            <p class="text-canopy-500 font-bold tracking-widest text-xs uppercase">Individual service for self-knowledge and personal growth</p>
+        <div class="text-center mb-10 animate-fade-in-up" style="animation-delay: 0.2s;">
+            <h1 class="font-serif text-3xl md:text-4xl text-canopy-900 mb-2 font-medium drop-shadow-sm">Therapy Online</h1>
+            <p class="text-canopy-700 font-bold tracking-widest text-xs uppercase">Individual service for self-knowledge and personal growth</p>
         </div>
 
-        <section class="glass-panel p-8 mb-12 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <section class="glass-panel p-8 mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
             <h2 class="font-serif text-2xl text-canopy-800 mb-4">Who is Therapy For?</h2>
             <div class="space-y-4 text-canopy-800 leading-relaxed">
                 <p>Therapy generally helps to increase self-knowledge and self-understanding, to manage interpersonal difficulties such as romantic, family or professional relationships, to relieve tension, to promote change, and to improve mental health as a whole.</p>
@@ -87,8 +107,8 @@
             </div>
         </section>
 
-        <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <h2 class="font-serif text-3xl text-center text-canopy-900 mb-6">My Methods</h2>
+        <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.4s;">
+            <h2 class="font-serif text-3xl text-center text-canopy-900 mb-6 drop-shadow-sm">My Methods</h2>
             <div class="glass-panel p-6 md:p-8 text-canopy-800 leading-relaxed space-y-4 max-w-3xl mx-auto text-left md:text-center mb-8">
                 <p>I use internationally recognized therapy models such as Internal Family Systems (IFS) and Emotion-Focused Therapy (EFT), whose results for depression and anxiety have been proven by scientific studies. Both are non-pathologizing approaches that incorporate memory reconsolidation processes.</p>
                 <p>I also have training in Somatic Experiencing (SE), which focuses on the body's experience and the wisdom of the nervous system.</p>
@@ -136,7 +156,7 @@
             </div>
         </section>
 
-        <div class="mb-8 glass-panel p-2 animate-fade-in-up" style="animation-delay: 0.4s;">
+        <div class="mb-8 glass-panel p-2 animate-fade-in-up" style="animation-delay: 0.5s;">
             <div class="aspect-video bg-canopy-100 rounded-xl flex flex-col items-center justify-center text-canopy-400 relative overflow-hidden group cursor-pointer">
                 <div class="absolute inset-0 bg-gradient-to-tr from-canopy-200/20 to-transparent"></div>
                 <div class="w-16 h-16 bg-white/60 rounded-full flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform">
@@ -146,7 +166,7 @@
             </div>
         </div>
 
-        <section id="contact" class="mb-12 animate-fade-in-up" style="animation-delay: 0.5s;">
+        <section id="contact" class="mb-12 animate-fade-in-up" style="animation-delay: 0.6s;">
             <div class="glass-panel p-6 md:p-8">
                 <h2 class="font-serif text-3xl text-canopy-900 mb-2">Contact Me</h2>
                 <p class="text-canopy-600 mb-6">Psychological support for you around the world.</p>
@@ -176,7 +196,7 @@
             </div>
         </section>
 
-        <footer class="text-center text-canopy-600 text-xs py-6 font-medium">
+        <footer class="text-center text-canopy-700 text-xs py-6 font-medium">
             © 2025 Camila Fonseca. All rights reserved.
         </footer>
     </main>
