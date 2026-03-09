@@ -7,16 +7,21 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        cream: '#EAF2D3', paper: '#F2EFE9', sand: '#F2CC8F', navy: '#3D405B', gold: '#D97706',
+                        cream: '#EAF2D3', paper: '#F2EFE9', sand: '#F2CC8F', gold: '#D97706',
+                        navy: '#3D405B', forest: '#064E3B', 
+                        orange: { 50: '#fff7ed', 100: '#ffedd5', 500: '#F97316', 600: '#ea580c' },
                         terra: { 100: '#FCD5CE', 500: '#E07A5F', 700: '#BC5D45' },
                         sage:  { 100: '#E6F0EB', 500: '#81B29A', 700: '#5E8C76' },
+                        lightOrangeBg: '#FFF4E6',
+                        whatsapp: '#25D366',
+                        whatsappDark: '#128C7E'
                     },
                     fontFamily: { 
                         serif: ['"Playfair Display"', 'serif'], 
@@ -28,6 +33,7 @@
                         'breathe': 'breathe 6s ease-in-out infinite',
                         'breathe-scale': 'breathe-scale 10s ease-in-out infinite',
                         'bounce-subtle': 'bounce-subtle 3s infinite',
+                        'float-leaf': 'float-leaf 6s ease-in-out infinite',
                     },
                     keyframes: {
                         blob: {
@@ -46,6 +52,10 @@
                         'bounce-subtle': {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-5px)' },
+                        },
+                        'float-leaf': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '40%': { transform: 'translateY(-12px)' },
                         }
                     }
                 }
@@ -54,10 +64,16 @@
     </script>
 
     <style type="text/tailwindcss">
+        :root {
+            --shadow-base: 8px 8px 0px #81B29A;
+            --shadow-hover: 12px 12px 0px #F97316;
+        }
+        
         @layer base {
-            body {
-                @apply text-navy font-sans bg-cream overflow-x-hidden relative;
-                background-image: radial-gradient(#f5eee2 2px, transparent 2px), radial-gradient(rgba(255,255,255,0.6) 2px, transparent 2px);
+           body {
+                @apply text-navy font-sans overflow-x-hidden relative;
+                background-color: #F0FDF4; /* Crisp pale mint */
+                background-image: radial-gradient(rgba(61, 64, 91, 0.15) 2px, transparent 2px), radial-gradient(rgba(61, 64, 91, 0.08) 2px, transparent 2px); /* Navy dots */
                 background-size: 40px 40px;
                 background-position: 0 0, 20px 20px;
                 cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%2381B29A" stroke="%233D405B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto;
@@ -66,7 +82,6 @@
                 cursor: url('data:image/svg+xml;utf8,<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5.5L11.5 28L16 19L25 16L5.5 5.5Z" fill="%23E07A5F" stroke="%233D405B" stroke-width="2" stroke-linejoin="round"/></svg>') 2 2, auto !important;
             }
             
-            /* Dynamic animated highlight on hover */
             .hover-highlight {
                 background-color: theme('colors.sand');
                 transition: all 0.2s ease;
@@ -77,30 +92,113 @@
             .hover-highlight:hover {
                 box-shadow: 0 0 0 3px theme('colors.sage.400');
             }
-        }
 
-        @layer components {
-            .hover-lift {
-                @apply transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)];
+            .marker-highlight {
+                background: linear-gradient(120deg, #FED7AA 0%, #FED7AA 100%) no-repeat 0 80% / 0% 80%;
+                transition: background-size 0.6s ease-in-out; 
+                padding: 0 2px; 
+                border-radius: 2px;
             }
-            .hover-lift:hover { @apply -translate-y-1 scale-[1.01] brightness-105; }
-            .hover-lift:active { @apply translate-y-[2px] scale-[0.98] brightness-95; }
+            
+            .group:hover .marker-highlight,
+            .paper-card:hover .marker-highlight { 
+                background-size: 100% 80%; 
+            }
 
-            .paper-shadow {
-                @apply shadow-[8px_8px_0px_theme('colors.terra.500')] border-[3px] border-navy transition-all duration-300;
-            }
-            .paper-shadow:hover {
-                @apply shadow-[12px_12px_0px_theme('colors.sage.500')] border-sage-500 -translate-y-[2px] scale-[1.01] z-20;
+            /* Persist highlights on mobile screens */
+            @media (max-width: 768px) {
+                .marker-highlight {
+                    background-size: 100% 80% !important;
+                }
             }
 
             .paper-card {
-                @apply bg-white relative paper-shadow rounded-[255px_15px_225px_15px/15px_225px_15px_255px];
+                background-color: #fff; 
+                border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+                border: 3px solid #3D405B;
+                box-shadow: 8px 8px 0px #81B29A;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                position: relative;
+            }
+            .paper-card:hover {
+                box-shadow: 12px 12px 0px #E07A5F;
+                border-color: #E07A5F;
+                transform: scale(1.01) translateY(-2px);
+                z-index: 20;
+            }
+        }
+
+        @layer components {
+            .nav-pill { 
+                background: rgba(255, 255, 255, 0.9); 
+                backdrop-filter: blur(8px); 
+                border-radius: 9999px; 
+                box-shadow: var(--shadow-base);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                border: 3px solid #3D405B;
+            }
+            .nav-pill:hover {
+                box-shadow: var(--shadow-hover);
+                border-color: #F97316;
+                transform: scale(1.01) translateY(-2px);
+                z-index: 20;
+            }
+
+            #mobile-menu {
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0.3s;
+                opacity: 0; 
+                transform: translateY(-20px); 
+                visibility: hidden;
+            }
+            #mobile-menu.open { 
+                opacity: 1; 
+                transform: translateY(0); 
+                visibility: visible; 
+            }
+
+            .translate-tag {
+                background-color: white; 
+                border: 2px dashed #3D405B; 
+                border-radius: 9999px;
+                padding: 0.5rem 1.5rem; 
+                font-size: 0.875rem; 
+                font-weight: 700;
+                text-transform: uppercase; 
+                letter-spacing: 0.1em; 
+                color: #3D405B;
+                box-shadow: var(--shadow-base);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                display: inline-block; 
+                text-decoration: none;
+            }
+            .translate-tag:hover {
+                transform: scale(1.01) translateY(-2px) !important;
+                box-shadow: var(--shadow-hover); 
+                border-color: #F97316; 
+                color: #F97316;
+            }
+
+            .hover-lift {
+                @apply transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)];
+            }
+            @media (hover: hover) {
+                .hover-lift:hover { 
+                    transform: translateY(-4px) scale(1.01); 
+                    filter: brightness(1.05); 
+                }
+            }
+
+            .paper-shadow {
+                @apply shadow-[8px_8px_0px_theme('colors.sage.500')] border-[3px] border-navy transition-all duration-300;
+            }
+            .paper-shadow:hover {
+                @apply shadow-[12px_12px_0px_theme('colors.terra.500')] border-terra-500 -translate-y-[2px] scale-[1.01] z-20;
             }
 
             .sticky-note {
-                @apply relative p-6 h-fit border-2 border-navy shadow-[8px_8px_0px_theme('colors.terra.500')] transition-all duration-300;
+                @apply relative p-6 h-fit border-2 border-navy shadow-[8px_8px_0px_theme('colors.sage.500')] transition-all duration-300;
             }
-            .sticky-note:hover { @apply shadow-[12px_12px_0px_theme('colors.sage.500')] -translate-y-1 scale-[1.01] z-20; }
+            .sticky-note:hover { @apply shadow-[12px_12px_0px_theme('colors.terra.500')] -translate-y-1 scale-[1.01] z-20; }
 
             .cute-tag {
                 @apply inline-block px-4 py-2 m-1.5 border-2 border-dashed border-navy rounded-full font-bold text-sm bg-white cursor-default transition-transform;
@@ -111,7 +209,7 @@
             .cute-tag:nth-child(3n) { @apply bg-sand; }
 
             .input-base {
-                @apply w-full p-4 bg-paper rounded-xl border-b-2 border-navy/10 text-navy font-bold transition-all focus:border-sage-500 focus:outline-none placeholder:text-navy/40;
+                @apply w-full p-5 bg-paper rounded-xl border-b-2 border-navy/10 text-navy font-bold transition-all focus:border-sage-500 focus:outline-none placeholder:text-navy/40;
             }
 
             .scroll-fade-item { @apply opacity-0 translate-y-10 transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]; }
@@ -121,195 +219,254 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <div id="mobile-menu" class="fixed inset-0 bg-paper/95 z-[60] hidden flex-col items-center justify-center gap-8 text-3xl font-serif font-bold transition-opacity duration-300 opacity-0 pointer-events-none data-[open=true]:opacity-100 data-[open=true]:pointer-events-auto data-[open=true]:flex">
-        <button id="close-menu" class="absolute top-6 right-6 p-2 hover:text-sage-700" aria-label="Fechar menu">
-            <i data-lucide="x" class="w-10 h-10"></i>
+    <div id="mobile-menu" class="fixed inset-0 z-[100] bg-cream/95 backdrop-blur-md flex flex-col items-center justify-center gap-8" aria-modal="true" role="dialog">
+        <button id="mobile-menu-close" aria-label="Fechar menu" class="absolute top-8 right-8 text-navy p-2 bg-white rounded-full border-2 border-navy shadow-[8px_8px_0px_#81B29A] hover:shadow-[12px_12px_0px_#F97316] transition-all duration-300">
+            <i data-lucide="x" class="w-8 h-8"></i>
         </button>
-        <a href="index-pt.html" class="mobile-link hover:text-sage-700">Início</a>
-        <a href="approach-pt.html" class="mobile-link hover:text-sage-700">Minha Abordagem</a>
-        <a href="#contact" class="mobile-link hover:text-sage-700">Contato</a>
+        
+        <div class="font-serif text-3xl font-bold text-navy tracking-tight flex items-center gap-2 mb-4">
+            <i data-lucide="sprout" class="w-8 h-8 text-sage-700 fill-sage-700"></i> Camila Fonseca
+        </div>
+
+        <nav class="flex flex-col items-center gap-6 text-2xl font-bold text-navy">
+            <a href="index.html" class="menu-link text-orange-600 border-b-2 border-orange-500">Início</a>
+            <a href="approach.html" class="menu-link hover:text-orange-500">Minha Abordagem</a>
+            <a href="#contact" class="menu-link hover:text-orange-500">Contato</a>
+        </nav>
+
+        <div class="flex flex-col items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-navy/20 w-48 font-sans">
+            <span class="text-xs font-bold text-navy uppercase tracking-widest">Traduzir</span>
+            <a href="index.html" class="translate-tag -rotate-1 text-sm">English</a>
+            <a href="index-es.html" class="translate-tag rotate-1 text-sm">Español</a>
+        </div>
     </div>
 
     <div class="fixed -top-10 -right-10 w-[600px] h-[600px] bg-sage-100/30 rounded-full mix-blend-multiply blur-3xl animate-blob pointer-events-none"></div>
     <div class="fixed -top-10 -left-10 w-[600px] h-[600px] bg-terra-100/30 rounded-full mix-blend-multiply blur-3xl animate-blob delay-[2000ms] pointer-events-none"></div>
     <div class="fixed -bottom-10 left-[20%] w-[600px] h-[600px] bg-sand/30 rounded-full mix-blend-multiply blur-3xl animate-blob delay-[4000ms] pointer-events-none"></div>
 
-    <aside class="absolute top-[85px] md:top-32 left-4 md:left-8 z-40 flex flex-col items-start gap-1">
-        <span class="font-hand text-sage-700 text-lg md:text-xl ml-2 -rotate-6">Traduzir</span>
-        <div class="flex flex-col gap-2 md:gap-3">
-            <a href="index.html" class="paper-shadow !border-[2px] !shadow-[4px_4px_0px_theme('colors.terra.500')] bg-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[0.65rem] md:text-xs font-bold uppercase tracking-widest -rotate-1 hover:scale-105 w-fit">English</a>
-            <a href="index-es.html" class="paper-shadow !border-[2px] !shadow-[4px_4px_0px_theme('colors.terra.500')] bg-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[0.65rem] md:text-xs font-bold uppercase tracking-widest rotate-1 hover:scale-105 w-fit">Español</a>
-        </div>
+    <aside class="absolute top-32 left-8 z-40 hidden xl:flex flex-col items-start gap-3" aria-label="Seleção de idioma">
+        <span class="text-xs font-bold text-navy uppercase tracking-widest ml-2 -rotate-6">Traduzir</span>
+        <a href="index.html" class="translate-tag -rotate-1">English</a>
+        <a href="index-es.html" class="translate-tag rotate-1">Español</a>
     </aside>
 
-    <a href="https://wa.me/556196126281" target="_blank" class="fixed bottom-8 right-8 w-[60px] h-[60px] bg-sage-500 text-white rounded-full border-[3px] border-navy flex items-center justify-center shadow-[4px_4px_0px_#3D405B] z-[100] animate-bounce-subtle transition-all hover:scale-110 hover:rotate-12 hover:bg-sage-700 hover:shadow-[6px_6px_0px_#E07A5F]" aria-label="Chamar no WhatsApp">
-        <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
-    </a>
+    <div class="fixed bottom-[30px] right-[30px] z-[100]">
+        <a href="https://wa.me/556196126281" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" 
+           class="w-[60px] h-[60px] bg-[#81B29A] text-white rounded-full border-[3px] border-[#3D405B] flex items-center justify-center shadow-[4px_4px_0px_#064E3B] transition-all duration-300 ease-out hover:shadow-[6px_6px_0px_#F97316] hover:-translate-y-1 active:translate-y-0.5">
+            <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
+        </a>
+    </div>
 
-    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-6 relative z-10">
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 md:px-8 py-8 md:py-12 relative z-10">
         
-        <nav class="sticky top-4 z-50 bg-white/90 backdrop-blur-md border-2 border-navy shadow-[4px_4px_0px_#3D405B] rounded-full px-6 py-3 mb-12 flex justify-between items-center transition-all">
-            <div class="font-serif text-xl md:text-2xl font-bold tracking-tight flex items-center gap-2 hover-lift select-none">
-                <i data-lucide="sprout" class="w-6 h-6 text-sage-500 fill-sage-500 animate-bounce"></i> Camila Fonseca
+        <header class="sticky top-4 z-50 nav-pill px-6 py-3 mb-16 md:mb-24 flex justify-between items-center transition-all duration-300">
+            <div class="font-serif text-2xl font-bold text-navy tracking-tight flex items-center gap-2 select-none">
+                <i data-lucide="sprout" class="w-6 h-6 text-sage-700 fill-sage-700 animate-float-leaf"></i> Camila Fonseca
             </div>
-            <div class="hidden md:flex gap-8 text-base font-bold">
-                <a href="index-pt.html" class="text-sage-700 border-b-2 border-sage-500 hover-lift">Início</a>
-                <a href="approach-pt.html" class="hover:text-sage-700 hover-lift">Minha Abordagem</a>
-                <a href="#contact" class="hover:text-sage-700 hover-lift">Contato</a>
-            </div>
-            <button id="open-menu" class="md:hidden p-1 hover-lift" aria-label="Abrir menu">
+            
+            <nav class="hidden md:flex gap-8 text-base font-bold text-navy">
+                <a href="index.html" class="text-orange-600 border-b-2 border-orange-500 hover-lift">Início</a>
+                <a href="approach.html" class="hover:text-orange-500 hover-lift">Minha Abordagem</a>
+                <a href="#contact" class="hover:text-orange-500 hover-lift">Contato</a>
+            </nav>
+            
+            <button id="mobile-menu-btn" aria-label="Abrir menu" class="md:hidden text-navy hover-lift p-2">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
-        </nav>
+        </header>
 
-        <section class="mb-16 md:mb-24 mt-24 text-center relative z-30 scroll-fade-item px-2">
-            <div class="max-w-6xl mx-auto relative">
-                <i data-lucide="quote" class="absolute -top-8 -left-2 md:-top-12 md:-left-4 w-12 h-12 md:w-16 md:h-16 text-sage-500 fill-sage-500 -z-10 -rotate-12"></i>
-                <blockquote class="font-hand text-3xl md:text-6xl leading-tight rotate-1">
-                    "Toque os sinos que ainda podem tocar, esqueça sua oferenda perfeita, existe uma rachadura em tudo, e é assim que a luz entra."
-                </blockquote>
-                <div class="mt-8 md:mt-12">
-                    <span class="paper-shadow inline-block bg-white px-6 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest cursor-default !border-2 !shadow-[4px_4px_0px_theme('colors.terra.500')]">— Leonard Cohen</span>
-                </div>
+        <section class="mt-16 md:mt-32 mb-20 md:mb-32 relative flex flex-col justify-center items-start min-h-[400px] md:min-h-[500px] scroll-fade-item">
+            <div class="absolute -right-[40%] md:-right-[10%] -top-[5%] md:-top-[0%] z-0 pointer-events-none">
+                 <div class="rotate-[-10deg]">
+                     <img src="images/fern.png" alt="Imagem de respiração ao fundo" class="w-[130%] max-w-none opacity-100 animate-breathe-scale saturate-[1.5] contrast-[1.1]">
+                 </div>
             </div>
-        </section>
 
-        <section class="-mt-4 md:-mt-8 mb-12 md:mb-20 relative flex items-center min-h-[400px] md:min-h-[500px] scroll-fade-item">
-            <div class="absolute -right-[40%] md:-right-[10%] -top-[20%] md:-top-[60%] z-0 pointer-events-none">
-                 <img src="images/lotus_water.png" alt="" class="w-[130%] max-w-none opacity-100 animate-breathe-scale saturate-[1.5] contrast-[1.1]">
-            </div>
-            <div class="relative z-10 w-full md:w-2/3 space-y-6 bg-cream/85 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl md:rounded-none">
-                <h1 class="font-serif text-4xl md:text-6xl font-bold leading-[1.1]">
-                    Espaço para Autoconhecimento, <span class="text-sage-700 font-hand italic">Crescimento</span> e Mudança
+            <div class="relative z-10 w-full md:w-2/3 space-y-8">
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-[1.15]">
+                    Espaço para Autoconhecimento, <br/><span class="text-sage-700 font-hand italic">Crescimento</span> e Mudança
                 </h1>
-                <h2 class="font-hand text-2xl md:text-3xl text-sage-500 mt-2 mb-4">Psicoterapia para você, onde quer que você esteja</h2>
-                <div class="text-base md:text-lg font-medium leading-relaxed space-y-4 max-w-xl">
-                    <p>Boas-vindas ao meu consultório virtual. Meu nome é Camila Fonseca e fico muito feliz que você tenha chegado até aqui.</p>
-                    <p>Eu sei que, na correria do dia a dia, o autocuidado nem sempre é prioridade. Estar aqui já é um passo importante na sua jornada de autoconhecimento e transformação.</p>
-                    <p>Se você está se sentindo cansado, confuso, deprimido ou ansioso, saiba que a terapia é como pegar o caminho de volta pra casa. É como se a gente se conectasse com o nosso GPS interno enquanto viaja pelo território de quem somos. A gente se sintoniza com as nossas necessidades emocionais e aprende a tomar atitudes transformadoras. É por isso que a terapia é um investimento cujos resultados a gente sente na pele e leva pra vida toda.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-24 scroll-fade-item">
-            <div class="paper-card p-6 md:p-14 z-20"> 
-                <div class="absolute -top-5 -left-4 w-[50px] h-[50px] bg-sand border-2 border-navy rounded-full flex items-center justify-center -rotate-10 z-20 shadow-sm animate-breathe">
-                    <i data-lucide="map" class="w-6 h-6"></i>
-                </div>
+                <h2 class="font-hand text-3xl md:text-4xl text-sage-500 mt-4 mb-8">Psicoterapia para você, onde quer que esteja.</h2>
                 
-                <div class="block w-full text-base md:text-lg leading-relaxed">
-                    <h2 class="font-hand text-sage-700 text-3xl md:text-5xl mb-6">Minha Jornada</h2>
+                <div class="group max-w-lg space-y-6 bg-white/30 p-6 rounded-2xl border border-white/50 md:bg-transparent md:backdrop-blur-none md:p-0 md:rounded-none md:border-none backdrop-blur-sm">
+                    <p class="text-[#3D405B] text-xl font-medium leading-relaxed">Bem-vindo(a) ao meu consultório virtual. Meu nome é Camila Fonseca, e fico muito feliz que você tenha chegado até aqui.</p>
+                    <p class="text-[#3D405B] text-xl font-medium leading-relaxed">Na correria do dia a dia, o autocuidado muitas vezes fica em segundo plano. Estar aqui já é um primeiro passo importante na sua jornada de <span class="font-bold">autoconhecimento e transformação</span>.</p>
+                    <p class="text-[#3D405B] text-xl font-medium leading-relaxed">Se você está se sentindo cansado(a), confuso(a), com depressão ou ansiedade, saiba que a terapia pode ser um caminho de volta para casa, para si mesmo(a). Juntos, nos reconectamos com o seu <span class="font-bold">GPS interno</span> enquanto exploramos o território de quem você é. Nos sintonizamos com suas necessidades emocionais e aprendemos a tomar <span class="font-bold">ações transformadoras</span>. A terapia é um investimento para a vida toda, e seus resultados são vivenciados na pele.</p>
+                </div>
+            </div>
 
-                    <div class="relative group float-none md:float-right w-full md:w-[45%] lg:w-[40%] ml-0 md:ml-10 mb-8 md:mb-6 mt-2">
-                        <div class="absolute inset-0 bg-sage-100 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] rotate-2 translate-x-2 translate-y-2 group-hover:rotate-4 transition-transform w-full h-[300px] md:h-[350px]"></div>
-                        <img src="images/camila.png" alt="Camila Fonseca" class="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-white shadow-[6px_6px_0px_#3D405B] w-full h-[300px] md:h-[350px] object-cover transition-all duration-300 group-hover:scale-[1.01] group-hover:shadow-[10px_10px_0px_#81B29A] bg-gray-200">
-                    </div>
-
-                    <div class="space-y-6">
-                        <p>Sou psicóloga formada pela Universidade de Brasília (UnB) em 2007. Desde então, me dedico a várias áreas da Psicologia, desde a prática clínica até a psicologia comunitária em <span class="hover-highlight">comunidades Indígenas e Quilombolas.</span></p>
-                        
-                        <p>Um elemento muito especial da minha qualificação profissional é a minha própria vivência. Logo que me tornei psicóloga, percebi a necessidade de sair da minha zona de conforto e me conhecer não só através de livros ou cursos, mas através da minha própria experiência de vida.</p>
-                        
-                        <p>Numa jornada de autodescoberta, viajei pela América Latina por mais de 3 anos e meio, por terra e água, cruzando o Brasil e mais 10 países (da Argentina à Guatemala). Durante esse período, aprendi diferentes línguas e culturas, vivi situações extremas e convivi com pessoas de realidades super diversas.</p>
-                        
-                        <p>Outro aspecto pessoal marcante pro meu trabalho é a minha dedicação intensa à <span class="hover-highlight">prática de mindfulness. Por 2 anos, vivi exclusivamente em centros de meditação</span> tanto no Brasil quanto na Índia. Durante esse tempo, aprofundei meu conhecimento da natureza humana através da observação interna, momento a momento.</p>
-                        
-                        <p>Quando me tornei mãe, entrei em contato com as dores do meu próprio trauma complexo. Por causa disso, eu <span class="hover-highlight">estudei a fundo e me qualifiquei em abordagens reconhecidas internacionalmente</span> nessa área, tanto para o meu próprio bem quanto para o dos meus clientes.</p>
-                        
-                        <p>Atualmente, atendo presencialmente e online em inglês, português e espanhol, recebendo pessoas de várias partes do mundo, incluindo Brasil, EUA, Austrália, Índia, Nova Zelândia, Suíça e Japão.</p>
-                        
-                        <p>No meu tempo livre, adoro dar risada com a minha filha e o meu marido, nadar ao ar livre, fazer todo tipo de artesanato, tocar as mesmas músicas antigas no violão, pedalar pelas ruas coloridas do interior no meio de crianças e animais, e subir a montanha de Arunachala pra meditar nas cavernas.</p>
-                    </div>
-                    <div class="clear-both"></div>
+            <div class="w-full flex flex-col items-center mt-12 relative z-10">
+                <div class="relative w-fit">
+                    <button id="open-video" class="group relative block w-full max-w-[420px] md:max-w-[480px] mt-8 bg-white border-[3px] border-navy shadow-[8px_8px_0px_theme('colors.sage.500')] rounded-[255px_15px_225px_15px/15px_225px_15px_255px] -rotate-1 transition-all duration-300 hover:shadow-[12px_12px_0px_theme('colors.terra.500')] hover:-translate-y-2 focus:outline-none overflow-hidden" aria-label="Reproduzir Vídeo de Introdução">
+                        <div class="relative w-full aspect-video overflow-hidden">
+                            <img src="https://img.youtube.com/vi/KNk__uJXRO8/maxresdefault.jpg" alt="Miniatura do Vídeo de Camila Fonseca" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-[0.9] group-hover:saturate-100">
+                            <div class="absolute inset-0 flex items-end justify-end p-4 md:p-6 bg-navy/10 group-hover:bg-transparent transition-colors duration-300">
+                                <div class="bg-cream border-[3px] border-navy text-sage-700 rounded-full p-3 md:p-4 shadow-[4px_4px_0px_theme('colors.navy')] transition-all duration-300 group-hover:scale-110 group-hover:bg-sage-500 group-hover:text-white group-hover:shadow-[6px_6px_0px_theme('colors.navy')]">
+                                    <i data-lucide="play" class="w-6 h-6 md:w-8 md:h-8 fill-current ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <span class="block mt-4 text-center font-hand text-xl text-sage-700 rotate-2">Clique para assistir!</span>
                 </div>
             </div>
         </section>
 
-        <section class="mb-32 scroll-fade-item max-w-5xl mx-auto">
+        <section class="mb-24 md:mb-36 text-center relative z-30 scroll-fade-item px-4 md:px-8">
+            <div class="max-w-6xl mx-auto relative py-8">
+                <blockquote class="font-hand text-4xl md:text-6xl leading-relaxed rotate-1">
+                    "Toque os sinos que ainda podem tocar, esqueça sua oferenda perfeita, há uma rachadura em tudo, é assim que a luz entra." <br>
+                    <span class="block mt-8 md:mt-10 text-3xl md:text-5xl opacity-90">— Leonard Cohen</span>
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="mb-32 md:mb-48 scroll-fade-item max-w-5xl mx-auto">
              <div class="bg-paper p-6 md:p-8 rounded-[2rem] border-2 border-dashed border-sage-500 relative text-center z-10">
                 <h3 class="font-serif text-2xl md:text-4xl mb-8 font-normal">Qualificações e Credenciais</h3>
                 <div class="flex flex-wrap justify-center content-center gap-2 md:gap-3">
-                    <span class="cute-tag">Graduação em Psicologia – Universidade de Brasília (UnB)</span>
-                    <span class="cute-tag">IFS Nível 1 – Internal Family Systems Institute, EUA</span>
-                    <span class="cute-tag">Experiência Somática (SE) Intermediário – SE Institute, EUA</span>
-                    <span class="cute-tag">Deep Brain Reorienting (DBR) Nível 1 – DBR Institute, Escócia</span>
+                    <span class="cute-tag">Formação em Psicologia – Universidade de Brasília (UnB)</span>
+                    <span class="cute-tag">Nível 1 em IFS – Internal Family Systems Institute, EUA</span>
+                    <span class="cute-tag">Intermediário em Experiência Somática (SE) – SE Institute, EUA</span>
+                    <span class="cute-tag">Nível 1 em Deep Brain Reorienting (DBR) – DBR Institute, Escócia</span>
                     <span class="cute-tag">C-IPNB – Mindsight Institute, EUA</span>
-                    <span class="cute-tag">Terapia Focada na Emoção (EFT) Nível B – ISEFT, Canadá</span>
-                    <span class="cute-tag">Terapia de Trauma Somático Baseada no IFS (2026) – EmbodyLab, EUA</span>
+                    <span class="cute-tag">Nível B em Terapia Focada na Emoção (EFT) – ISEFT, Canadá</span>
+                    <span class="cute-tag">Terapia de Trauma Somático Informada por IFS (2026) – EmbodyLab, EUA</span>
                     <span class="cute-tag">Psicoterapia Centrada na Pessoa – EncontroACP, Brasil</span>
-                    <span class="cute-tag">Terapia Cognitiva Baseada em Mindfulness (MBCT) – Mindfulness Center, Brasil</span>
+                    <span class="cute-tag">Terapia Cognitiva Baseada em Mindfulness (MBCT) – Centro de Mindfulness, Brasil</span>
                 </div>
                 <div class="mt-6"><i data-lucide="flower-2" class="w-8 h-8 text-sage-700 mx-auto opacity-80"></i></div>
             </div>
         </section>
 
-        <section class="mb-24">
-            <h2 class="text-center font-hand text-4xl md:text-5xl text-sage-700 mb-12 font-bold scroll-fade-item tracking-wide">Depoimentos de Clientes</h2>
+        <section class="mb-32 md:mb-40 scroll-fade-item">
+            <article class="paper-card p-8 md:p-16 z-20 mx-auto"> 
+                <div class="absolute -top-6 -left-6 w-[60px] h-[60px] bg-sand border-2 border-navy rounded-full flex items-center justify-center -rotate-10 z-20 shadow-sm animate-breathe">
+                    <i data-lucide="map" class="w-8 h-8"></i>
+                </div>
+                	
+                	<h2 class="flex flex-row items-baseline justify-start font-serif text-4xl md:text-5xl mb-8 text-forest">
+    						<span>Minha</span>
+    						<span class="font-hand text-sage-700 text-[1.25em] ml-3 mt-1">Jornada</span>
+    					</h2>
+
+
+                <div class="text-forest/90 leading-relaxed text-lg md:text-xl font-medium space-y-6 md:space-y-8 w-full">
+                    
+                    <div class="relative group/img float-none md:float-right w-full md:w-[45%] lg:w-[40%] ml-0 md:ml-12 mb-10 md:mb-8 mt-2">
+                        <div class="absolute inset-0 bg-sage-100 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] rotate-2 translate-x-3 translate-y-3 group-hover/img:rotate-4 transition-transform w-full h-[350px] md:h-[400px]"></div>
+                        <img src="images/camila.png" alt="Camila Fonseca" class="relative rounded-[30%_70%_70%_30%/30%_30%_70%_70%] border-4 border-white shadow-[6px_6px_0px_theme('colors.sage.500')] w-full h-[350px] md:h-[400px] object-cover transition-all duration-300 group-hover/img:scale-[1.01] group-hover/img:shadow-[10px_10px_0px_theme('colors.terra.500')] bg-gray-200">
+                    </div>
+
+                    <p>Desde que me formei na Universidade de Brasília em 2007, minha prática psicológica se estendeu de ambientes clínicos ao trabalho comunitário junto a <span class="marker-highlight">comunidades Indígenas e Quilombolas</span>.</p>
+                    
+                    <p>No início da minha carreira, percebi que precisava entender a natureza humana através da <span class="marker-highlight">experiência vivida</span>, e não apenas pelo estudo acadêmico. Essa convicção me levou a uma jornada de três anos e meio pela América Latina. Viajando por terra e água através de onze países, mergulhei em novos idiomas, naveguei em ambientes extremos e me conectei com realidades totalmente diferentes.</p>
+                    
+                    <p>Minha prática também é profundamente ancorada no mindfulness. Por dois anos, vivi exclusivamente em centros de meditação pelo Brasil e pela Índia, estudando a natureza humana por meio da <span class="marker-highlight">observação interna momento a momento</span>.</p>
+                    
+                    <p>Mais tarde, a maternidade me colocou frente a frente com meu próprio trauma complexo. Esse catalisador pessoal me impulsionou a me especializar em abordagens de trauma reconhecidas internacionalmente, transformando tanto minha própria cura quanto meu trabalho clínico.</p>
+                    
+                    <p>Hoje, ofereço sessões online e presenciais em <span class="marker-highlight">Inglês, Português e Espanhol</span>, prestando apoio a clientes globalmente.</p>
+                    
+                    <p>Fora do trabalho, passo meu tempo rindo com meu marido e minha filha, nadando ao ar livre, tocando músicas conhecidas no meu violão, pedalando por estradas rurais e subindo a montanha Arunachala para meditar em suas cavernas.</p>
+                    
+                    <div class="clear-both"></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="mb-32 md:mb-40">
+            <h2 class="text-center font-hand text-5xl md:text-6xl text-sage-700 mb-16 font-bold scroll-fade-item tracking-wide">Depoimentos de Clientes</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start px-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14 items-start px-4 md:px-0">
                 <article class="sticky-note bg-yellow-100 rotate-1 scroll-fade-item">
                     <div class="flex justify-center text-gold mb-3 gap-2"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                    <p class="font-hand text-lg mb-4 leading-tight">"A minha experiência de trabalho com a Camila tem sido incrivelmente gratificante. Quando cheguei a Tiruvannamalai, senti que precisava de apoio, pois me sentia incomodada com velhos padrões surgindo em busca de atenção. A Camila conduziu nossas sessões com respeito, cuidado e profundidade; ela me apoiou e me guiou a explorar minhas próprias profundezas com segurança e confiança. A abordagem leve e alegre da Camila me deixou à vontade imediatamente, e sua presença amorosa, compaixão e gentileza foram fundamentais para me ajudar a encontrar a cura de que eu precisava. No curto espaço de tempo e de sessões, a sensibilidade e sabedoria da Camila permitiram o meu crescimento emocional, espiritual e psicológico."</p>
-                    <p class="text-xs font-bold uppercase opacity-50 text-right">— Nandita, EUA</p>
+                    <p class="font-hand text-lg mb-4 leading-tight">"A minha experiência trabalhando com a Camila tem sido incrivelmente gratificante. Quando cheguei a Tiruvannamalai, senti que precisava de apoio, pois estava me sentindo desconfortável com velhos padrões surgindo e exigindo atenção. A Camila conduziu nossas sessões com respeito, cuidado e perspicácia; e me apoiou e guiou para explorar minhas profundezas com segurança e confiança. A abordagem leve e alegre da Camila me deixou à vontade imediatamente, e sua presença amorosa, compaixão e gentileza foram essenciais para me ajudar a encontrar a cura de que eu precisava. Em pouco tempo, as sessões com a sensibilidade e sabedoria da Camila permitiram meu crescimento emocional, espiritual e psicológico."</p>
+                    <p class="text-xs font-bold uppercase opacity-50 text-right">— Liam, Irlanda</p>
                 </article>
 
-                <article class="sticky-note bg-blue-100 -rotate-2 scroll-fade-item mt-16 md:mt-15">
+                <article class="sticky-note bg-blue-100 -rotate-2 scroll-fade-item mt-16 md:mt-20">
                     <div class="flex justify-center text-gold mb-3 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                    <p class="font-hand text-lg mb-4 leading-tight">"A Camila é uma profissional muito comprometida, dedicada e atenta. As sessões com ela têm sido uma troca super rica, que tem feito um bem enorme pra minha vida. Faço sessões semanais com ela há quase um ano e estou muito feliz por tê-la conhecido e iniciado esse processo."</p>
-                    <p class="text-xs font-bold uppercase opacity-50 text-right">— Livia, Japão</p>
+                    <p class="font-hand text-lg mb-4 leading-tight">"A Camila é uma profissional muito comprometida, dedicada e atenciosa. As sessões com ela têm sido uma troca muito enriquecedora que tem feito muito bem para minha vida. Faço sessões semanais com ela há quase um ano, e estou muito feliz por tê-la conhecido e iniciado esse processo."</p>
+                    <p class="text-xs font-bold uppercase opacity-50 text-right">— Livia, Brasil</p>
                 </article>
 
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-10 md:gap-14">
                     <article class="sticky-note bg-pink-100 rotate-2 scroll-fade-item">
                         <div class="flex justify-center text-gold mb-3 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                        <p class="font-hand text-lg mb-4 leading-tight">"A Camila tem um jeito muito gentil. Eu sempre me sinto seguro nas minhas sessões com ela. Ela tem uma forma muito perspicaz de me empoderar e me ajudar a olhar além da superfície do que estou dizendo. Ela tem um coração cheio de amor e compaixão."</p>
-                        <p class="text-xs font-bold uppercase opacity-50 text-right">— Liam, Irlanda</p>
+                        <p class="font-hand text-lg mb-4 leading-tight">"A Camila tem um jeito muito gentil. Eu sempre me sinto segura nas minhas sessões com ela. Ela tem uma maneira muito perspicaz de me fortalecer e me ajudar a olhar além da superfície do que estou dizendo. Ela tem um coração tão amoroso e compassivo."</p>
+                        <p class="text-xs font-bold uppercase opacity-50 text-right">— Nandita, EUA</p>
                     </article>
                     <article class="sticky-note bg-green-100 rotate-[0.5deg] scroll-fade-item">
                         <div class="flex justify-center text-gold mb-3 gap-1"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                        <p class="font-hand text-lg mb-4 leading-tight">"Uma excelente profissional. Muito cuidadosa e atenta a cada detalhe. Ela cria um espaço seguro e muito acolhedor, sem julgamentos."</p>
-                        <p class="text-xs font-bold uppercase opacity-50 text-right">— Massumy, EUA/Brasil</p>
+                        <p class="font-hand text-lg mb-4 leading-tight">"Uma excelente profissional. Muito cuidadosa e atenta a cada detalhe. Ela cria um espaço seguro e acolhedor, sem julgamentos."</p>
+                        <p class="text-xs font-bold uppercase opacity-50 text-right">— Massumy, Japão</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="mb-12 scroll-fade-item">
-            <div class="paper-card !rotate-0 p-6 md:p-12 !border-0 md:!border-[3px]">
-                <div class="absolute -top-5 -left-4 w-[50px] h-[50px] bg-terra-100 border-2 border-navy rounded-full flex items-center justify-center -rotate-10 z-20 shadow-sm animate-breathe">
-                    <i data-lucide="sparkles" class="text-terra-700 w-6 h-6"></i>
+        <section id="contact" class="mb-20 md:mb-24 scroll-fade-item">
+            <div class="paper-card !rotate-0 p-8 md:p-16">
+                <div class="absolute -top-6 -left-6 w-[60px] h-[60px] bg-terra-100 border-2 border-navy rounded-full flex items-center justify-center -rotate-10 z-20 shadow-sm animate-breathe">
+                    <i data-lucide="sparkles" class="text-terra-700 w-8 h-8"></i>
                 </div>
-                <div class="text-center mb-8">
-                    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-bold">Vamos Conversar</h2>
-                    <p class="font-hand text-lg md:text-xl text-sage-500">Apoio psicológico para você em qualquer lugar do mundo.</p>
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-4xl md:text-5xl mb-4 font-bold">Vamos Conversar</h2>
+                    <p class="font-hand text-xl md:text-2xl text-sage-500">Apoio psicológico para você em qualquer lugar do mundo.</p>
                 </div>
-                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 max-w-2xl mx-auto">
-                    <input type="hidden" name="access_key" value="55c1f60e-73d1-4273-9a0f-74c62d8bd946">
-                    <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou-pt">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input type="text" name="firstName" placeholder="Nome" required class="input-base hover-lift">
-                        <input type="text" name="lastName" placeholder="Sobrenome" class="input-base hover-lift">
+                <div class="max-w-3xl mx-auto">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-8">
+                        <input type="hidden" name="access_key" value="55c1f60e-73d1-4273-9a0f-74c62d8bd946">
+                        <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <input type="text" name="firstName" placeholder="Nome" required class="input-base hover-lift">
+                            <input type="text" name="lastName" placeholder="Sobrenome" class="input-base hover-lift">
+                        </div>
+                        <input type="email" name="email" placeholder="Seu E-mail" required class="input-base hover-lift">
+                        <textarea name="message" rows="5" placeholder="Como posso te ajudar?" required class="input-base hover-lift"></textarea>
+                        
+                        <button type="submit" class="w-full bg-navy text-white text-xl md:text-2xl font-bold py-5 rounded-xl shadow-[4px_4px_0px_theme('colors.sage.500')] border-2 border-navy transition-all flex justify-center items-center gap-3 hover:shadow-[6px_6px_0px_theme('colors.terra.500')] hover:-translate-y-1 active:translate-y-0.5">
+                            Enviar Mensagem <i data-lucide="send" class="w-6 h-6"></i>
+                        </button>
+                    </form>
+
+                    <div class="flex items-center gap-4 my-8">
+                        <div class="h-[2px] flex-1 bg-navy/10 rounded-full"></div>
+                        <span class="font-bold text-navy/40 font-sans uppercase tracking-widest text-sm">Ou</span>
+                        <div class="h-[2px] flex-1 bg-navy/10 rounded-full"></div>
                     </div>
-                    <input type="email" name="email" placeholder="Seu E-mail" required class="input-base hover-lift">
-                    <textarea name="message" rows="4" placeholder="Como posso ajudar?" required class="input-base hover-lift"></textarea>
-                    
-                    <button type="submit" class="w-full bg-navy text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.terra.500')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.sage.500')] hover:-translate-y-1 active:translate-y-0.5">
-                        Enviar Mensagem <i data-lucide="send" class="w-5 h-5"></i>
-                    </button>
-                </form>
+
+                    <a href="https://wa.me/556196126281" target="_blank" rel="noopener noreferrer" 
+                       class="w-full bg-[#81B29A] text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_#064E3B] border-2 border-[#3D405B] transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_#F97316] hover:-translate-y-1 active:translate-y-0.5">
+                        Ir para o meu WhatsApp <i data-lucide="message-circle" class="w-6 h-6 ml-1"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
-        <footer class="text-center opacity-60 text-sm py-8 font-bold">
-            © 2025 Camila Fonseca. Feito com sol e terra.
+        <footer class="text-center opacity-60 text-base py-10 font-bold">
+            © 2026 Camila Fonseca. Feito com sol e terra.
         </footer>
     </main>
+
+    <div id="video-modal" class="fixed inset-0 z-[110] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out">
+        <div id="video-backdrop" class="absolute inset-0 bg-paper/95 backdrop-blur-sm cursor-pointer"></div>
+        <div id="video-content" class="relative z-20 w-full max-w-4xl mx-4 bg-white p-2 md:p-4 rounded-2xl border-[3px] border-navy shadow-[12px_12px_0px_theme('colors.sage.500')] transform scale-95 transition-transform duration-500 ease-out">
+            <button id="close-video" class="absolute -top-12 right-0 md:-right-12 p-2 text-navy hover:text-terra-500 hover:scale-110 transition-all" aria-label="Fechar vídeo">
+                <i data-lucide="x" class="w-10 h-10"></i>
+            </button>
+            <div class="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-navy bg-cream">
+                <iframe id="youtube-iframe" class="absolute top-0 left-0 w-full h-full" src="" title="Vídeo de Introdução da Camila Fonseca" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons({ attrs: { strokeWidth: 2.5 } });
         
-        // --- Scroll Animation ---
         const observer = new IntersectionObserver(
             (entries) => entries.forEach(entry => {
                 if(entry.isIntersecting) entry.target.classList.add('scroll-fade-visible');
@@ -318,15 +475,56 @@
         );
         document.querySelectorAll('.scroll-fade-item').forEach(el => observer.observe(el));
 
-        // --- Mobile Menu ---
-        const menu = document.getElementById('mobile-menu');
-        const toggleMenu = () => {
-            const isOpen = menu.getAttribute('data-open') === 'true';
-            menu.setAttribute('data-open', !isOpen);
+        // --- Mobile Menu Logic ---
+        const menuBtn = document.getElementById('mobile-menu-btn'); 
+        const menuClose = document.getElementById('mobile-menu-close'); 
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        function toggleMenu() {
+            const isOpen = mobileMenu.classList.contains('open');
+            
+            if (isOpen) {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+                document.body.style.overflowX = 'hidden'; 
+            } else {
+                mobileMenu.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuClose.addEventListener('click', toggleMenu);
+        menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // --- Video Lightbox Logic ---
+        const videoModal = document.getElementById('video-modal');
+        const openVideoBtn = document.getElementById('open-video');
+        const closeVideoBtn = document.getElementById('close-video');
+        const videoBackdrop = document.getElementById('video-backdrop');
+        const videoContent = document.getElementById('video-content');
+        const youtubeIframe = document.getElementById('youtube-iframe');
+
+        const youtubeUrl = "https://www.youtube.com/embed/KNk__uJXRO8?si=mPgmrUW840zhLm5o&autoplay=1&rel=0";
+
+        const openModal = () => {
+            youtubeIframe.src = youtubeUrl; 
+            videoModal.classList.remove('opacity-0', 'pointer-events-none');
+            videoContent.classList.remove('scale-95');
+            videoContent.classList.add('scale-100');
         };
 
-        ['open-menu', 'close-menu'].forEach(id => document.getElementById(id).addEventListener('click', toggleMenu));
-        document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', toggleMenu));
+        const closeModal = () => {
+            videoModal.classList.add('opacity-0', 'pointer-events-none');
+            videoContent.classList.remove('scale-100');
+            videoContent.classList.add('scale-95');
+            setTimeout(() => { youtubeIframe.src = ""; }, 500); 
+        };
+
+        openVideoBtn.addEventListener('click', openModal);
+        closeVideoBtn.addEventListener('click', closeModal);
+        videoBackdrop.addEventListener('click', closeModal);
     </script>
 </body>
 </html>

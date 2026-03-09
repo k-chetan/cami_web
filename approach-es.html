@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nanum+Brush+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
     <script>
@@ -35,6 +34,8 @@
                         'blob': 'blob 7s infinite',
                         'gentle-grow': 'gentle-grow 10s ease-in-out infinite',
                         'breathe': 'breathe 6s ease-in-out infinite',
+                        'calm-bounce': 'calm-bounce 4s ease-in-out infinite',
+                        'slow-spin': 'spin 12s linear infinite',
                     },
                     keyframes: {
                         blob: {
@@ -49,6 +50,10 @@
                         breathe: {
                             '0%, 100%': { transform: 'rotate(-10deg) scale(1)' },
                             '50%': { transform: 'rotate(-10deg) scale(1.05)' },
+                        },
+                        'calm-bounce': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
                         }
                     }
                 }
@@ -97,6 +102,21 @@
             z-index: 20;
         }
 
+        /* Static Card for Contact Form (Shadow hover only, no translate) */
+        .static-card {
+            background-color: #fff; 
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            position: relative;
+            box-shadow: var(--shadow-base);
+            transition: box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease;
+            border: 3px solid #3D405B;
+        }
+        .static-card:hover {
+            box-shadow: var(--shadow-hover);
+            border-color: #F97316;
+            z-index: 20;
+        }
+
         .paper-card {
             background-color: #fff; 
             border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
@@ -120,6 +140,11 @@
             padding: 0 2px; border-radius: 2px;
         }
         .paper-card:hover .marker-highlight { background-size: 100% 80%; }
+        
+        /* Force highlight visibility on mobile where hover is absent */
+        @media (max-width: 768px) {
+            .marker-highlight { background-size: 100% 80%; }
+        }
 
         .translate-tag {
             background-color: white; border: 2px dashed #3D405B; border-radius: 9999px;
@@ -160,72 +185,60 @@
         <div class="fixed top-[-10%] left-[-10%] w-[600px] h-[600px] bg-terra-100/30 rounded-full mix-blend-multiply blur-3xl opacity-70 animate-blob pointer-events-none" style="animation-delay: 2s"></div>
     </div>
     
-    <aside class="absolute top-32 left-8 z-40 hidden xl:flex flex-col items-start gap-3" aria-label="Selección de idioma">
+    <aside class="absolute top-32 left-8 z-40 hidden xl:flex flex-col items-start gap-3" aria-label="Language selection">
         <span class="text-xs font-bold text-navy uppercase tracking-widest ml-2 -rotate-6">Traducir</span>
-        <a href="approach.html" class="translate-tag -rotate-1">English</a>
-        <a href="approach-pt.html" class="translate-tag rotate-1">Português</a>
+        <a href="approach-pt.html" class="translate-tag -rotate-1">Português</a>
+        <a href="approach-es.html" class="translate-tag rotate-1">Español</a>
     </aside>
 
     <div class="fixed bottom-[30px] right-[30px] z-[100]">
-        <a href="https://wa.me/556196126281" target="_blank" aria-label="Hablar por WhatsApp" 
-           class="w-[60px] h-[60px] bg-sage-500 text-white rounded-full border-[3px] border-navy flex items-center justify-center shadow-[4px_4px_0px_#81B29A] hover:scale-110 hover:rotate-12 hover:bg-orange-500 hover:shadow-[6px_6px_0px_#F97316] transition-all animate-bounce">
+        <a href="#contact" aria-label="Scroll to contact form" 
+           class="w-[60px] h-[60px] bg-sage-500 text-white rounded-full border-[3px] border-navy flex items-center justify-center shadow-[4px_4px_0px_theme('colors.forest')] transition-all duration-300 ease-out hover:shadow-[6px_6px_0px_theme('colors.orange.500')] hover:-translate-y-1 active:translate-y-0.5">
             <i data-lucide="message-circle" class="w-8 h-8 fill-current"></i>
         </a>
     </div>
 
     <div id="mobile-menu" class="fixed inset-0 z-[100] bg-cream/95 backdrop-blur-md flex flex-col items-center justify-center gap-8" aria-modal="true" role="dialog">
-        <button id="mobile-menu-close" aria-label="Cerrar menú" class="absolute top-8 right-8 text-navy p-2 bg-white rounded-full border-2 border-navy shadow-box hover:shadow-hover">
+        <button id="mobile-menu-close" aria-label="Close menu" class="absolute top-8 right-8 text-navy p-2 bg-white rounded-full border-2 border-navy shadow-box hover:shadow-hover">
             <i data-lucide="x" class="w-8 h-8"></i>
         </button>
         
         <div class="font-serif text-3xl font-bold text-navy tracking-tight flex items-center gap-2 mb-4">
-            <i data-lucide="sprout" class="w-8 h-8 text-orange-500 fill-orange-500"></i> Camila Fonseca
+            <i data-lucide="sun" class="w-8 h-8 text-orange-500 fill-orange-500 animate-slow-spin"></i> Camila Fonseca
         </div>
 
         <nav class="flex flex-col items-center gap-6 text-2xl font-bold text-navy">
-            <a href="index-es.html" class="menu-link hover:text-orange-500">Inicio</a>
-            <a href="approach-es.html" class="menu-link text-orange-600 border-b-2 border-orange-500">Mi Enfoque</a>
+            <a href="index.html" class="menu-link hover:text-orange-500">Inicio</a>
+            <a href="approach.html" class="menu-link text-orange-600 border-b-2 border-orange-500">Mi Enfoque</a>
             <a href="#contact" class="menu-link hover:text-orange-500">Contacto</a>
         </nav>
 
         <div class="flex flex-col items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-navy/20 w-48">
             <span class="text-xs font-bold text-navy uppercase tracking-widest">Traducir</span>
-            <a href="approach.html" class="translate-tag -rotate-1 text-sm">English</a>
-            <a href="approach-pt.html" class="translate-tag rotate-1 text-sm">Português</a>
+            <a href="approach-pt.html" class="translate-tag -rotate-1 text-sm">Português</a>
+            <a href="approach-es.html" class="translate-tag rotate-1 text-sm">Español</a>
         </div>
     </div>
 
-    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-6 relative z-10">
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-12 md:py-16 relative z-10">
         
-        <header class="sticky top-4 z-50 nav-pill px-6 py-3 mb-12 flex justify-between items-center transition-all duration-300">
+        <header class="sticky top-4 z-50 nav-pill px-6 py-3 mb-16 md:mb-24 flex justify-between items-center transition-all duration-300">
             <div class="font-serif text-2xl font-bold text-navy tracking-tight flex items-center gap-2 hover-lift">
-                <i data-lucide="sprout" class="w-6 h-6 text-orange-500 fill-orange-500 animate-bounce"></i> Camila Fonseca
+                <i data-lucide="sun" class="w-6 h-6 text-orange-500 fill-orange-500 animate-slow-spin"></i> Camila Fonseca
             </div>
             <nav class="hidden md:flex gap-8 text-base font-bold text-navy">
-                <a href="index-es.html" class="hover:text-orange-500 hover-lift">Inicio</a>
-                <a href="approach-es.html" class="text-orange-600 border-b-2 border-orange-500 hover-lift">Mi Enfoque</a>
+                <a href="index.html" class="hover:text-orange-500 hover-lift">Inicio</a>
+                <a href="approach.html" class="text-orange-600 border-b-2 border-orange-500 hover-lift">Mi Enfoque</a>
                 <a href="#contact" class="hover:text-orange-500 hover-lift">Contacto</a>
             </nav>
-            <button id="mobile-menu-btn" aria-label="Abrir menú" class="md:hidden text-navy hover-lift p-2">
+            <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden text-navy hover-lift p-2">
                 <i data-lucide="menu" class="w-8 h-8"></i>
             </button>
         </header>
 
-        <section class="mb-24 md:mb-48 mt-16 md:mt-32 text-center relative z-30 scroll-fade-item">
-            <div class="max-w-6xl mx-auto relative px-4">
-                <i data-lucide="quote" class="absolute -top-12 -left-4 w-12 h-12 md:w-16 md:h-16 text-orange-400 fill-orange-400 -z-10 transform -rotate-12"></i>
-                <blockquote class="font-hand text-4xl md:text-6xl text-navy leading-[1.2] md:leading-[1.1]">
-                    "No hay un camino para la felicidad: la felicidad es el camino."
-                </blockquote>
-                <div class="mt-12">
-                    <span class="shadow-box bg-white px-6 py-2 border-2 border-dashed border-navy rounded-full text-xs md:text-sm font-bold text-navy uppercase tracking-widest inline-block">— Thich Nhat Hanh</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-20 md:mb-32 relative flex items-center min-h-[400px] md:min-h-[500px] overflow-visible scroll-fade-item">
-            <div class="absolute right-[-10%] md:right-[-5%] top-[-10%] md:top-[-40%] z-0 pointer-events-none">
-                 <img src="images/fern_water.png" alt="Helecho Decorativo" loading="lazy" class="w-[120%] max-w-none animate-gentle-grow drop-shadow-2xl">
+        <section class="mb-16 md:mb-28 relative flex items-center min-h-[400px] md:min-h-[500px] overflow-visible scroll-fade-item">
+            <div class="absolute right-[-10%] md:right-[-5%] top-[-10%] md:top-[-0%] z-0 pointer-events-none">
+                 <img src="images/lotus.png" alt="Decorative Background Element" loading="lazy" class="w-[120%] max-w-none animate-gentle-grow drop-shadow-2xl">
             </div>
 
             <div class="relative z-10 w-full md:w-2/3 space-y-6">
@@ -233,46 +246,67 @@
                     ¿Para quién es la <span class="text-orange-600 font-hand italic">Terapia</span>?
                 </h1>
                 <div class="text-navy text-lg font-medium leading-relaxed space-y-4 max-w-md bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl md:rounded-none border border-white/50 md:border-none">
-                    <p>La terapia generalmente ayuda a aumentar el autoconocimiento y la autocomprensión, a lidiar con <span class="marker-highlight font-bold">dificultades interpersonales</span> como relaciones amorosas, familiares o profesionales, a aliviar tensiones, promover cambios y mejorar la salud mental en su conjunto.</p>
-                    <p>El aumento de las investigaciones científicas en el área y el desarrollo de <span class="marker-highlight font-bold">terapias basadas en evidencia</span> han ayudado a difundir la importancia de la terapia para la salud mental.</p>
-                    <p>La psicoterapia es un espacio seguro para sumergirse en el origen de ciertos patrones de emociones y comportamientos, y también para <span class="marker-highlight font-bold">procesar los desafíos</span> del momento presente.</p>
+                    <p>La terapia aumenta el autoconocimiento, te ayuda a manejar las <span class="marker-highlight font-bold">dificultades interpersonales</span> en tus relaciones, alivia la tensión y mejora tu salud mental en general.</p>
+                    <p>Respaldada por una creciente investigación científica, la <span class="marker-highlight font-bold">psicoterapia basada en la evidencia</span> te ofrece un espacio seguro para investigar los orígenes de tus patrones emocionales y de comportamiento, mientras procesas los desafíos del momento presente.<br><br></p>
                 </div>
+
+                <div class="paper-card p-3 w-full max-w-[450px] hover-lift group mt-32 md:mt-48">
+                    <div class="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-navy/20 shadow-inner cursor-pointer" onclick="openVideoModal('GQqGz98sz6M?si=SjwpBIz7wjFknO18')">
+                        <img src="https://img.youtube.com/vi/GQqGz98sz6M/hqdefault.jpg" alt="Therapy Introduction Video" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        
+                        <div class="absolute inset-0 bg-navy/20 transition-colors duration-300 group-hover:bg-transparent">
+                            <div class="absolute bottom-4 right-4 bg-white/95 p-4 rounded-full shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                                <i data-lucide="play" class="w-6 h-6 text-orange-500 fill-orange-500 ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 flex items-center justify-center text-center px-2">
+                        <span class="font-bold text-navy text-sm">Mira este video donde hablo sobre mis enfoques.</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section class="mb-16 md:mb-20 scroll-fade-item mt-16 md:mt-32">
+        <section class="mt-16 md:mt-32 mb-12 md:mb-16 text-center relative z-30 scroll-fade-item">
+            <div class="max-w-6xl mx-auto relative px-4">
+                <blockquote class="font-hand text-4xl md:text-6xl text-navy leading-[1.2] md:leading-[1.1]">
+                    "No hay un camino hacia la felicidad: <br>la felicidad es el camino."<br>
+                    — Thich Nhat Hanh
+                </blockquote>
+            </div>
+        </section>
+
+        <section class="mb-16 md:mb-24 scroll-fade-item mt-12 md:mt-16">
             <div class="flex flex-col md:flex-row gap-8 items-end">
-                <div class="w-full md:w-1/3 flex flex-col justify-start pl-2 md:pl-6">
-                    <h2 class="font-serif text-5xl md:text-7xl font-bold leading-none text-forest">Mis</h2>
-                    <h2 class="font-hand text-5xl md:text-7xl text-coral leading-none self-start md:self-start">Métodos</h2>
-                </div>
-                <div class="w-full md:w-2/3 text-lg font-bold text-forest/90 leading-relaxed space-y-6">
-                    <p>Uso modelos de terapia reconocidos internacionalmente, como Sistemas Familiares Internos (IFS) y Terapia Centrada en las Emociones (EFT), que tienen resultados comprobados por estudios científicos para la depresión y la ansiedad. Ambos son <span class="marker-highlight font-bold">enfoques no patologizantes</span> que incorporan procesos de reconsolidación de memoria.</p>
-                    <p>También tengo formación en Experiencia Somática (SE), que se centra en la experiencia del cuerpo y en la <span class="marker-highlight font-bold">sabiduría del sistema nervioso</span>.</p>
-                    <p>Tengo un gran interés en el área de Trauma Complejo y trabajo somático. Por eso, siempre me estoy actualizando con lecturas, cursos y clases de referentes en el área como Bessel van der Kolk, Peter Levine, Gabor Maté y Deb Dana (Teoría Polivagal).</p>
-                </div>
+					<div class="w-full md:w-1/3 flex flex-row items-center gap-2 pl-2 md:pl-6">
+  						<h2 class="font-serif text-5xl md:text-7xl font-bold leading-none text-forest">Mis</h2>
+  						<h2 class="font-hand text-5xl md:text-8xl text-coral leading-none mt-5">Métodos</h2>
+					</div>
+
             </div>
         </section>
 
-        <section class="mb-20 grid gap-8 md:gap-12">
+        <section class="mb-32 md:mb-48 grid gap-12 md:gap-16">
             
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-sky-300 border-forest"><i data-lucide="zap" class="w-8 h-8 text-forest"></i></div>
                 <h3 class="font-serif text-2xl md:text-3xl mb-4 text-forest font-bold">Reorientación Cerebral Profunda (DBR)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>La Reorientación Cerebral Profunda (DBR) es un enfoque innovador, basado en la neurociencia, que actúa en la secuencia neurológica de las respuestas al trauma antes de que lleguen a la conciencia. Se centra en la <span class="marker-highlight font-bold">respuesta de orientación del tronco encefálico</span>, el primerísimo lugar donde el cerebro registra una amenaza.</p>
-                    <p>Al acceder a estas áreas subcorticales profundas, la DBR trata traumas y heridas de apego a un <span class="marker-highlight font-bold">nivel preverbal</span>. Esto significa que puede curar choques profundos y dolores afectivos que las palabras a menudo no alcanzan, brindando alivio cuando la terapia tradicional basada en la palabra no es suficiente.</p>
-                    <p>El proceso funciona rastreando patrones sutiles de tensión física, permitiendo que el sistema nervioso complete naturalmente sus respuestas de defensa interrumpidas y limpie los residuos fisiológicos del trauma.</p>
+                    <p>La Reorientación Cerebral Profunda (DBR) es un enfoque basado en la neurociencia que se enfoca en la secuencia neurológica de las respuestas al trauma antes de que lleguen a la conciencia.</p>
+                    <p>Al centrarse en la <span class="marker-highlight font-bold">respuesta de orientación del tronco encefálico</span> —donde el cerebro registra una amenaza por primera vez—, la DBR trata el trauma y las heridas de apego a un <span class="marker-highlight font-bold">nivel preverbal</span>.</p>
+                    <p>Al rastrear patrones sutiles de tensión física, el sistema nervioso puede completar las respuestas defensivas interrumpidas, sanando el shock profundo que la terapia de conversación tradicional a menudo no puede alcanzar.</p>
                 </div>
             </article>
 
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-coral"><i data-lucide="users" class="w-8 h-8 text-white"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Sistemas Familiares Internos (IFS)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Sistemas de la Familia Interna (IFS)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>Todos nosotros tenemos "partes" internas — aspectos de nuestra personalidad que llevan diferentes emociones, creencias y roles. Algunas partes pueden protegernos, mientras que otras guardan el dolor de experiencias pasadas.</p>
-                    <p>Sistemas Familiares Internos (IFS) es un enfoque lleno de compasión y empoderamiento que te ayuda a <span class="marker-highlight font-bold">entender y sanar estas diferentes partes</span> de ti. El IFS te ayuda a desarrollar una relación con estas partes, aportando curiosidad y autocompasión a tu mundo interior.</p>
-                    <p>Al conectarte con tu "Self" central — tu parte tranquila, sabia y centrada — puedes traer sanación y armonía a tu sistema interno. Es súper eficaz para procesar traumas, reducir conflictos internos y promover un bienestar emocional mucho mayor. En lugar de intentar reprimir o deshacerte de partes tuyas, el IFS te ayuda a escucharlas, entenderlas e integrarlas de una manera sana.</p>
+                    <p>Todos poseemos "partes" internas: aspectos de nuestra personalidad que conllevan diferentes emociones, creencias y roles.</p>
+                    <p>La terapia de Sistemas de la Familia Interna (IFS) es un enfoque compasivo que te ayuda a <span class="marker-highlight font-bold">entender y sanar estas partes</span> en lugar de reprimirlas.</p>
+                    <p>Al traer curiosidad a tu mundo interior y conectar con tu "Self" (tu esencia tranquila), IFS reduce los conflictos internos, procesa el trauma e integra tus partes para promover el bienestar emocional.</p>
                 </div>
             </article>
 
@@ -280,72 +314,93 @@
                 <div class="sticker-icon bg-leaf border-forest"><i data-lucide="activity" class="w-8 h-8 text-white"></i></div>
                 <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Experiencia Somática (SE)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>La Experiencia Somática (SE) es un enfoque terapéutico desarrollado por el Dr. Peter Levine para tratar el trauma, el estrés y la desregulación del sistema nervioso. Se basa en comprender que el trauma no solo se guarda en la memoria, sino también en las <span class="marker-highlight font-bold">respuestas fisiológicas del cuerpo</span>.</p>
-                    <p>La SE se enfoca en observar y trabajar con las sensaciones corporales, en lugar de revivir los eventos traumáticos en detalle, ayudando al sistema nervioso a recuperar su equilibrio poco a poco. En este proceso, la persona puede <span class="marker-highlight font-bold">liberar la energía de supervivencia acumulada</span>, reducir síntomas como ansiedad, hipervigilancia o la respuesta de "congelamiento", y recuperar mayor regulación, resiliencia y bienestar.</p>
-                    <p>Es importante decir que, aunque la SE es una modalidad de abajo hacia arriba (enfocada en el cuerpo), nosotros incluimos las 5 dimensiones de la experiencia: Sensaciones, Imágenes, Comportamiento, Afecto y Significado.</p>
+                    <p>La Experiencia Somática (SE) trata el trauma, el estrés y la desregulación del sistema nervioso basándose en la comprensión de que el trauma se almacena en las <span class="marker-highlight font-bold">respuestas fisiológicas del cuerpo</span>, y no solo en la memoria.</p>
+                    <p>Al observar las sensaciones corporales en lugar de revivir los eventos en detalle, la SE ayuda al sistema nervioso a recuperar el equilibrio. Este proceso <span class="marker-highlight font-bold">libera la energía de supervivencia acumulada</span>, reduce los síntomas como la ansiedad o las respuestas de "congelamiento" y restaura la resiliencia.</p>
+                    <p>Aunque la SE es una modalidad que actúa de abajo hacia arriba (del cuerpo a la mente), abarca cinco dimensiones de la experiencia: Sensaciones, Imágenes, Comportamientos, Afectos y Significados.</p>
                 </div>
             </article>
 
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-sand text-forest"><i data-lucide="waves" class="w-4 h-4 text-forest"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Terapia Centrada en las Emociones (EFT)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Terapia Focalizada en las Emociones (EFT)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>La Terapia Centrada en las Emociones (EFT) es un enfoque humanista con una base fuerte en investigaciones científicas y neurociencia. La terapia se da en un "océano" de relación empática y sin juicios, con "islas" de ejercicios pensados para acelerar el proceso de acceder, expresar y transformar emociones.</p>
-                    <p>Para la EFT, las emociones son las puertas de entrada a nuestra experiencia subjetiva y llevan información sobre lo que realmente necesitamos. Por ejemplo, la tristeza, la ansiedad o el enojo no se ven como síntomas, sino como <span class="marker-highlight font-bold">mensajeros de que alguna necesidad emocional no está siendo atendida</span>.</p>
-                    <p>Las investigaciones muestran que la EFT es súper eficaz para individuos, parejas y familias, principalmente para fortalecer relaciones, reducir la ansiedad y la depresión, y resolver traumas.</p>
+                    <p>La Terapia Focalizada en las Emociones (EFT) es un enfoque humanista con base científica. Combina una relación empática y sin juicios con ejercicios específicos diseñados para acceder, expresar y transformar las emociones.</p>
+                    <p>En la EFT, las emociones son puertas de acceso a nuestra experiencia subjetiva; la tristeza, la ansiedad o la ira no se ven como síntomas, sino como <span class="marker-highlight font-bold">mensajeros que señalan necesidades insatisfechas</span>.</p>
+                    <p>La EFT es muy eficaz para fortalecer las relaciones, reducir la depresión y resolver traumas.</p>
                 </div>
             </article>
         </section>
 
-        <section id="contact" class="mb-12 scroll-fade-item">
-            <div class="paper-card contact-card p-6 md:p-12">
+        <section id="contact" class="mb-24 md:mb-32 scroll-fade-item pt-4"> 
+            <div class="static-card contact-card p-6 md:p-12">
                 <div class="sticker-icon bg-coral"><i data-lucide="sparkles" class="w-6 h-6 text-white"></i></div>
                 <div class="text-center mb-8">
-                    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-bold text-forest">Vamos a Conversar</h2>
-                    <p class="font-hand text-lg md:text-xl text-leaf font-bold">Apoyo psicológico para ti en cualquier parte del mundo.</p>
+                    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-bold text-forest">Hablemos</h2>
+                    <p class="font-hand text-lg md:text-xl text-leaf font-bold">Apoyo psicológico global.</p>
                 </div>
-                <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 max-w-2xl mx-auto">
-                    <input type="hidden" name="access_key" value="55c1f60e-73d1-4273-9a0f-74c62d8bd946">
-                    <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou-es">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <input type="text" name="firstName" placeholder="Nombre" required class="input-field hover-lift">
-                        <input type="text" name="lastName" placeholder="Apellido" class="input-field hover-lift">
+                
+                <div class="max-w-2xl mx-auto">
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                        <input type="hidden" name="access_key" value="55c1f60e-73d1-4273-9a0f-74c62d8bd946">
+                        <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <input type="text" name="firstName" placeholder="Nombre" required class="input-field hover-lift">
+                            <input type="text" name="lastName" placeholder="Apellido" class="input-field hover-lift">
+                        </div>
+                        <input type="email" name="email" placeholder="Tu Correo" required class="input-field hover-lift">
+                        <textarea name="message" rows="4" placeholder="¿Cómo puedo ayudarte?" required class="input-field hover-lift"></textarea>
+                        
+                        <button type="submit" class="w-full bg-navy text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.terra.500')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.terra.700')] hover:-translate-y-1 active:translate-y-0.5">
+                            Enviar Mensaje <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+
+                    <div class="flex items-center gap-4 my-10">
+                        <hr class="flex-grow border-2 border-dashed border-navy/20">
+                        <span class="font-hand text-3xl text-navy/60 font-bold px-2 transform -rotate-2">o</span>
+                        <hr class="flex-grow border-2 border-dashed border-navy/20">
                     </div>
-                    <input type="email" name="email" placeholder="Tu Correo" required class="input-field hover-lift">
-                    <textarea name="message" rows="4" placeholder="¿Cómo puedo ayudarte?" required class="input-field hover-lift"></textarea>
-                    
-                    <button type="submit" class="w-full bg-navy text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.terra.500')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.sage.500')] hover:-translate-y-1 active:translate-y-0.5">
-                        Enviar Mensaje <i data-lucide="send" class="w-5 h-5"></i>
-                    </button>
-                </form>
+
+                    <a href="https://wa.me/556196126281" target="_blank" rel="noopener noreferrer" 
+                       class="w-full bg-sage-500 text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.forest')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.orange.500')] hover:-translate-y-1 active:translate-y-0.5">
+                        Envíame un mensaje por WhatsApp <i data-lucide="message-circle" class="w-6 h-6 ml-1"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
-        <footer class="text-center text-navy/60 text-sm py-8 font-bold font-sans">
+        <footer class="text-center text-navy/60 text-sm py-12 md:py-16 font-bold font-sans">
             © 2025 Camila Fonseca. Hecho con sol y tierra.
         </footer>
     </main>
 
+    <div id="video-modal" class="fixed inset-0 z-[200] bg-navy/90 backdrop-blur-md hidden flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 cursor-pointer" onclick="closeVideoModal()"></div>
+        
+        <button onclick="closeVideoModal()" aria-label="Close video" class="absolute top-6 right-6 text-white hover:text-orange-500 transition-colors z-10">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        
+        <div class="w-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] border-4 border-white/10 relative z-10 scale-95 transition-transform duration-300" id="video-container">
+            <iframe id="video-iframe" class="absolute inset-0 w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize Icons
             lucide.createIcons({ attrs: { strokeWidth: 2.5 } });
 
-            // Scroll Animations
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('scroll-fade-visible');
-                        // Optional: Stop observing once visible to save performance
-                        // observer.unobserve(entry.target); 
                     }
                 });
             }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
             document.querySelectorAll('.scroll-fade-item').forEach(el => observer.observe(el));
 
-            // Mobile Menu Logic
             const menuBtn = document.getElementById('mobile-menu-btn');
             const menuClose = document.getElementById('mobile-menu-close');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -366,10 +421,45 @@
 
             menuBtn.addEventListener('click', toggleMenu);
             menuClose.addEventListener('click', toggleMenu);
-            
-            // Close menu when a link is clicked
             menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
         });
+
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('video-modal');
+            const container = document.getElementById('video-container');
+            const iframe = document.getElementById('video-iframe');
+            
+            iframe.src = `https://www.youtube.com/embed/${videoId}&autoplay=1`;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const container = document.getElementById('video-container');
+            const iframe = document.getElementById('video-iframe');
+            
+            modal.classList.add('opacity-0');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                iframe.src = ''; 
+                document.body.style.overflow = '';
+                document.body.style.overflowX = 'hidden';
+            }, 300);
+        }
     </script>
 </body>
 </html>
