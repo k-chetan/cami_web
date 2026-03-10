@@ -237,7 +237,7 @@
         </header>
 
         <section class="mb-16 md:mb-28 relative flex items-center min-h-[400px] md:min-h-[500px] overflow-visible scroll-fade-item">
-            <div class="hidden md:block absolute md:right-[-5%] md:top-[-0%] z-0 pointer-events-none">
+            <div class="absolute right-[-10%] md:right-[-5%] top-[-10%] md:top-[-0%] z-0 pointer-events-none">
                  <img src="images/lotus.png" alt="Decorative Background Element" loading="lazy" class="w-[120%] max-w-none animate-gentle-grow drop-shadow-2xl">
             </div>
 

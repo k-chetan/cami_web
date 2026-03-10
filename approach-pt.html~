@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Psychological support and therapy approaches by Camila Fonseca including IFS, EFT, and Somatic Experiencing.">
-    <title>My Approach | Camila Fonseca</title>
+    <meta name="description" content="Apoio psicológico e abordagens terapêuticas por Camila Fonseca, incluindo IFS, EFT e Experiência Somática.">
+    <title>Minha Abordagem | Camila Fonseca</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,7 +186,7 @@
     </div>
     
     <aside class="absolute top-32 left-8 z-40 hidden xl:flex flex-col items-start gap-3" aria-label="Language selection">
-        <span class="text-xs font-bold text-navy uppercase tracking-widest ml-2 -rotate-6">Translate</span>
+        <span class="text-xs font-bold text-navy uppercase tracking-widest ml-2 -rotate-6">Traduzir</span>
         <a href="approach-pt.html" class="translate-tag -rotate-1">Português</a>
         <a href="approach-es.html" class="translate-tag rotate-1">Español</a>
     </aside>
@@ -208,13 +208,13 @@
         </div>
 
         <nav class="flex flex-col items-center gap-6 text-2xl font-bold text-navy">
-            <a href="index.html" class="menu-link hover:text-orange-500">Home</a>
-            <a href="approach.html" class="menu-link text-orange-600 border-b-2 border-orange-500">My Approach</a>
-            <a href="#contact" class="menu-link hover:text-orange-500">Contact</a>
+            <a href="index.html" class="menu-link hover:text-orange-500">Início</a>
+            <a href="approach.html" class="menu-link text-orange-600 border-b-2 border-orange-500">Minha Abordagem</a>
+            <a href="#contact" class="menu-link hover:text-orange-500">Contato</a>
         </nav>
 
         <div class="flex flex-col items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-navy/20 w-48">
-            <span class="text-xs font-bold text-navy uppercase tracking-widest">Translate</span>
+            <span class="text-xs font-bold text-navy uppercase tracking-widest">Traduzir</span>
             <a href="approach-pt.html" class="translate-tag -rotate-1 text-sm">Português</a>
             <a href="approach-es.html" class="translate-tag rotate-1 text-sm">Español</a>
         </div>
@@ -227,9 +227,9 @@
                 <i data-lucide="sun" class="w-6 h-6 text-orange-500 fill-orange-500 animate-slow-spin"></i> Camila Fonseca
             </div>
             <nav class="hidden md:flex gap-8 text-base font-bold text-navy">
-                <a href="index.html" class="hover:text-orange-500 hover-lift">Home</a>
-                <a href="approach.html" class="text-orange-600 border-b-2 border-orange-500 hover-lift">My Approach</a>
-                <a href="#contact" class="hover:text-orange-500 hover-lift">Contact</a>
+                <a href="index.html" class="hover:text-orange-500 hover-lift">Início</a>
+                <a href="approach.html" class="text-orange-600 border-b-2 border-orange-500 hover-lift">Minha Abordagem</a>
+                <a href="#contact" class="hover:text-orange-500 hover-lift">Contato</a>
             </nav>
             <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden text-navy hover-lift p-2">
                 <i data-lucide="menu" class="w-8 h-8"></i>
@@ -237,17 +237,17 @@
         </header>
 
         <section class="mb-16 md:mb-28 relative flex items-center min-h-[400px] md:min-h-[500px] overflow-visible scroll-fade-item">
-            <div class="hidden md:block absolute md:right-[-5%] md:top-[-0%] z-0 pointer-events-none">
+            <div class="absolute right-[-10%] md:right-[-5%] top-[-10%] md:top-[-0%] z-0 pointer-events-none">
                  <img src="images/lotus.png" alt="Decorative Background Element" loading="lazy" class="w-[120%] max-w-none animate-gentle-grow drop-shadow-2xl">
             </div>
 
             <div class="relative z-10 w-full md:w-2/3 space-y-6">
                 <h1 class="font-serif text-5xl md:text-7xl text-navy font-bold leading-[0.9]">
-                    Who is <span class="text-orange-600 font-hand italic">Therapy</span> For?
+                    Para quem é a <span class="text-orange-600 font-hand italic">Terapia</span>?
                 </h1>
                 <div class="text-navy text-lg font-medium leading-relaxed space-y-4 max-w-md bg-white/30 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-4 md:p-0 rounded-xl md:rounded-none border border-white/50 md:border-none">
-                    <p>Therapy increases self-knowledge, manages <span class="marker-highlight font-bold">interpersonal difficulties</span> across relationships, relieves tension, and improves overall mental health.</p>
-                    <p>Backed by expanding scientific research, <span class="marker-highlight font-bold">evidence-based psychotherapy</span> provides a safe space to trace the origins of emotional and behavioral patterns while processing present-moment challenges.<br><br></p>
+                    <p>A terapia aumenta o autoconhecimento, ajuda a lidar com <span class="marker-highlight font-bold">dificuldades interpessoais</span> nos seus relacionamentos, alivia a tensão e melhora a saúde mental como um todo.</p>
+                    <p>Apoiada por pesquisas científicas em expansão, a <span class="marker-highlight font-bold">psicoterapia baseada em evidências</span> oferece um espaço seguro para você investigar as origens dos seus padrões emocionais e comportamentais, enquanto processa os desafios do momento presente.<br><br></p>
                 </div>
 
                 <div class="paper-card p-3 w-full max-w-[450px] hover-lift group mt-32 md:mt-48">
@@ -262,7 +262,7 @@
                     </div>
                     
                     <div class="mt-4 flex items-center justify-center text-center px-2">
-                        <span class="font-bold text-navy text-sm">Watch me discuss my approaches.</span>
+                        <span class="font-bold text-navy text-sm">Assista ao vídeo onde falo sobre minhas abordagens.</span>
                     </div>
                 </div>
 
@@ -272,7 +272,7 @@
         <section class="mt-16 md:mt-32 mb-12 md:mb-16 text-center relative z-30 scroll-fade-item">
             <div class="max-w-6xl mx-auto relative px-4">
                 <blockquote class="font-hand text-4xl md:text-6xl text-navy leading-[1.2] md:leading-[1.1]">
-                    "There is no way to happiness: <br>happiness is the way."<br>
+                    "Não existe um caminho para a felicidade: <br>a felicidade é o caminho."<br>
                     — Thich Nhat Hanh
                 </blockquote>
             </div>
@@ -281,8 +281,8 @@
         <section class="mb-16 md:mb-24 scroll-fade-item mt-12 md:mt-16">
             <div class="flex flex-col md:flex-row gap-8 items-end">
 					<div class="w-full md:w-1/3 flex flex-row items-center gap-2 pl-2 md:pl-6">
-  						<h2 class="font-serif text-5xl md:text-7xl font-bold leading-none text-forest">My</h2>
-  						<h2 class="font-hand text-5xl md:text-8xl text-coral leading-none mt-5">Methods</h2>
+  						<h2 class="font-serif text-5xl md:text-7xl font-bold leading-none text-forest">Meus</h2>
+  						<h2 class="font-hand text-5xl md:text-8xl text-coral leading-none mt-5">Métodos</h2>
 					</div>
 
             </div>
@@ -292,41 +292,41 @@
             
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-sky-300 border-forest"><i data-lucide="zap" class="w-8 h-8 text-forest"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-4 text-forest font-bold">Deep Brain Reorienting (DBR)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-4 text-forest font-bold">Reorientação Cerebral Profunda (DBR)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>Deep Brain Reorienting (DBR) is a neuroscience-based approach targeting the neurological sequence of trauma responses before they reach conscious awareness.</p>
-                    <p>By focusing on the <span class="marker-highlight font-bold">brainstem's orienting response</span>—where the brain first registers a threat—DBR addresses trauma and attachment wounds at a <span class="marker-highlight font-bold">preverbal level</span>.</p>
-                    <p>By tracking subtle physical tension patterns, the nervous system can complete interrupted defensive responses, healing deep-seated shock that traditional talk therapy often cannot reach.</p>
+                    <p>A Reorientação Cerebral Profunda (DBR) é uma abordagem baseada na neurociência que foca na sequência neurológica das respostas ao trauma antes mesmo que elas cheguem à consciência.</p>
+                    <p>Ao focar na <span class="marker-highlight font-bold">resposta de orientação do tronco cerebral</span> — onde o cérebro registra uma ameaça pela primeira vez —, a DBR trata traumas e feridas de apego em um <span class="marker-highlight font-bold">nível pré-verbal</span>.</p>
+                    <p>Acompanhando padrões sutis de tensão física, o sistema nervoso consegue completar respostas defensivas que foram interrompidas, curando choques profundos que a terapia de fala tradicional muitas vezes não alcança.</p>
                 </div>
             </article>
 
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-coral"><i data-lucide="users" class="w-8 h-8 text-white"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Internal Family Systems (IFS)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Sistemas Familiares Internos (IFS)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>We all possess internal "parts"—aspects of our personality carrying different emotions, beliefs, and roles.</p>
-                    <p>Internal Family Systems (IFS) is a compassionate approach that helps you <span class="marker-highlight font-bold">understand and heal these parts</span> rather than suppressing them.</p>
-                    <p>By bringing curiosity to your inner world and connecting with your core, calm "Self," IFS reduces internal conflict, processes trauma, and integrates your parts to promote emotional well-being.</p>
+                    <p>Todos nós temos "partes" internas — aspectos da nossa personalidade que carregam diferentes emoções, crenças e papéis.</p>
+                    <p>A terapia de Sistemas Familiares Internos (IFS) é uma abordagem cheia de compaixão que ajuda você a <span class="marker-highlight font-bold">entender e curar essas partes</span>, em vez de reprimi-las.</p>
+                    <p>Ao trazer curiosidade para o seu mundo interior e se conectar com o seu "Self" (sua essência calma), o IFS reduz conflitos internos, processa traumas e integra suas partes para promover o bem-estar emocional.</p>
                 </div>
             </article>
 
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-leaf border-forest"><i data-lucide="activity" class="w-8 h-8 text-white"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Somatic Experiencing (SE)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Experiência Somática (SE)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>Somatic Experiencing (SE) treats trauma, stress, and nervous system dysregulation based on the understanding that trauma is stored in the <span class="marker-highlight font-bold">body's physiological responses</span>, not just in memory.</p>
-                    <p>By observing bodily sensations rather than reliving events in detail, SE helps the nervous system regain balance. This process <span class="marker-highlight font-bold">releases accumulated survival energy</span>, reduces symptoms like anxiety or "freeze" responses, and restores resilience.</p>
-                    <p>While SE is a bottom-up modality, it encompasses five dimensions of experience: Sensations, Images, Behavior, Affect, and Meaning.</p>
+                    <p>A Experiência Somática (SE) trata traumas, estresse e a desregulação do sistema nervoso com base no entendimento de que o trauma fica armazenado nas <span class="marker-highlight font-bold">respostas fisiológicas do corpo</span>, e não apenas na memória.</p>
+                    <p>Observando as sensações corporais em vez de reviver os eventos em detalhes, a SE ajuda o sistema nervoso a recuperar o equilíbrio. Esse processo <span class="marker-highlight font-bold">libera a energia de sobrevivência acumulada</span>, reduz sintomas como ansiedade ou respostas de "congelamento", e restaura a sua resiliência.</p>
+                    <p>Embora a SE seja uma modalidade que age de baixo para cima (do corpo para a mente), ela engloba cinco dimensões da experiência: Sensações, Imagens, Comportamentos, Afetos e Significados.</p>
                 </div>
             </article>
 
             <article class="paper-card p-6 md:p-10 scroll-fade-item">
                 <div class="sticker-icon bg-sand text-forest"><i data-lucide="waves" class="w-4 h-4 text-forest"></i></div>
-                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Emotion-Focused Therapy (EFT)</h3>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 text-forest font-bold">Terapia Focada nas Emoções (EFT)</h3>
                 <div class="text-forest/90 leading-relaxed text-lg font-bold space-y-4">
-                    <p>Emotion-Focused Therapy (EFT) is a scientifically grounded humanistic approach. It combines an empathetic, non-judgmental relationship with targeted exercises designed to access, express, and transform emotions.</p>
-                    <p>In EFT, emotions are gateways to our subjective experience; sadness, anxiety, or anger are not viewed as symptoms, but as <span class="marker-highlight font-bold">messengers signaling unmet needs</span>.</p>
-                    <p>EFT is highly effective for strengthening relationships, reducing depression, and resolving trauma.</p>
+                    <p>A Terapia Focada nas Emoções (EFT) é uma abordagem humanista fundamentada cientificamente. Ela combina uma relação empática e sem julgamentos com exercícios direcionados para acessar, expressar e transformar suas emoções.</p>
+                    <p>Na EFT, as emoções são portais para a nossa experiência subjetiva; tristeza, ansiedade ou raiva não são vistas como sintomas, mas como <span class="marker-highlight font-bold">mensageiros sinalizando necessidades não atendidas</span>.</p>
+                    <p>A EFT é altamente eficaz para fortalecer relacionamentos, reduzir a depressão e resolver traumas.</p>
                 </div>
             </article>
         </section>
@@ -335,8 +335,8 @@
             <div class="static-card contact-card p-6 md:p-12">
                 <div class="sticker-icon bg-coral"><i data-lucide="sparkles" class="w-6 h-6 text-white"></i></div>
                 <div class="text-center mb-8">
-                    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-bold text-forest">Let's Connect</h2>
-                    <p class="font-hand text-lg md:text-xl text-leaf font-bold">Global psychological support.</p>
+                    <h2 class="font-serif text-3xl md:text-4xl mb-2 font-bold text-forest">Vamos Conversar</h2>
+                    <p class="font-hand text-lg md:text-xl text-leaf font-bold">Apoio psicológico global.</p>
                 </div>
                 
                 <div class="max-w-2xl mx-auto">
@@ -345,33 +345,33 @@
                         <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou">
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="text" name="firstName" placeholder="First Name" required class="input-field hover-lift">
-                            <input type="text" name="lastName" placeholder="Last Name" class="input-field hover-lift">
+                            <input type="text" name="firstName" placeholder="Nome" required class="input-field hover-lift">
+                            <input type="text" name="lastName" placeholder="Sobrenome" class="input-field hover-lift">
                         </div>
-                        <input type="email" name="email" placeholder="Your Email" required class="input-field hover-lift">
-                        <textarea name="message" rows="4" placeholder="How can I help you?" required class="input-field hover-lift"></textarea>
+                        <input type="email" name="email" placeholder="Seu E-mail" required class="input-field hover-lift">
+                        <textarea name="message" rows="4" placeholder="Como posso te ajudar?" required class="input-field hover-lift"></textarea>
                         
                         <button type="submit" class="w-full bg-navy text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.terra.500')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.terra.700')] hover:-translate-y-1 active:translate-y-0.5">
-                            Send Message <i data-lucide="send" class="w-5 h-5"></i>
+                            Enviar Mensagem <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
                     </form>
 
                     <div class="flex items-center gap-4 my-10">
                         <hr class="flex-grow border-2 border-dashed border-navy/20">
-                        <span class="font-hand text-3xl text-navy/60 font-bold px-2 transform -rotate-2">or</span>
+                        <span class="font-hand text-3xl text-navy/60 font-bold px-2 transform -rotate-2">ou</span>
                         <hr class="flex-grow border-2 border-dashed border-navy/20">
                     </div>
 
                     <a href="https://wa.me/556196126281" target="_blank" rel="noopener noreferrer" 
                        class="w-full bg-sage-500 text-white text-xl font-bold py-4 rounded-xl shadow-[4px_4px_0px_theme('colors.forest')] border-2 border-navy transition-all flex justify-center items-center gap-2 hover:shadow-[6px_6px_0px_theme('colors.orange.500')] hover:-translate-y-1 active:translate-y-0.5">
-                        Message Me on WhatsApp <i data-lucide="message-circle" class="w-6 h-6 ml-1"></i>
+                        Me mande uma mensagem no WhatsApp <i data-lucide="message-circle" class="w-6 h-6 ml-1"></i>
                     </a>
                 </div>
             </div>
         </section>
 
         <footer class="text-center text-navy/60 text-sm py-12 md:py-16 font-bold font-sans">
-            © 2025 Camila Fonseca. Made with sun & earth.
+            © 2025 Camila Fonseca. Feito com sol e terra.
         </footer>
     </main>
 
