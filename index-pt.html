@@ -455,17 +455,17 @@
                     <p class="font-hand text-xl md:text-2xl text-sage-500">Apoio psicológico para você, em qualquer canto do mundo.</p>
                 </div>
                 <div class="max-w-3xl mx-auto">
-                    <form name="contact" method="POST" action="/thankyou" data-netlify="true" netlify-honeypot="botcheck" class="space-y-8">
+                    <form name="contact" method="POST" action="/thankyou" data-netlify="true" netlify-honeypot="botcheck" data-sending="Enviando…" data-success-title="Mensagem enviada!" data-success-text="Obrigada — sua mensagem chegou até mim. Logo, logo eu te respondo." class="space-y-8">
                         <input type="hidden" name="form-name" value="contact">
                         <input type="hidden" name="language" value="pt">
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" aria-hidden="true">
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <input type="text" name="firstName" placeholder="Nome" required class="input-base hover-lift">
-                            <input type="text" name="lastName" placeholder="Sobrenome" class="input-base hover-lift">
+                            <input type="text" name="firstName" placeholder="Nome" required aria-label="Nome" autocomplete="given-name" class="input-base hover-lift">
+                            <input type="text" name="lastName" placeholder="Sobrenome" aria-label="Sobrenome" autocomplete="family-name" class="input-base hover-lift">
                         </div>
-                        <input type="email" name="email" placeholder="Seu e-mail" required class="input-base hover-lift">
-                        <textarea name="message" rows="5" placeholder="Como posso te ajudar?" required class="input-base hover-lift"></textarea>
+                        <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Seu e-mail" autocomplete="email" class="input-base hover-lift">
+                        <textarea name="message" aria-label="message" rows="5" placeholder="Como posso te ajudar?" required class="input-base hover-lift"></textarea>
 
                         <button type="submit" data-umami-event="contact-form-submit" class="w-full bg-navy text-white text-xl md:text-2xl font-bold py-5 rounded-xl shadow-[4px_4px_0px_theme('colors.sage.500')] border-2 border-navy transition-all flex justify-center items-center gap-3 hover:shadow-[6px_6px_0px_theme('colors.terra.500')] hover:-translate-y-1 active:translate-y-0.5">
                             Enviar Mensagem <i data-lucide="send" class="w-6 h-6"></i>
