@@ -46,6 +46,20 @@ curl -s https://camilafonseca.com/mcp -X POST \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_session_pricing","arguments":{}}}'
 ```
 
+## Analytics (Umami Cloud — free, cookieless)
+
+Every page is pre-instrumented with `data-umami-event` attributes
+(`whatsapp-click`, `contact-form-submit`, `video-open`, `lang-switch`,
+`email-click`, `contact-bubble-click`) and carries an `UMAMI_ANALYTICS`
+placeholder comment in `<head>`. To switch it on:
+
+1. Create a free account at https://cloud.umami.is (Hobby plan), add the
+   website `camilafonseca.com`, and copy its **Website ID**.
+2. Replace the `UMAMI_ANALYTICS` comment in all 7 HTML files with
+   `<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-ID"></script>`.
+3. Deploy. The CSP in `netlify.toml` already allows Umami. No cookie banner
+   is needed — Umami is cookieless and GDPR/LGPD-friendly.
+
 ## Deploying
 
 The site deploys on Netlify. **Note:** `netlify/functions/mcp.mjs` only ships if
