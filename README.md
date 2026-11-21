@@ -140,11 +140,38 @@ Current highlights: IFS Level 2, DBR Level 3, SE Intermediate, EFT Level B,
 Frank Anderson "Integrated Path to Healing Trauma", Liberation Psychology
 (SAND, in progress).
 
-## 9. Operations still owned by a human
+## 9. Search engines (done 2026-11-21)
 
-- **Google Search Console / Bing Webmaster** — verify the domain (TXT record
-  can go in Netlify DNS) and submit `sitemap.xml`. Bing can import from GSC.
-- **Practitioner directories** (IFS Institute, SE International, ISEFT, DBR,
-  Psychology Today) — create listings with language filters PT/ES/EN; these
-  are what AI assistants cite when matching therapists.
-- Netlify/Umami/registrar account credentials.
+- **Google Search Console**: domain property `camilafonseca.com` verified
+  under **flordocosmos@gmail.com** via DNS TXT (`google-site-verification=…`
+  records live in Netlify DNS — keep them). Sitemap submitted.
+- **Bing Webmaster**: imported from Search Console (Bing also got the pages
+  via IndexNow).
+
+## 10. Visibility playbook (from GEO research, Nov 2026)
+
+What moves AI-assistant citations, in priority order:
+
+1. **Answer-shaped on-site content** — FAQ sections with `FAQPage` schema and
+   PT/ES explainer pages ("O que é IFS/DBR/SE?"), answer-first, dated,
+   bylined. Portuguese content on these methods is nearly nonexistent, so
+   these pages can become the PT source AI cites. (Planned/next.)
+2. **Third-party presence** (human tasks): Google Business Profile + reviews;
+   genuine Reddit participation (Perplexity cites Reddit in ~47% of top
+   sources) in r/InternalFamilySystems, r/CPTSD, Brazilian psych subs;
+   practitioner directories — IFS Institute, SE International, ISEFT, DBR,
+   Psychology Today, TherapyDen, Zencare, GoodTherapy — with language
+   filters PT/ES/EN set.
+3. **MCP spread** — the official registry listing (done) feeds PulseMCP and
+   others automatically; Glama auto-indexes from GitHub; mcp.so accepts a
+   manual GitHub-issue submission (optional).
+4. **Measure monthly** — run ~10 real prompts ("IFS therapist online who
+   speaks Portuguese", "terapeuta de trauma online em português", "DBR
+   therapy cost") across ChatGPT/Perplexity/Claude and log whether
+   camilafonseca.com gets cited.
+
+## 11. Remaining human-owned items
+
+- Practitioner directory listings (Camila's member accounts; see §10.2).
+- Google Business Profile creation + review collection.
+- Netlify / Umami / Google (flordocosmos@gmail.com) / registrar credentials.
