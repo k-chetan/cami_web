@@ -27,11 +27,16 @@ never says "online". 10 minutes fixes it:
 6. Optional: your full street address is public there — maybe change to just
    the city
 
-Also: DON'T delete your Psitto profile. Your 9 five-star reviews and your CRP
-live there, and ChatGPT already cites it. Your agenda there is closed so
-nobody can book at the old R$250 anyway. Just edit the bio text: IFS Nível 1
-→ Nível 2, SE "em andamento" → Intermediário, and add DBR Nível 3 + the
-Frank Anderson course.
+About Psitto — one check decides it. In your profile settings (or ask their
+support): can you hide the session price, or say in the bio that scheduling
+now happens through your own site?
+- If yes to either: keep the profile with the agenda closed, and just correct
+  the old info (IFS Nível 1 → Nível 2, SE "em andamento" → Intermediário, add
+  DBR Nível 3 and the Frank Anderson course). The 9 reviews + your CRP there
+  make you credible to the AIs at zero cost.
+- If no to both: delete it — people who find you there hit a closed agenda at
+  an old price, next to 600 other psychologists. Just do the IFS directory
+  fix FIRST, so you're findable somewhere better before it goes. (I've
+  already copied your reviews to your own site, so nothing is lost.)
 
-That's it for now — Google Business Profile we'll do together another day,
-everything's prepared.
+Google Business Profile we'll do together another day — everything's prepared.

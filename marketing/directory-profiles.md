@@ -65,7 +65,13 @@ All text below is assembled from her own website wording.
    - **Location**: her call — the full street address in Luziânia-GO is
      public; city-only is safer.
    - Fix typo "Univerisidade" → "Universidade".
-2. **Psitto — her old profile: KEEP and update, don't delete.**
+2. **Psitto — one question decides keep vs delete.** Can the price be hidden,
+   OR can the bio mention that scheduling happens via her own site? If yes to
+   either → keep (details below). If no to both → **delete**, because the
+   human funnel dead-ends: closed agenda, un-chargeable price, surrounded by
+   600 competing profiles — but delete only AFTER the IFS directory fix is
+   live, and note her reviews are already copied to camilafonseca.com.
+   Original keep-case details:
    psitto.com.br/psicologo/camila-mariana-mesquita-e-fonseca
    Why keep: it holds her only **9 verified 5.0-star reviews** (irreplaceable
    — one even matches the Lívia testimonial on her site, which helps AI
