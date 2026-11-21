@@ -3,7 +3,7 @@
   "servers": [
     {
       "name": "camila-fonseca-psychotherapy",
-      "description": "Information about Camila Fonseca's psychotherapy practice: overview, therapy methods (IFS, DBR, SE, EFT), qualifications, estimated session pricing, contact options, and client testimonials.",
+      "description": "Information about Camila Fonseca's psychotherapy practice: overview, therapy methods (IFS, DBR, SE, EFT), qualifications, estimated session pricing, contact options, and client testimonials. Sessions in English, native Portuguese, and Spanish (terapia em português, terapia en español).",
       "url": "https://camilafonseca.com/mcp",
       "transport": "streamable-http",
       "authentication": "none"
