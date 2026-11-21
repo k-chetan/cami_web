@@ -21,6 +21,14 @@ No build step. Netlify runs `npm install` (for `@netlify/blobs`), bundles the
 functions in `netlify/functions/`, and publishes the repo root as-is
 (`netlify.toml` → `publish = "."`).
 
+**Build credits (free plan):** 300 credits/month, cycle renews on the 26th.
+Each push costs a build, so batch changes instead of pushing many small
+commits, and add `[skip netlify]` to the commit message for docs-only changes
+(anything in `marketing/`, README, memory notes). If deploys show "Skipped —
+credit usage exceeded", the site stays online on the last deploy; queued
+commits publish by pressing "Trigger deploy" (or pushing) after the cycle
+resets, or immediately after upgrading.
+
 ## 2. Pages & frontend
 
 | File | Purpose |
