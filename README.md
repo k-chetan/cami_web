@@ -49,6 +49,11 @@ resets, or immediately after upgrading.
 - The giant fern (home) / lotus (approach) watercolors are the site's
   signature. They render on mobile at reduced opacity behind the hero —
   **never hide or shrink them on desktop**.
+- The hero art intentionally overflows the right edge; every page clips it
+  with `html, body { overflow-x: clip; }` and locks scroll via
+  `document.documentElement.style.overflow` when the menu or video modal
+  opens. Without the root clip, phones pan sideways into ~115px of empty
+  canvas (fixed 2026-11-22). Keep both pieces when cloning a page skeleton.
 - PT/ES copy is deliberately warm and native ("Me chama no WhatsApp",
   "Feito com sol e terra") — keep that tone when editing.
 - WhatsApp buttons open `wa.me/918075645301?text=<prefilled message>` —

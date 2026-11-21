@@ -233,6 +233,10 @@
             .scroll-fade-visible { @apply opacity-100 translate-y-0; }
         }
     </style>
+    <style>
+        /* Phones pan sideways into the overflowing hero art unless the overflow canvas is clipped at the root */
+        html, body { overflow-x: clip; }
+    </style>
 
     <script type="application/ld+json">
     {
@@ -610,10 +614,10 @@
             if (isOpen) {
                 mobileMenu.classList.remove('open');
                 document.body.style.overflow = '';
-                document.body.style.overflowX = 'hidden';
+                document.documentElement.style.overflow = '';
             } else {
                 mobileMenu.classList.add('open');
-                document.body.style.overflow = 'hidden';
+                document.documentElement.style.overflow = 'hidden';
             }
         }
 
