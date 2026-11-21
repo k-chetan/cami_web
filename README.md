@@ -173,8 +173,23 @@ What moves AI-assistant citations, in priority order:
      Gemini's answer was built from the IFS Institute directory, Google
      Business Profile data, IFS Portugal, It's Complicated, and Expat
      Therapy Hub — confirming the directory listings are the bottleneck.
-     Paste-ready profiles: [`marketing/directory-profiles.md`](marketing/directory-profiles.md)
-     (IFS Institute first — its review takes 4–6 weeks).
+     Paste-ready profiles: [`marketing/directory-profiles.md`](marketing/directory-profiles.md).
+     Update: she IS already listed (profile 178846, Level 2, site linked) —
+     but with no languages, availability "Limited", no mention of online
+     sessions, and stale DBR Level 2. The pack has the exact field fixes;
+     those three missing signals are precisely what Gemini/ChatGPT filtered on.
+   - **Baseline 2026-11-21 (ChatGPT, same query):** camilafonseca.com not
+     cited, but a stale Psitto profile ("Camila Mariana Mesquita e Fonseca",
+     IFS Level 1, R$250, no site link) WAS included as the budget Brazilian
+     option — likely Camila's own old listing. ChatGPT's self-described
+     method: EN+PT web searches across ~35 pages; IFS Institute directory +
+     Doctoralia + Psitto + personal sites; ranked by Portuguese fluency
+     (essential), IFS training level (preferred L3/certified), professional
+     qualification, online availability, clear contact info, and whether IFS
+     is the PRIMARY method; published fees increased inclusion ("a practical
+     option to compare"). It also conflated her with a different "Camila
+     Fonseca de Souza" on Doctoralia — name-confusion risk that consistent
+     canonical profiles mitigate.
 
 ## 11. Remaining human-owned items
 

@@ -45,12 +45,26 @@ All text below is assembled from her own website wording.
 
 ## Where to list, in priority order
 
-1. **IFS Institute Practitioner Directory** — the source AI assistants cite
-   first, with Language + Online filters. Level 1 completion qualifies
-   (Camila is Level 2). How: log into her IFS Institute customer portal →
-   "Practitioner Profile" tab → fill → submit. **Manual review takes 4–6
-   weeks, so do this one first.** Set Languages: Portuguese, Spanish,
-   English; mark online/telehealth.
+1. **IFS Institute Practitioner Directory — UPDATE her existing profile**
+   (ifs-institute.com/practitioners/all/178846; edit via her IFS customer
+   portal → Practitioner Profile). Audit of 2026-11-21 found the profile is
+   live with Level 2 and the website, but missing exactly the signals AI
+   assistants filter on. Changes to make:
+   - **Languages**: add Portuguese, English, Spanish wherever the form allows.
+   - **Availability**: says "Limited" — if she is taking clients, change it;
+     AI assistants skip limited/full practices.
+   - **Focus** (currently just "Adultos") → paste:
+     "Adultos. Atendimento online para o mundo todo e presencial. Online
+     sessions in Portuguese, English, and Spanish. Abordagens de trauma:
+     IFS, Deep Brain Reorienting (DBR), Experiência Somática (SE), Terapia
+     Focada nas Emoções (EFT)."
+   - **Certifications**: update "Deep Brain Reorienting (DBR Level 2)" →
+     **Level 3**; add "Integrated Path to Healing Trauma – Frank Anderson,
+     MD"; optionally "Liberation Psychology – Science and Nonduality (SAND),
+     em andamento".
+   - **Location**: her call — the full street address in Luziânia-GO is
+     public; city-only is safer.
+   - Fix typo "Univerisidade" → "Universidade".
 2. **Google Business Profile** — Gemini pulls the star-rating and category
    chips straight from it. Full pack: `marketing/google-business-profile.md`.
 3. **It's Complicated (complicated.life)** — therapist marketplace AI cites
