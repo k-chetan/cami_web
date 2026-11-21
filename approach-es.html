@@ -368,9 +368,9 @@
                 </div>
 
                 <div class="max-w-2xl mx-auto">
-                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                        <input type="hidden" name="access_key" value="55c1f60e-73d1-4273-9a0f-74c62d8bd946">
-                        <input type="hidden" name="redirect" value="https://camilafonseca.com/thankyou">
+                    <form name="contact" method="POST" action="/thankyou" data-netlify="true" netlify-honeypot="botcheck" class="space-y-6">
+                        <input type="hidden" name="form-name" value="contact">
+                        <input type="hidden" name="language" value="es">
                         <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" aria-hidden="true">
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
