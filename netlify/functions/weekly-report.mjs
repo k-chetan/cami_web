@@ -11,7 +11,10 @@ import { isoWeek } from "./collect.mjs";
 
 export const config = { schedule: "0 7 * * 1" };
 
-const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY || "REPLACE_WITH_WEB3FORMS_KEY";
+// Same public web3forms key the contact forms use (bound to the site's
+// report/contact inbox). Override with a WEB3FORMS_KEY env var to change
+// the recipient without editing code.
+const WEB3FORMS_KEY = process.env.WEB3FORMS_KEY || "55c1f60e-73d1-4273-9a0f-74c62d8bd946";
 const DASHBOARD = "https://cloud.umami.is";
 
 export default async () => {
