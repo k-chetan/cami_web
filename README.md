@@ -175,8 +175,10 @@ What moves AI-assistant citations, in priority order:
 - Practitioner directory listings (Camila's member accounts; see §10.2).
 - Google Business Profile — **ready-to-paste pack in
   [`marketing/google-business-profile.md`](marketing/google-business-profile.md)**.
-- Reddit presence — **profile pack + community rules in
-  [`marketing/reddit-profile.md`](marketing/reddit-profile.md)**.
+- Reddit presence — profile **u/CamilaFonsecaPsico is live** (linked from the
+  site's JSON-LD `sameAs`); posting etiquette + community rules in
+  [`marketing/reddit-profile.md`](marketing/reddit-profile.md). Still to do
+  there: join r/askatherapist and request its Verified Therapist flair.
 - Netlify / Umami / Google (flordocosmos@gmail.com) / registrar credentials.
 
 The homepage of each language also carries a visible FAQ section backed by
