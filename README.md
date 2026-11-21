@@ -173,5 +173,12 @@ What moves AI-assistant citations, in priority order:
 ## 11. Remaining human-owned items
 
 - Practitioner directory listings (Camila's member accounts; see §10.2).
-- Google Business Profile creation + review collection.
+- Google Business Profile — **ready-to-paste pack in
+  [`marketing/google-business-profile.md`](marketing/google-business-profile.md)**.
+- Reddit presence — **profile pack + community rules in
+  [`marketing/reddit-profile.md`](marketing/reddit-profile.md)**.
 - Netlify / Umami / Google (flordocosmos@gmail.com) / registrar credentials.
+
+The homepage of each language also carries a visible FAQ section backed by
+`FAQPage` JSON-LD — all answers are verbatim sentences from the site itself.
+Keep that rule when editing: FAQ text must stay in Camila's own words.
