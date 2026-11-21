@@ -167,8 +167,14 @@ What moves AI-assistant citations, in priority order:
    manual GitHub-issue submission (optional).
 4. **Measure monthly** — run ~10 real prompts ("IFS therapist online who
    speaks Portuguese", "terapeuta de trauma online em português", "DBR
-   therapy cost") across ChatGPT/Perplexity/Claude and log whether
+   therapy cost") across ChatGPT/Perplexity/Claude/Gemini and log whether
    camilafonseca.com gets cited.
+   - **Baseline 2026-11-21 (Gemini, "IFS + Portuguese"):** not cited.
+     Gemini's answer was built from the IFS Institute directory, Google
+     Business Profile data, IFS Portugal, It's Complicated, and Expat
+     Therapy Hub — confirming the directory listings are the bottleneck.
+     Paste-ready profiles: [`marketing/directory-profiles.md`](marketing/directory-profiles.md)
+     (IFS Institute first — its review takes 4–6 weeks).
 
 ## 11. Remaining human-owned items
 
