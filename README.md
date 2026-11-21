@@ -48,17 +48,13 @@ curl -s https://camilafonseca.com/mcp -X POST \
 
 ## Analytics (Umami Cloud — free, cookieless)
 
-Every page is pre-instrumented with `data-umami-event` attributes
-(`whatsapp-click`, `contact-form-submit`, `video-open`, `lang-switch`,
-`email-click`, `contact-bubble-click`) and carries an `UMAMI_ANALYTICS`
-placeholder comment in `<head>`. To switch it on:
-
-1. Create a free account at https://cloud.umami.is (Hobby plan), add the
-   website `camilafonseca.com`, and copy its **Website ID**.
-2. Replace the `UMAMI_ANALYTICS` comment in all 7 HTML files with
-   `<script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-ID"></script>`.
-3. Deploy. The CSP in `netlify.toml` already allows Umami. No cookie banner
-   is needed — Umami is cookieless and GDPR/LGPD-friendly.
+Analytics is **live** via Umami Cloud (EU region): dashboard at
+https://cloud.umami.is. Every page loads the Umami script and is instrumented
+with `data-umami-event` attributes (`whatsapp-click`, `contact-form-submit`,
+`video-open`, `lang-switch`, `email-click`, `contact-bubble-click`).
+Umami is cookieless and GDPR/LGPD-friendly, so no cookie banner is needed.
+The CSP in `netlify.toml` allows `cloud.umami.is`. The script tag (with the
+website ID) sits in each page's `<head>` — keep it when editing pages.
 
 ## Deploying
 
