@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page not found | Camila Fonseca</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Playfair+Display:wght@700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            font-family: 'Quicksand', sans-serif; color: #3D405B; text-align: center;
+            background-color: #fff1e3;
+            background-image: radial-gradient(#FED7AA 2px, transparent 2px), radial-gradient(rgba(255,237,213,0.6) 2px, transparent 2px);
+            background-size: 40px 40px; background-position: 0 0, 20px 20px;
+            overflow-x: hidden;
+        }
+        .fern {
+            position: fixed; right: -18%; top: -6%; width: 60%; max-width: 760px; opacity: 0.5;
+            pointer-events: none; filter: saturate(1.4);
+        }
+        .card {
+            position: relative; z-index: 10; background: #fff; border: 3px solid #3D405B;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            box-shadow: 8px 8px 0 #81B29A; padding: 3rem 2rem; margin: 1.5rem; max-width: 520px;
+        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0 0 0.5rem; }
+        .hand { font-family: 'Gochi Hand', cursive; color: #EA580C; font-size: 1.6rem; margin: 0 0 1.5rem; }
+        p { font-weight: 700; margin: 0.4rem 0; }
+        .links { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; margin-top: 1.8rem; }
+        .pill {
+            background: #fff; border: 2px dashed #3D405B; border-radius: 9999px; padding: 0.5rem 1.4rem;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            color: #3D405B; text-decoration: none; box-shadow: 4px 4px 0 #81B29A; transition: all 0.3s;
+        }
+        .pill:hover { box-shadow: 6px 6px 0 #F97316; border-color: #F97316; color: #F97316; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <img class="fern" src="/images/fern.webp" alt="" width="1517" height="982">
+    <main class="card">
+        <h1>404</h1>
+        <p class="hand">This page wandered off.</p>
+        <p>Page not found · Página não encontrada · Página no encontrada</p>
+        <nav class="links" aria-label="Home pages">
+            <a class="pill" href="/">Home — English</a>
+            <a class="pill" href="/index-pt">Início — Português</a>
+            <a class="pill" href="/index-es">Inicio — Español</a>
+        </nav>
+    </main>
+</body>
+</html>

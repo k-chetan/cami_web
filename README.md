@@ -35,6 +35,8 @@ resets, or immediately after upgrading.
 |---|---|
 | `index.html` / `index-pt.html` / `index-es.html` | Home (EN / PT-BR / ES) |
 | `approach.html` / `approach-pt.html` / `approach-es.html` | "My Approach" — DBR, IFS, SE, EFT |
+| `methods.html` / `methods-pt.html` / `methods-es.html` | Definition guide — "What is IFS / DBR / SE / EFT?" per language, with origin facts, official-source links, per-method training tags, Article + FAQPage + Breadcrumb schema |
+| `404.html` | Custom not-found page (Netlify serves it automatically; noindex) |
 | `thankyou.html` | No-JS fallback success page for the contact form (noindex) |
 | `js/site-metrics.js` | First-party analytics beacon + AJAX contact-form handling |
 | `images/*.webp` | Optimized images used by pages (`*.png` are the originals/sources) |
@@ -130,6 +132,8 @@ curl -X POST https://camilafonseca.com/ -H 'Content-Type: application/x-www-form
 - **IndexNow** — key file `2815496f55d14e43b8e1a8367ec3d504.txt` at the root;
   URLs were submitted to Bing. Re-ping after big changes:
   POST to `https://api.indexnow.org/indexnow` with host/key/urlList.
+  **After the next deploy goes live**, re-ping with the three new guide URLs
+  (`/methods`, `/methods-pt`, `/methods-es`) included in the urlList.
 
 ## 7. Security
 
@@ -143,7 +147,10 @@ Fonts, YouTube (thumbnails + embeds), Umami.
 
 The qualifications list is duplicated — update **all** of:
 `index.html`, `index-pt.html`, `index-es.html`, `thankyou.html` (cute-tag
-lists), `llms.txt`, and `QUALIFICATIONS` in `netlify/functions/mcp.mjs`.
+lists), the per-method training tags + `hasCredential` JSON-LD on
+`methods.html` / `methods-pt.html` / `methods-es.html` and in the homepages'
+Person JSON-LD, `llms.txt`, and `QUALIFICATIONS` in
+`netlify/functions/mcp.mjs`.
 Current highlights: IFS Level 2, DBR Level 3, SE Intermediate, EFT Level B,
 Frank Anderson "Integrated Path to Healing Trauma", Liberation Psychology
 (SAND, in progress).
@@ -160,10 +167,20 @@ Frank Anderson "Integrated Path to Healing Trauma", Liberation Psychology
 
 What moves AI-assistant citations, in priority order:
 
-1. **Answer-shaped on-site content** — FAQ sections with `FAQPage` schema and
-   PT/ES explainer pages ("O que é IFS/DBR/SE?"), answer-first, dated,
-   bylined. Portuguese content on these methods is nearly nonexistent, so
-   these pages can become the PT source AI cites. (Planned/next.)
+1. **Answer-shaped on-site content** — DONE 2026-11-21: FAQ sections with
+   `FAQPage` schema on all homepages, plus trilingual definition-guide pages
+   (`/methods`, `/methods-pt`, `/methods-es`) — "What is IFS/DBR/SE/EFT?" —
+   dated, bylined, every method with origin facts, an official-source link
+   and Camila's training tags. Rationale from the Nov-2026 research pass:
+   definition pages are the most-cited content format across AI engines, and
+   adding citations/statistics measurably lifts AI visibility (the one solid
+   academic GEO finding, KDD 2024). Counter-finding: llms.txt files are
+   almost never fetched (Ahrefs, 137K sites: 97% receive zero requests), so
+   ours stays as a free extra but the strategy lives in real pages. The
+   homepages' Person JSON-LD also carries `alternateName` ("Camila Mariana
+   Mesquita e Fonseca" — kills the Doctoralia/Psitto name confusion),
+   `hasCredential` for every training, and `sameAs` → Reddit + her IFS
+   Institute profile (178846) for entity stitching.
 2. **Third-party presence** (human tasks): Google Business Profile + reviews;
    genuine Reddit participation (Perplexity cites Reddit in ~47% of top
    sources) in r/InternalFamilySystems, r/CPTSD, Brazilian psych subs;

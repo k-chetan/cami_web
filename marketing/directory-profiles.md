@@ -91,22 +91,38 @@ All text below is assembled from her own website wording.
    Bonus facts in this profile worth reusing on her own site (her words):
    volunteer psychotherapy with migrant and refugee women; time split between
    India, Brazil, and New Zealand; CRP number for the PT page.
-3. **Google Business Profile** — Gemini pulls the star-rating and category
+3. **Doctoralia Brasil (doctoralia.com.br) — claim or create her profile.**
+   In the ChatGPT baseline test (2026-11-21) the assistant searched Doctoralia
+   and surfaced a DIFFERENT psychologist ("Camila Fonseca de Souza") while
+   looking for her — a correct profile here both prevents that mix-up and adds
+   one more directory citation in the exact source ChatGPT already consults
+   for Brazil. Doctoralia's own professional pages advertise a free basic
+   profile ("Perfil Gratuito"); confirm the current conditions at signup and
+   skip paid upgrades. Use the canonical values above (CRP 01/16829, languages
+   PT/EN/ES, online sessions, PT bio); where the registry requires the full
+   registered name, it is "Camila Mariana Mesquita e Fonseca". Leave the fee
+   field empty or hidden if the platform allows, consistent with the site.
+4. **Google Business Profile** — Gemini pulls the star-rating and category
    chips straight from it. Full pack: `marketing/google-business-profile.md`.
-4. **It's Complicated (complicated.life)** — therapist marketplace AI cites
+5. **It's Complicated (complicated.life)** — therapist marketplace AI cites
    for international online therapy. Paid membership (Basic ~€29.90/mo + 3.5%
    on invoices processed there; verify current pricing on their for-therapists
    page). Professional verification required; includes directory profile.
    Worth it if she wants marketplace clients; skip if not.
-5. **Expat Therapy Hub (expattherapyhub.com)** — curated directory for
+6. **Expat Therapy Hub (expattherapyhub.com)** — curated directory for
    therapists serving expats/international clients; application-based. Her
    profile (online, trilingual, trauma-focused) is exactly their niche.
-6. **Her training communities** — SE International's directory, ISEFT's
+7. **Her training communities** — SE International's directory, ISEFT's
    therapist list, DBR practitioner listings, and any Brazilian IFS community
    directory her training cohort maintains: each one is a verified-credential
    citation AI trusts. Ask each institute how students at her level get listed.
-7. **Psychology Today (international)** — broadest consumer directory;
+8. **Psychology Today (international)** — broadest consumer directory;
    paid listing; strong AI citation presence for English-language queries.
+
+**Skipped on purpose — Bing Places**: it verifies against a physical address
+and only supports US city/county service areas, so it cannot represent an
+online worldwide practice. Bing already receives the site through IndexNow
+and Bing Webmaster Tools, and will pick up the GBP data as well.
 
 ## One rule across all of them
 
