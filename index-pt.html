@@ -453,31 +453,36 @@
             <style>
                 .faq-item summary::-webkit-details-marker { display: none; }
                 .faq-item[open] .faq-chevron { transform: rotate(180deg); }
+                .faq-item:nth-of-type(odd) { background-color: #E6F0EB; }
+                .faq-item:nth-of-type(even) { background-color: #FCD5CE; }
+                .faq-item:nth-of-type(3n) { background-color: #F2CC8F; }
+                .faq-item { transition: transform 0.2s ease; }
+                .faq-item:hover { transform: scale(1.01); }
             </style>
             <div class="bg-paper p-6 md:p-10 rounded-[2rem] border-2 border-dashed border-sage-500 relative z-10">
                 <h3 class="font-serif text-2xl md:text-4xl mb-8 font-normal text-center">Perguntas Frequentes</h3>
                 <div class="space-y-4">
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">Você atende online?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">Sim. Atendo online e presencialmente em inglês, português e espanhol, acompanhando pessoas no mundo inteiro.</p>
                     </details>
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">Quais abordagens você usa?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">Me especializei em abordagens de trauma reconhecidas internacionalmente: Sistemas Familiares Internos (IFS), Reorientação Cerebral Profunda (DBR), Experiência Somática (SE) e Terapia Focada nas Emoções (EFT). Minha prática também é profundamente enraizada no mindfulness.</p>
                     </details>
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">Para quem é a terapia?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">A terapia amplia o autoconhecimento, ajuda a cuidar das dificuldades interpessoais nos seus relacionamentos, alivia tensões e melhora a saúde mental como um todo. Se você anda sentindo cansaço, confusão, tristeza ou ansiedade, saiba que a terapia pode ser um caminho de volta para casa — de volta para você.</p>
                     </details>
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">O que é a Reorientação Cerebral Profunda (DBR)?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">A DBR é uma abordagem baseada na neurociência que trabalha a sequência neurológica das respostas ao trauma antes mesmo de elas chegarem à consciência. Ela cuida de traumas e feridas de apego em um nível pré-verbal.</p>
                     </details>
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">O que é IFS (Sistemas Familiares Internos)?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">Todos nós temos partes internas — aspectos da nossa personalidade que carregam diferentes emoções, crenças e papéis. O IFS é uma abordagem cheia de compaixão, que ajuda você a entender e curar essas partes, em vez de reprimi-las.</p>
                     </details>
-                    <details class="faq-item bg-white border-2 border-navy rounded-2xl px-5">
+                    <details class="faq-item border-2 border-dashed border-navy rounded-2xl px-5">
                         <summary class="cursor-pointer list-none flex items-center justify-between gap-3 font-bold text-navy text-lg py-4">Como falo com você?<i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0 transition-transform"></i></summary>
                         <p class="pb-5 pt-1 text-navy/90 font-medium leading-relaxed">Você pode escrever pelo formulário de contato, me chamar no WhatsApp ou mandar um oi para contact@camilafonseca.com.</p>
                     </details>
