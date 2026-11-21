@@ -65,17 +65,26 @@ All text below is assembled from her own website wording.
    - **Location**: her call — the full street address in Luziânia-GO is
      public; city-only is safer.
    - Fix typo "Univerisidade" → "Universidade".
-2. **Psitto — her old profile (confirmed hers):**
-   psitto.com.br/psicologo/camila-mariana-mesquita-e-fonseca — currently
-   cited by ChatGPT as "the affordable option, R$250, IFS Level 1". Her new
-   rate exceeds Psitto's fee ceiling, so:
-   - If Psitto allows hiding the fee ("sob consulta") + adding
-     camilafonseca.com: update it (Level 2, DBR Level 3, name "Camila
-     Fonseca") and keep it as a citation/backlink.
-   - If the fee is mandatory and capped: **delete it** — a listing forced to
-     state a wrong price hurts more than it helps.
-   - Sequence: fix the IFS Institute profile (item 1) FIRST, then deal with
-     Psitto, so she's never cited nowhere.
+2. **Psitto — her old profile: KEEP and update, don't delete.**
+   psitto.com.br/psicologo/camila-mariana-mesquita-e-fonseca
+   Why keep: it holds her only **9 verified 5.0-star reviews** (irreplaceable
+   — one even matches the Lívia testimonial on her site, which helps AI
+   confirm identity), displays her **CRP 01/16829** (licensure proof), and
+   the agenda is already closed ("sem horários"), so nobody can book at the
+   outdated R$250 — the price is decorative while slots stay closed.
+   Edits to make (the bio is free text):
+   - IFS "Nível 1" → **Nível 2** (Internal Family Systems Institute, EUA)
+   - Somatic Experiencing "em andamento" → **Intermediário**
+   - Add: **Deep Brain Reorienting (DBR), Nível 3 – DBR Institute, Escócia**
+     and **"Integrated Path to Healing Trauma" – Frank Anderson, MD**
+   - Keep the agenda closed; if Psitto rules allow, note that scheduling and
+     current fees are handled directly (her site).
+   - Reconsider deletion only if Psitto ever forces an open agenda at the
+     capped price.
+   - Sequence still: fix the IFS Institute profile (item 1) first.
+   Bonus facts in this profile worth reusing on her own site (her words):
+   volunteer psychotherapy with migrant and refugee women; time split between
+   India, Brazil, and New Zealand; CRP number for the PT page.
 3. **Google Business Profile** — Gemini pulls the star-rating and category
    chips straight from it. Full pack: `marketing/google-business-profile.md`.
 4. **It's Complicated (complicated.life)** — therapist marketplace AI cites
