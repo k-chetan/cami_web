@@ -1,0 +1,12 @@
+{
+  "$comment": "MCP discovery hint for AI clients and crawlers. See also /llms.txt.",
+  "servers": [
+    {
+      "name": "camila-fonseca-psychotherapy",
+      "description": "Information about Camila Fonseca's psychotherapy practice: overview, therapy methods (IFS, DBR, SE, EFT), qualifications, estimated session pricing, contact options, and client testimonials.",
+      "url": "https://camilafonseca.com/mcp",
+      "transport": "streamable-http",
+      "authentication": "none"
+    }
+  ]
+}

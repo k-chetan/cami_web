@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "com.camilafonseca/psychotherapy",
+  "description": "Information about Camila Fonseca's psychotherapy practice: trauma-informed therapy methods (IFS, DBR, Somatic Experiencing, EFT), qualifications, estimated session pricing, contact and booking options. Sessions online worldwide in English, Portuguese, and Spanish.",
+  "websiteUrl": "https://camilafonseca.com",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://camilafonseca.com/mcp"
+    }
+  ]
+}

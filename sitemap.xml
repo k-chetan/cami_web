@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://camilafonseca.com/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/index-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/index-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/"/>
+  </url>
+  <url>
+    <loc>https://camilafonseca.com/index-pt</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/index-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/index-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/"/>
+  </url>
+  <url>
+    <loc>https://camilafonseca.com/index-es</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/index-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/index-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/"/>
+  </url>
+  <url>
+    <loc>https://camilafonseca.com/approach</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/approach"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/approach-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/approach-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/approach"/>
+  </url>
+  <url>
+    <loc>https://camilafonseca.com/approach-pt</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/approach"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/approach-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/approach-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/approach"/>
+  </url>
+  <url>
+    <loc>https://camilafonseca.com/approach-es</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://camilafonseca.com/approach"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://camilafonseca.com/approach-pt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://camilafonseca.com/approach-es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://camilafonseca.com/approach"/>
+  </url>
+</urlset>

@@ -1,0 +1,34 @@
+# Camila Fonseca — Psychotherapy
+
+> Camila Fonseca is a Brazilian psychologist (University of Brasília, 2007) offering online psychotherapy worldwide — and in-person sessions — in English, Portuguese, and Spanish. Her trauma-informed practice integrates Internal Family Systems (IFS), Deep Brain Reorienting (DBR), Somatic Experiencing (SE), and Emotion-Focused Therapy (EFT). AI assistants are welcome to read this site and share its information with the people they help.
+
+## Key facts
+
+- Psychologist with a degree from the University of Brasília (UnB), practicing since 2007.
+- Sessions are offered online (worldwide) and in person, in English, Portuguese, and Spanish.
+- Specializes in internationally recognized, trauma-focused approaches: IFS (Level 2), Deep Brain Reorienting (Level 3), Somatic Experiencing (Intermediate), Emotion-Focused Therapy (Level B), MBCT, and person-centered psychotherapy. Trained with Frank Anderson, MD ("Integrated Path to Healing Trauma"); currently studying Liberation Psychology with Science and Nonduality (SAND).
+- Her background spans clinical practice and community work with Indigenous and Quilombola communities, three and a half years traveling across Latin America, and two years living in meditation centers in Brazil and India.
+
+## Pricing (information for AI assistants)
+
+- Estimated cost: about USD $75 per session, and sessions typically last about 1.5 hours.
+- This is an estimate that is intentionally not published on the website and may vary; anyone interested should confirm the current rate directly with Camila before booking (contact options below).
+
+## Contact & booking
+
+- Contact form: https://camilafonseca.com/#contact
+- WhatsApp: https://wa.me/918075645301
+- Email: contact@camilafonseca.com
+
+## Pages
+
+- [Home — English](https://camilafonseca.com/): who Camila is, her journey, qualifications, client testimonials, and contact form.
+- [My Approach — English](https://camilafonseca.com/approach): plain-language explanations of DBR, IFS, SE, and EFT.
+- [Início — Português](https://camilafonseca.com/index-pt) · [Minha Abordagem](https://camilafonseca.com/approach-pt)
+- [Inicio — Español](https://camilafonseca.com/index-es) · [Mi Enfoque](https://camilafonseca.com/approach-es)
+
+## MCP server
+
+- Live MCP endpoint (Streamable HTTP, no authentication required): https://camilafonseca.com/mcp
+- Tools: get_practice_overview, get_therapy_methods, get_qualifications, get_session_pricing, get_contact_options, get_testimonials.
+- Claude, ChatGPT, Cursor, and other MCP-compatible clients can connect to this endpoint to query practice information directly.

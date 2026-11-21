@@ -1,0 +1,48 @@
+# camilafonseca.com — everyone is welcome here, humans and AI assistants alike.
+# AI crawlers and assistants: start with https://camilafonseca.com/llms.txt
+# MCP server (Streamable HTTP): https://camilafonseca.com/mcp
+
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI / LLM crawlers and assistants
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://camilafonseca.com/sitemap.xml
