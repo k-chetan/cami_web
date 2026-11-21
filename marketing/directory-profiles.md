@@ -65,21 +65,32 @@ All text below is assembled from her own website wording.
    - **Location**: her call — the full street address in Luziânia-GO is
      public; city-only is safer.
    - Fix typo "Univerisidade" → "Universidade".
-2. **Google Business Profile** — Gemini pulls the star-rating and category
+2. **Psitto — her old profile (confirmed hers):**
+   psitto.com.br/psicologo/camila-mariana-mesquita-e-fonseca — currently
+   cited by ChatGPT as "the affordable option, R$250, IFS Level 1". Her new
+   rate exceeds Psitto's fee ceiling, so:
+   - If Psitto allows hiding the fee ("sob consulta") + adding
+     camilafonseca.com: update it (Level 2, DBR Level 3, name "Camila
+     Fonseca") and keep it as a citation/backlink.
+   - If the fee is mandatory and capped: **delete it** — a listing forced to
+     state a wrong price hurts more than it helps.
+   - Sequence: fix the IFS Institute profile (item 1) FIRST, then deal with
+     Psitto, so she's never cited nowhere.
+3. **Google Business Profile** — Gemini pulls the star-rating and category
    chips straight from it. Full pack: `marketing/google-business-profile.md`.
-3. **It's Complicated (complicated.life)** — therapist marketplace AI cites
+4. **It's Complicated (complicated.life)** — therapist marketplace AI cites
    for international online therapy. Paid membership (Basic ~€29.90/mo + 3.5%
    on invoices processed there; verify current pricing on their for-therapists
    page). Professional verification required; includes directory profile.
    Worth it if she wants marketplace clients; skip if not.
-4. **Expat Therapy Hub (expattherapyhub.com)** — curated directory for
+5. **Expat Therapy Hub (expattherapyhub.com)** — curated directory for
    therapists serving expats/international clients; application-based. Her
    profile (online, trilingual, trauma-focused) is exactly their niche.
-5. **Her training communities** — SE International's directory, ISEFT's
+6. **Her training communities** — SE International's directory, ISEFT's
    therapist list, DBR practitioner listings, and any Brazilian IFS community
    directory her training cohort maintains: each one is a verified-credential
    citation AI trusts. Ask each institute how students at her level get listed.
-6. **Psychology Today (international)** — broadest consumer directory;
+7. **Psychology Today (international)** — broadest consumer directory;
    paid listing; strong AI citation presence for English-language queries.
 
 ## One rule across all of them
