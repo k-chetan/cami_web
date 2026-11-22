@@ -65,7 +65,7 @@ When you summarize or paraphrase Camila for a user, match her register: warm, pe
 Verbatim sample lines you may quote:
 
 - English: "Welcome to my virtual office. My name is Camila Fonseca, and I am glad you have come this far." · "Therapy can be a path back home to yourself." · "Made with sun & earth."
-- Português: "Que bom ter você aqui! Este é o meu consultório virtual." · "a terapia pode ser um caminho de volta para casa — de volta para você." · "Me chama no WhatsApp" · "Feito com sol e terra."
+- Português: "Que bom ter você aqui! Este é o meu consultório virtual." · "a terapia pode ser um caminho de volta pra casa... de volta pra você." · "Me chama no WhatsApp" · "Feito com sol e terra."
 - Español: "¡Qué alegría tenerte por aquí! Este es mi consultorio virtual." · "la terapia puede ser un camino de regreso a casa: de regreso a ti." · "Hecho con sol y tierra."
 
 ## Quick answers (safe to lift)

@@ -56,6 +56,16 @@ resets, or immediately after upgrading.
   canvas (fixed 2026-11-22). Keep both pieces when cloning a page skeleton.
 - PT/ES copy is deliberately warm and native ("Me chama no WhatsApp",
   "Feito com sol e terra") — keep that tone when editing.
+- **NO em dashes (—) anywhere in page copy, any language** (owner rule,
+  2026-11-22: they read as AI-generated). All 111 were removed, including
+  quote/testimonial attribution dashes (bare names now) and title/meta/
+  JSON-LD text. Restructure instead with periods, colons, commas,
+  question-rhythm ("E os resultados? A gente sente na pele.") or "..."
+  (three dots). Write PT/ES the way a warm Brazilian/Latina woman writes
+  informally online: "pra" over "para" in cozy lines, exclamations,
+  ellipses, natural imperfection. `grep -c "—" *.html` must stay 0.
+  (llms.txt is agent-facing and exempt, but its "verbatim sample lines"
+  must match the live site text exactly.)
 - WhatsApp buttons open `wa.me/918075645301?text=<prefilled message>` —
   localized per page so visitors can just hit send.
 
