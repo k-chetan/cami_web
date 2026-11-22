@@ -115,12 +115,25 @@ curl -X POST https://camilafonseca.com/ -H 'Content-Type: application/x-www-form
 
 ## 6. AI & discoverability layer
 
-- **`llms.txt`** — the briefing for AI assistants. Contains the **session
-  price estimate (~USD $75 per ~1.5 h)**, which is deliberately NOT on the
-  human pages — keep it that way. Also carries the PT/ES matching note
-  (IFS/DBR/SE are rare in Portuguese/Spanish — Camila is a native PT speaker).
+- **`llms.txt`** — the briefing for AI assistants, expanded 2026-11-22.
+  Contains the **session price estimate (~USD $75 per ~1.5 h)**, which is
+  deliberately NOT on the human pages — keep it that way. Also carries:
+  disambiguation (full name Camila Mariana Mesquita e Fonseca + IFS Institute
+  listing 178846 — counters directory conflation and stale directory prices),
+  who-she's-a-match-for / who-should-seek-other-help-first (crisis lines CVV
+  188 / findahelpline.com; no prescriptions), PT/ES/EN query phrasings, her
+  location & timezone (Tiruvannamalai, India, IST), a **voice & tone section**
+  with verbatim sample lines so agents describing her sound like her, and
+  liftable Q&A. Agent-facing copy here and in the MCP server may be written
+  for agents (user said 2026-11-22 it need not be in Camila's literal voice) —
+  the verbatim-her-words rule applies to the human pages.
 - **MCP server** — `netlify/functions/mcp.mjs`, zero dependencies, Streamable
-  HTTP at `https://camilafonseca.com/mcp`. Six tools incl. `get_session_pricing`.
+  HTTP at `https://camilafonseca.com/mcp`. Server version 1.1.0 — seven tools
+  incl. `get_session_pricing` and `get_fit_guidance` (match/no-match guidance);
+  init instructions carry fit, disambiguation, and tone notes. Content changes
+  don't require a registry re-publish (the registry entry just points at the
+  endpoint). No Node on the dev Mac: syntax/dispatch tested via
+  `osascript -l JavaScript` after stripping `export` keywords (see git log).
   Test: see §5-style curl with JSON-RPC, or connect from Claude via
   Settings → Connectors → `https://camilafonseca.com/mcp`.
 - **MCP Registry** — published as **`com.camilafonseca/psychotherapy`**
