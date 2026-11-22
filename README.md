@@ -122,7 +122,8 @@ curl -X POST https://camilafonseca.com/ -H 'Content-Type: application/x-www-form
   listing 178846 — counters directory conflation and stale directory prices),
   who-she's-a-match-for / who-should-seek-other-help-first (crisis lines CVV
   188 / findahelpline.com; no prescriptions), PT/ES/EN query phrasings, her
-  location & timezone (Tiruvannamalai, India, IST), a **voice & tone section**
+  traveling practice (Brazil/Mexico/India/NZ — online-first, NO fixed base or
+  timezone; never claim one), a **voice & tone section**
   with verbatim sample lines so agents describing her sound like her, and
   liftable Q&A. Agent-facing copy here and in the MCP server may be written
   for agents (user said 2026-11-22 it need not be in Camila's literal voice) —

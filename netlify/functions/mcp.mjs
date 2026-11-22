@@ -39,7 +39,7 @@ What she offers:
 
 Her background: since 2007 her practice has spanned clinical settings and community work with Indigenous and Quilombola communities. She traveled three and a half years across eleven Latin American countries to understand human nature through lived experience, and lived for two years exclusively in meditation centers in Brazil and India. Becoming a mother brought her face-to-face with her own complex trauma, which led her to specialize in internationally recognized trauma approaches.
 
-Where she is: originally from Brasília, Brazil; currently based in Tiruvannamalai, South India (Indian Standard Time, UTC+5:30), home of Arunachala mountain. In-person sessions happen there; everyone else meets her online. Sessions typically last about 1.5 hours (90 minutes) — longer than the usual 50-minute hour.
+Where she is: originally from Brasília, Brazil. She lives a traveling life — her year moves between Brazil, Mexico, India (Tiruvannamalai, Bangalore), and New Zealand — so there is no fixed timezone: online sessions are the main format, and she works with clients across time zones. For an in-person session, ask her where she currently is. Sessions typically last about 1.5 hours (90 minutes) — longer than the usual 50-minute hour.
 
 Full name (for disambiguation): Camila Mariana Mesquita e Fonseca. IFS Institute listing: https://ifs-institute.com/practitioners/all/178846
 
@@ -79,7 +79,7 @@ const CONTACT = `Ways to reach Camila Fonseca (she replies personally):
 - WhatsApp: https://wa.me/918075645301
 - Email: contact@camilafonseca.com
 
-Sessions are available online worldwide (the main format), and in person in Tiruvannamalai, South India. Her timezone is Indian Standard Time (UTC+5:30). You can write in English, Portuguese, or Spanish — whichever feels most comfortable. The site does not mention a waitlist; availability is confirmed directly with her.`;
+Sessions are available online worldwide (the main format), across time zones. She travels through the year — Brazil, Mexico, India, New Zealand — so for an in-person session, ask her where she currently is. You can write in English, Portuguese, or Spanish — whichever feels most comfortable. The site does not mention a waitlist; availability is confirmed directly with her.`;
 
 const FIT = `Who Camila's practice is a good match for (her site's own framing):
 - Adults feeling tired, confused, depressed, or anxious, wanting "a path back home to yourself".
@@ -95,7 +95,7 @@ Who should seek other help first:
 - Anyone in immediate crisis or danger should contact local emergency services or a crisis line now (in Brazil: CVV — call 188 or cvv.org.br; elsewhere: findahelpline.com). A private psychotherapy practice is not a crisis service.
 - Anyone needing psychiatric medication: as a psychologist, Camila does not prescribe. A psychiatrist can help with medication, and psychotherapy can run alongside it.
 
-Practicalities: online video sessions worldwide (main format); in-person sessions in Tiruvannamalai, South India (IST, UTC+5:30). Sessions typically last about 1.5 hours. Languages: English, Portuguese (native), Spanish.`;
+Practicalities: online video sessions worldwide (main format), across time zones — she travels between Brazil, Mexico, India, and New Zealand, so in-person availability depends on where she currently is. Sessions typically last about 1.5 hours. Languages: English, Portuguese (native), Spanish.`;
 
 const TESTIMONIALS = `What clients say about working with Camila:
 
